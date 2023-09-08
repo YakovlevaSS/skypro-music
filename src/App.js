@@ -3,10 +3,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // import React from 'react';
 import './App.css'
-import { PlayList } from './components/PlayList/PlayList'
+import { CenterBlock } from './components/CenterBlock/CenterBlock'
 import { Nav } from './components/Nav/Nav'
-import { Search } from './components/Search/Search'
-import { Filter } from './components/Filter/Filter'
+import { SideBar } from './components/SideBar/SidBar'
+
 
 function App() {
   return (
@@ -14,66 +14,9 @@ function App() {
       <div className="wrapper">
         <div className="container">
           <main className="main">
-            <Nav/>
-            <div className="main__centerblock centerblock">
-            <Search/>
-              <h2 className="centerblock__h2">Треки</h2>
-              <Filter/>
-              <div className="centerblock__content">
-                <div className="content__title playlist-title">
-                  <div className="playlist-title__col col01">Трек</div>
-                  <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-                  <div className="playlist-title__col col03">АЛЬБОМ</div>
-                  <div className="playlist-title__col col04">
-                    <svg className="playlist-title__svg" alt="time">
-                      <use xlinkHref="img/icon/sprite.svg#icon-watch" />
-                    </svg>
-                  </div>
-                </div>
-                <PlayList />
-              </div>
-            </div>
-            <div className="main__sidebar sidebar">
-              <div className="sidebar__personal">
-                <p className="sidebar__personal-name">Sergey.Ivanov</p>
-                <div className="sidebar__icon">
-                  <svg alt="logout">
-                    <use xlinkHref="img/icon/sprite.svg#logout" />
-                  </svg>
-                </div>
-              </div>
-              <div className="sidebar__block">
-                <div className="sidebar__list">
-                  <div className="sidebar__item">
-                    <a className="sidebar__link" href="#">
-                      <img
-                        className="sidebar__img"
-                        src="img/playlist01.png"
-                        alt="day's playlist"
-                      />
-                    </a>
-                  </div>
-                  <div className="sidebar__item">
-                    <a className="sidebar__link" href="#">
-                      <img
-                        className="sidebar__img"
-                        src="img/playlist02.png"
-                        alt="day's playlist"
-                      />
-                    </a>
-                  </div>
-                  <div className="sidebar__item">
-                    <a className="sidebar__link" href="#">
-                      <img
-                        className="sidebar__img"
-                        src="img/playlist03.png"
-                        alt="day's playlist"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Nav />
+            <CenterBlock/>
+<SideBar/>
           </main>
           <div className="bar">
             <div className="bar__content">
