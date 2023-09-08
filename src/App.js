@@ -7,7 +7,6 @@ import { CenterBlock } from './components/CenterBlock/CenterBlock'
 import { Nav } from './components/Nav/Nav'
 import { SideBar } from './components/SideBar/SidBar'
 
-
 function App() {
   return (
     <div className="App">
@@ -15,8 +14,8 @@ function App() {
         <div className="container">
           <main className="main">
             <Nav />
-            <CenterBlock/>
-<SideBar/>
+            <CenterBlock />
+            <SideBar />
           </main>
           <div className="bar">
             <div className="bar__content">
