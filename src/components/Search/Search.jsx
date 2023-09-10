@@ -1,3 +1,4 @@
+import './search.css'
 /* eslint-disable import/prefer-default-export */
 export function Search () {
     return (

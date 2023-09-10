@@ -1,3 +1,4 @@
+import './bar.css'
 import { Player } from "../Player/Player";
 import { VolumeBlock } from "../VolumeBlock/VolumeBlock";
 

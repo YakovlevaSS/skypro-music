@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import './centerBlock.css'
 import { Search } from '../Search/Search'
 import { Filter } from '../Filter/Filter'
 import { PlayListTitle } from '../PlayListTitle/PlayListTitle'

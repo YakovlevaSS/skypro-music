@@ -1,3 +1,4 @@
+import './nav.css'
 import { NavItem } from "../NavItem/NavItem"
 
 // eslint-disable-next-line import/prefer-default-export

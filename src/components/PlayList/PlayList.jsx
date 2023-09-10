@@ -1,3 +1,4 @@
+import './playList.css'
 import { trackArr } from "../../utilits/trackArr";
 
 // eslint-disable-next-line import/prefer-default-export

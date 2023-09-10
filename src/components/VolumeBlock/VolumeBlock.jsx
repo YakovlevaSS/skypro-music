@@ -1,3 +1,4 @@
+import './volumeBlock.css'
 import { VolumeControl } from "../VolumeControl/VolumeControl";
 
 /* eslint-disable import/prefer-default-export */

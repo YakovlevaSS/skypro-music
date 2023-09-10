@@ -1,3 +1,4 @@
+import './volumeControl.css'
 /* eslint-disable import/prefer-default-export */
 export function VolumeControl() {
     return (

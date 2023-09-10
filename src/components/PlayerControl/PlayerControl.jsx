@@ -1,3 +1,4 @@
+import './playerControl.css'
 /* eslint-disable import/prefer-default-export */
 export function PlayerControl() {
     return (

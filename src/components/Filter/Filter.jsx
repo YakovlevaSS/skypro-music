@@ -1,3 +1,4 @@
+import './filter.css'
 /* eslint-disable import/prefer-default-export */
 export function Filter() {
   return (

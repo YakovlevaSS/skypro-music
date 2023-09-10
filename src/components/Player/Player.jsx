@@ -1,3 +1,4 @@
+import './player.css'
 import { PlayerControl } from '../PlayerControl/PlayerControl'
 import { PlayerTrackPlay } from '../PlayerTrackPlay/PlayerTrackPlay'
 

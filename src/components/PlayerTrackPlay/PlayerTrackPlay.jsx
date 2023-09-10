@@ -1,3 +1,4 @@
+import './playerTrackPlay.css'
 /* eslint-disable import/prefer-default-export */
 export function PlayerTrackPlay() {
     return (

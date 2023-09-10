@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import './sideBar.css'
 import { SideBarItem } from '../SideBarItem/SideBarItem'
 import { SideBarPerson } from '../SideBarPerson/SideBarPerson'
 

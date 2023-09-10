@@ -1,3 +1,4 @@
+import './navItem.css'
 // eslint-disable-next-line import/prefer-default-export
 export function NavItem (props) {
 return (
