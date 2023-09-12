@@ -4,8 +4,8 @@ import { useState } from 'react'
 import './nav.css'
 import { NavItem } from '../NavItem/NavItem'
 
-function ShowMenu(menu) {
-  if (menu) {
+function ShowMenu({isShow}) {
+  if (isShow) {
     return (
       <div className="nav__menu menu">
         <ul className="menu__list">
@@ -32,8 +32,6 @@ export default function Nav() {
   const hendleClick = () => {
     setMenu(!menu)
   }
-
-
   return (
     <nav className="main__nav nav">
       <div className="nav__logo logo">
@@ -44,7 +42,7 @@ export default function Nav() {
         <span className="burger__line" />
         <span className="burger__line" />
       </div>
-      <ShowMenu menu/>
+      <ShowMenu isShow={menu}/>
     </nav>
   )
 
