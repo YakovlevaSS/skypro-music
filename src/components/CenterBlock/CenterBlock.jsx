@@ -5,7 +5,7 @@ import { Filter } from '../Filter/Filter'
 import { PlayListTitle } from '../PlayListTitle/PlayListTitle'
 import { PlayList } from '../PlayList/PlayList'
 
-export function CenterBlock() {
+export function CenterBlock({ isLoaded }) {
     return (
         <div className="main__centerblock centerblock">
         <Search />
@@ -13,7 +13,7 @@ export function CenterBlock() {
         <Filter />
         <div className="centerblock__content">
           <PlayListTitle />
-          <PlayList />
+          <PlayList isLoaded={{ isLoaded }}/>
         </div>
       </div>
     )
