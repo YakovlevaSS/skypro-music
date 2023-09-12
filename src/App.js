@@ -5,7 +5,7 @@
 import './App.css'
 import { Bar } from './components/Bar/Bar'
 import { CenterBlock } from './components/CenterBlock/CenterBlock'
-import { Nav } from './components/Nav/Nav'
+import Nav  from './components/Nav/Nav'
 import { SideBar } from './components/SideBar/SidBar'
 
 function App() {
