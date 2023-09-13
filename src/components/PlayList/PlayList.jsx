@@ -8,8 +8,7 @@ export function PlayList({isLoaded}) {
         <div className="playlist__track track">
           <div className="track__title">
 
-            {
-            isLoaded? (
+            {isLoaded? (
             <div className="track__title-image">
               <svg className="track__title-svg" alt="music">
                 <use xlinkHref="img/icon/sprite.svg#icon-note" />

@@ -7,7 +7,8 @@
     margin-bottom: 30px;
   }
   
-  .sidebar__link {
+  .sidebar__link,
+  .skeleton__sidebar {
     width: 100%;
     height: 100%;
   }
@@ -15,4 +16,19 @@
   .sidebar__img {
     width: 100%;
     height: auto;
+  }
+
+  .skeleton__sidebar {
+    background-color: #313131;
+    animation: blink 1s infinite alternate;
+  }
+  
+  @keyframes blink {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0.2;
+    }
   }
