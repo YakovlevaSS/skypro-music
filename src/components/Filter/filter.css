@@ -68,4 +68,60 @@
     right: 8px;
   }
 
+  .filter__menu {
+    position: absolute;
+    top: 50px;
+    width: 248px;
+    height: 305px;
+    overflow: scroll;
+    box-sizing: border-box;
+    background-color: #313131;
+    border-radius: 12px;
+  }
+
+
+  .filter__list {
+    width: 248px;
+  height: 305px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 28px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;  
+  padding: 34px;
+}
+
+.filter__menu-year {
+  width: 248px;
+  height: 196px;
+}
+
+.filter__list a {
+  color: #fff;
+}
+
+.filter__list a:active,
+.filter__list a:hover {
+  color: #ad61ff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.filter__list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.filter__list::-webkit-scrollbar-track {
+  background-color: #4B4949;
+
+}
+
+.filter__list::-webkit-scrollbar-thumb {
+  background-color: #FFFFFF;
+  border-radius: 2px;
+}
 

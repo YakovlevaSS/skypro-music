@@ -80,10 +80,10 @@ export function Filter() {
           году выпуска
         </button>
         <div className="filter__length">{yearArr.length}</div>
-        <div className = "filter__menu">
+        <div className = "filter__menu filter__menu-year">
           <ul className = "filter__list">
             {yearArr.map((item) =>(
-              <li key={item}>
+              <li className='filter__list-item' key={item} >
                 <a href='#'>{item}</a>
               </li>
             ))}
