@@ -4,12 +4,6 @@
   cursor: pointer;
 }
 
-._btn-text_active {
-  border-color: #ad61ff;
-  color: #ad61ff;
-  cursor: pointer;
-}
-
 .centerblock__filter {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -46,4 +40,32 @@
   .filter__button:not(:last-child) {
     margin-right: 10px;
   }
+
+  ._btn-text_active {
+    border-color: #ad61ff;
+    color: #ad61ff;
+    cursor: pointer;
+  }
+
+  .filter__wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .filter__length {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    color: #fff;
+    background-color: #ad61ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -13px;
+    right: 8px;
+  }
+
 

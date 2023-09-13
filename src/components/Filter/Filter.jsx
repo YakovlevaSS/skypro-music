@@ -41,14 +41,14 @@ export function Filter() {
 
 {/* условный рндеринг первый фильтр */}
       {visibleAuthor ? (
-        <><button
+        <div className="filter__wrap"><button
           className="filter__button button-author _btn-text_active"
           type="button"
           onClick={toggleVisibilityAuthor}
         >
           исполнителю
         </button>
-        <div className="filter__length">{authorArr.length}</div></>
+        <div className="filter__length">{authorArr.length}</div></div>
       ) : (
         <button
           className="filter__button button-author _btn-text"
@@ -61,14 +61,14 @@ export function Filter() {
 
 {/* условный рндеринг первый фильтр */}
 {visibleYear ? (
-        <><button
+        <div className="filter__wrap"><button
           className="filter__button button-year _btn-text_active"
           type="button"
           onClick={toggleVisibilityYear}
         >
           году выпуска
         </button>
-        <div className="filter__length">{yearArr.length}</div></>
+        <div className="filter__length">{yearArr.length}</div></div>
       ) : (
         <button
         className="filter__button button-year _btn-text"
@@ -81,14 +81,14 @@ export function Filter() {
 
 {/* условный рндеринг первый фильтр */}
 {visibleGenre ? (
-      <><button
+      <div className="filter__wrap"><button
           className="filter__button button-genre _btn-text_active"
           type="button"
           onClick={toggleVisibilityGenre}
         >
           жанру
         </button>
-        <div className="filter__length">{genrerArr.length}</div></>
+        <div className="filter__length">{genrerArr.length}</div></div>
       ) : (
         <button
         className="filter__button button-genre _btn-text"
