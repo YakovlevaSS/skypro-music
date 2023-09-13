@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react'
 import { trackArr } from '../../utilits/trackArr'
 import './filter.css'
@@ -48,7 +49,17 @@ export function Filter() {
         >
           исполнителю
         </button>
-        <div className="filter__length">{authorArr.length}</div></div>
+        <div className="filter__length">{authorArr.length}</div>
+        <div className = "filter__menu">
+          <ul className = "filter__list">
+            {authorArr.map((item) =>(
+              <li key={item}>
+                <a href='#'>{item}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        </div>
       ) : (
         <button
           className="filter__button button-author _btn-text"
@@ -68,7 +79,17 @@ export function Filter() {
         >
           году выпуска
         </button>
-        <div className="filter__length">{yearArr.length}</div></div>
+        <div className="filter__length">{yearArr.length}</div>
+        <div className = "filter__menu">
+          <ul className = "filter__list">
+            {yearArr.map((item) =>(
+              <li key={item}>
+                <a href='#'>{item}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        </div>
       ) : (
         <button
         className="filter__button button-year _btn-text"
@@ -88,7 +109,17 @@ export function Filter() {
         >
           жанру
         </button>
-        <div className="filter__length">{genrerArr.length}</div></div>
+        <div className="filter__length">{genrerArr.length}</div>
+        <div className = "filter__menu">
+          <ul className = "filter__list">
+            {genrerArr.map((item) =>(
+              <li key={item}>
+                <a href='#'>{item}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        </div>
       ) : (
         <button
         className="filter__button button-genre _btn-text"
