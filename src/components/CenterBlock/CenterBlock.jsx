@@ -13,7 +13,7 @@ export function CenterBlock({ isLoaded }) {
         <Filter />
         <div className="centerblock__content">
           <PlayListTitle />
-          <PlayList isLoaded={{ isLoaded }}/>
+          <PlayList isLoaded={ isLoaded }/>
         </div>
       </div>
     )

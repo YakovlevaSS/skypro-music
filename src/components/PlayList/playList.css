@@ -139,6 +139,12 @@
     width: 305px;
   }
 
+  .skeleton__title,
+.skeleton__author,
+.skeleton__album {
+  height: 19px;
+}
+
   .skeleton__title-image,
 .skeleton__title,
 .skeleton__author,

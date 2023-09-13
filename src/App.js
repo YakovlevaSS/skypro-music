@@ -19,8 +19,6 @@ function App() {
         setIsLoaded(true);
       }, 10000);
 
-      console.log(isLoaded);
-
       return () => clearTimeout(timeout); 
     }
   }, [isLoaded]);
