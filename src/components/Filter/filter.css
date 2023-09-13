@@ -4,7 +4,7 @@
   cursor: pointer;
 }
 
-._btn-text:active {
+._btn-text_active {
   border-color: #ad61ff;
   color: #ad61ff;
   cursor: pointer;

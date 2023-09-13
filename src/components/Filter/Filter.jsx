@@ -32,37 +32,73 @@ export function Filter() {
   const authorArr = Array.from(
     new Set(trackArr.map((track) => track.trackAuthorLink)),
   )
-  const yearArr = Array.from(
-    new Set(trackArr.map((track) => track.year))
-    )
-  const genrerArr = Array.from(
-    new Set(trackArr.map((track) => track.genre))
-    )
+  const yearArr = Array.from(new Set(trackArr.map((track) => track.year)))
+  const genrerArr = Array.from(new Set(trackArr.map((track) => track.genre)))
 
   return (
     <div className="centerblock__filter filter">
       <div className="filter__title">Искать по:</div>
-      <button
-        className="filter__button button-author _btn-text"
-        type="button"
-        onClick={toggleVisibilityAuthor}
-      >
-        исполнителю
-      </button>
-      <button
+
+{/* условный рндеринг первый фильтр */}
+      {visibleAuthor ? (
+        <><button
+          className="filter__button button-author _btn-text_active"
+          type="button"
+          onClick={toggleVisibilityAuthor}
+        >
+          исполнителю
+        </button>
+        <div className="filter__length">{authorArr.length}</div></>
+      ) : (
+        <button
+          className="filter__button button-author _btn-text"
+          type="button"
+          onClick={toggleVisibilityAuthor}
+        >
+          исполнителю
+        </button>
+      )}
+
+{/* условный рндеринг первый фильтр */}
+{visibleYear ? (
+        <><button
+          className="filter__button button-year _btn-text_active"
+          type="button"
+          onClick={toggleVisibilityYear}
+        >
+          году выпуска
+        </button>
+        <div className="filter__length">{yearArr.length}</div></>
+      ) : (
+        <button
         className="filter__button button-year _btn-text"
         type="button"
         onClick={toggleVisibilityYear}
       >
         году выпуска
       </button>
-      <button
+      )}
+
+{/* условный рндеринг первый фильтр */}
+{visibleGenre ? (
+      <><button
+          className="filter__button button-genre _btn-text_active"
+          type="button"
+          onClick={toggleVisibilityGenre}
+        >
+          жанру
+        </button>
+        <div className="filter__length">{genrerArr.length}</div></>
+      ) : (
+        <button
         className="filter__button button-genre _btn-text"
         type="button"
         onClick={toggleVisibilityGenre}
       >
         жанру
       </button>
+      )}
+
     </div>
   )
 }
