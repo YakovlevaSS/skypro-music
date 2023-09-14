@@ -93,6 +93,7 @@
   letter-spacing: 0em;
   text-align: left;  
   padding: 34px;
+  overflow-y: scroll;
 }
 
 .filter__menu-year {
@@ -123,5 +124,6 @@
 .filter__list::-webkit-scrollbar-thumb {
   background-color: #FFFFFF;
   border-radius: 2px;
+  height: 65px;
 }
 
