@@ -77,11 +77,13 @@
     box-sizing: border-box;
     background-color: #313131;
     border-radius: 12px;
+    padding: 34px;
+    overflow-y: hidden;
   }
 
 
   .filter__list {
-    width: 248px;
+    width: 180px;
   height: 305px;
   display: flex;
   flex-direction: column;
@@ -92,7 +94,6 @@
   line-height: 24px;
   letter-spacing: 0em;
   text-align: left;  
-  padding: 34px;
   overflow-y: scroll;
 }
 
