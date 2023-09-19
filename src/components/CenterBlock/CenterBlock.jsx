@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import './centerBlock.css'
+import * as S from './styles';
 import { Search } from '../Search/Search'
 import { Filter } from '../Filter/Filter'
 import { PlayListTitle } from '../PlayListTitle/PlayListTitle'
@@ -7,14 +7,14 @@ import { PlayList } from '../PlayList/PlayList'
 
 export function CenterBlock({ isLoaded }) {
     return (
-        <div className="main__centerblock centerblock">
+        <S.MainCenterblock>
         <Search />
-        <h2 className="centerblock__h2">Треки</h2>
+        <S.CenterblockH2>Треки</S.CenterblockH2>
         <Filter />
-        <div className="centerblock__content">
+        <S.CenterblockContent>
           <PlayListTitle />
           <PlayList isLoaded={ isLoaded }/>
-        </div>
-      </div>
+        </S.CenterblockContent>
+      </S.MainCenterblock>
     )
     }
