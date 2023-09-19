@@ -1,11 +1,11 @@
-import './navItem.css'
+import * as S from './styles'
 // eslint-disable-next-line import/prefer-default-export
 export function NavItem (props) {
 return (
-    <li className="menu__item">
-    <a href={props.item.link} className="menu__link">
+    <S.MenuItem>
+    <S.MenuLink href={props.item.link}>
       {props.item.text}
-    </a>
-  </li>
+    </S.MenuLink>
+  </S.MenuItem>
 )
 }

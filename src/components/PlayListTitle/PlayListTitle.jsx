@@ -1,16 +1,16 @@
-import './playListTitle.css'
+import * as S from './styles'
 /* eslint-disable import/prefer-default-export */
 export function PlayListTitle() {
   return (
-    <div className="content__title playlist-title">
-      <div className="playlist-title__col col01">Трек</div>
-      <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-      <div className="playlist-title__col col03">АЛЬБОМ</div>
-      <div className="playlist-title__col col04">
-        <svg className="playlist-title__svg" alt="time">
+    <S.ContentTitle>
+      <S.Col01>Трек</S.Col01>
+      <S.Col02>ИСПОЛНИТЕЛЬ</S.Col02>
+      <S.Col03>АЛЬБОМ</S.Col03>
+      <S.Col04>
+        <S.PlaylistTitleSvg alt="time">
           <use xlinkHref="img/icon/sprite.svg#icon-watch" />
-        </svg>
-      </div>
-    </div>
+        </S.PlaylistTitleSvg>
+      </S.Col04>
+    </S.ContentTitle>
   )
 }
