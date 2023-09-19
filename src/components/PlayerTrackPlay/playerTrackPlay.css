@@ -20,7 +20,8 @@
     align-items: center;
   }
   
-  .track-play__image {
+  .track-play__image,
+  .skeleton-play__image {
     width: 51px;
     height: 51px;
     background-color: #313131;
@@ -47,7 +48,8 @@
     stroke: #4e4e4e;
   }
   
-  .track-play__author {
+  .track-play__author,
+  .skeleton-play__author {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
     grid-area: author;
@@ -63,7 +65,8 @@
     white-space: nowrap;
   }
   
-  .track-play__album {
+  .track-play__album,
+  .skeleton-play__album {
     -ms-grid-row: 2;
     -ms-grid-column: 2;
     grid-area: album;
@@ -132,4 +135,22 @@
   fill: #696969;
   stroke: #ffffff;
   cursor: pointer;
+}
+.skeleton-play__author, 
+.skeleton-play__album,
+.keleton-play__image {
+  width: 59px;
+  height: 15px;
+  background-color: #313131;
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.2;
+  }
 }

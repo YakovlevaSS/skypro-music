@@ -49,3 +49,6 @@
   .menu__list {
     padding: 18px 0 10px 0;
   }
+  .disply__none {
+    display: none;
+  }
