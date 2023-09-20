@@ -1,4 +1,6 @@
-.player__track-play {
+import styled, { css, keyframes } from 'styled-components';
+
+export const PlayerTrackPlay = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -6,9 +8,9 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
-  }
+  `
   
-  .track-play__contain {
+  export const TrackPlayerContain = styled.div`
     width: auto;
     display: -ms-grid;
     display: grid;
@@ -19,9 +21,9 @@
     -ms-flex-align: center;
     align-items: center;
   }
+  `
   
-  .track-play__image,
-  .skeleton-play__image {
+  export const TrackPlayerImage = styled.div`
     width: 51px;
     height: 51px;
     background-color: #313131;
@@ -39,50 +41,75 @@
     -ms-grid-row-span: 2;
     -ms-grid-column: 1;
     grid-area: image;
-  }
-  
-  .track-play__svg {
+  `
+
+    export const TrackPlaySvg = styled.svg`
     width: 18px;
     height: 17px;
     fill: transparent;
     stroke: #4e4e4e;
-  }
+  `
   
-  .track-play__author,
-  .skeleton-play__author {
+  export const TrackPlayAuthor = styled.div`
     -ms-grid-row: 1;
     -ms-grid-column: 2;
     grid-area: author;
     min-width: 49px;
-  }
+  `
   
-  .track-play__author-link {
+  export const TrackPlayAuthorLink = styled.a`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #ffffff;
     white-space: nowrap;
-  }
+  `
   
-  .track-play__album,
-  .skeleton-play__album {
+  export const TrackPlayAlbum = styled.div`
+ 
     -ms-grid-row: 2;
     -ms-grid-column: 2;
     grid-area: album;
     min-width: 49px;
-  }
+  `
   
-  .track-play__album-link {
+  export const TrackPlayAlbumLink = styled.a`
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
     line-height: 24px;
     color: #ffffff;
+  `
+  const blink = keyframes`
+  from {
+    opacity: 1;
   }
+  to {
+    opacity: 0.2;
+  }
+}`;
+
+const SceletonMixin = css`
+    width: 59px;
+    height: 15px;
+    background-color: #313131;
+    animation: ${blink} 1s infinite alternate;
+  `
+
+
+  export const SceletonPlayerImage = styled(TrackPlayerImage) `
+  ${SceletonMixin}
+  `
+  export const SceletonPlayAuthor = styled(TrackPlayAuthor) `
+  ${SceletonMixin}
+  `
+  export const SceletonPlayAlbum = styled(TrackPlayAlbum) `
+  ${SceletonMixin}
+  `
   
-  .track-play__like-dis {
-    display: -webkit-box;
+  export const TrackPlayLikeDis = styled.div `
+      display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
@@ -93,64 +120,47 @@
     -ms-flex-align: center;
     align-items: center;
     margin-left: 26%;
-  }
-  
-  .track-play__like,
-  .track-play__dislike {
+    `
+    const BtnIconMixin = `css
+    cursor: pointer;
+    &:hover svg {
+        fill: transparent;
+        stroke: #acacac;
+        }
+    &:active svg {
+        fill: #696969;
+        stroke: #fff;
+        }
+    `;
+
+    export const TrackPlayLike = styled.div`
     padding: 5px;
-  }
+    cursor: pointer;
+    ${BtnIconMixin}
+  `;
+
+    export const TrackPlayDisLike = styled.div`
+    padding: 5px;
+    margin-left: 28.5px;
+    cursor: pointer;
+    ${BtnIconMixin}
+  `
   
-  .track-play__like-svg {
+  export const TrackPlayLikeSvg = styled.svg `
     width: 14px;
     height: 12px;
     fill: transparent;
     stroke: #696969;
-  }
+    &:active {
+      fill: #696969;
+      stroke: #fff;
+      cursor: pointer;
+      }
+  `
   
-  .track-play__dislike {
-    margin-left: 28.5px;
-  }
-  
-  .track-play__dislike-svg {
+  export const TrackPlayDisLikeSvg = styled.svg `
     width: 14.34px;
     height: 13px;
     fill: transparent;
     stroke: #696969;
-  }
-
-  ._btn-icon:hover svg {
-    fill: transparent;
-    stroke: #acacac;
-    cursor: pointer;
-  }
-
-  ._btn-icon:active svg {
-    fill: transparent;
-    stroke: #ffffff;
-    cursor: pointer;
-  }
-
-  ._btn-icon:active .track-play__like-svg,
-._btn-icon:active .track-play__dislike-svg {
-  fill: #696969;
-  stroke: #ffffff;
-  cursor: pointer;
-}
-.skeleton-play__author, 
-.skeleton-play__album,
-.keleton-play__image {
-  width: 59px;
-  height: 15px;
-  background-color: #313131;
-  animation: blink 1s infinite alternate;
-}
-
-@keyframes blink {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0.2;
-  }
-}
+  `
