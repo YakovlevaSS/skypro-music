@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react'
 import { trackArr } from '../../utilits/trackArr'
-import './filter.css'
+import * as S from './styles'
 /* eslint-disable import/prefer-default-export */
 
 export function Filter() {
@@ -37,99 +37,95 @@ export function Filter() {
   const genrerArr = Array.from(new Set(trackArr.map((track) => track.genre)))
 
   return (
-    <div className="centerblock__filter filter">
-      <div className="filter__title">Искать по:</div>
+    <S.CenterblockFilter>
+      <S.FilterTitle>Искать по:</S.FilterTitle>
 
-{/* условный рндеринг первый фильтр */}
+      {/* условный рндеринг первый фильтр */}
       {visibleAuthor ? (
-        <div className="filter__wrap"><button
-          className="filter__button button-author _btn-text_active"
-          type="button"
-          onClick={toggleVisibilityAuthor}
-        >
-          исполнителю
-        </button>
-        <div className="filter__length">{authorArr.length}</div>
-        <div className = "filter__menu">
-          <ul className = "filter__list">
-            {authorArr.map((item) =>(
-              <li key={item}>
-                <a href='#'>{item}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        </div>
+        <S.FilterWrap>
+          <S.FilterButtonClick
+            type="button"
+            onClick={toggleVisibilityAuthor}
+          >
+            исполнителю
+          </S.FilterButtonClick>
+          <S.FilterLength>{authorArr.length}</S.FilterLength>
+          <S.FilterMenu>
+            <S.FilterListMenu>
+              {authorArr.map((item) => (
+                <S.FilterListMenu key={item}>
+                  <S.FilterListMenuLink href="#">{item}</S.FilterListMenuLink>
+                </S.FilterListMenu>
+              ))}
+            </S.FilterListMenu>
+          </S.FilterMenu>
+        </S.FilterWrap>
       ) : (
-        <button
-          className="filter__button button-author _btn-text"
+        <S.FilterButton
           type="button"
           onClick={toggleVisibilityAuthor}
         >
           исполнителю
-        </button>
+        </S.FilterButton>
       )}
 
-{/* условный рндеринг первый фильтр */}
-{visibleYear ? (
-        <div className="filter__wrap"><button
-          className="filter__button button-year _btn-text_active"
+      {/* условный рндеринг первый фильтр */}
+      {visibleYear ? (
+        <S.FilterWrap>
+          <S.FilterButtonClick
+            type="button"
+            onClick={toggleVisibilityYear}
+          >
+            году выпуска
+          </S.FilterButtonClick>
+          <S.FilterLength>{yearArr.length}</S.FilterLength>
+          <S.FilterMenuYear>
+            <S.FilterListMenu>
+              {yearArr.map((item) => (
+                <S.FilterListMenu key={item}>
+                  <S.FilterListMenuLink href="#">{item}</S.FilterListMenuLink>
+                </S.FilterListMenu>
+              ))}
+            </S.FilterListMenu>
+          </S.FilterMenuYear>
+        </S.FilterWrap>
+      ) : (
+        <S.FilterButton
           type="button"
           onClick={toggleVisibilityYear}
         >
           году выпуска
-        </button>
-        <div className="filter__length">{yearArr.length}</div>
-        <div className = "filter__menu filter__menu-year">
-          <ul className = "filter__list">
-            {yearArr.map((item) =>(
-              <li className='filter__list-item' key={item} >
-                <a href='#'>{item}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        </div>
-      ) : (
-        <button
-        className="filter__button button-year _btn-text"
-        type="button"
-        onClick={toggleVisibilityYear}
-      >
-        году выпуска
-      </button>
+        </S.FilterButton>
       )}
 
-{/* условный рндеринг первый фильтр */}
-{visibleGenre ? (
-      <div className="filter__wrap"><button
-          className="filter__button button-genre _btn-text_active"
+      {/* условный рндеринг первый фильтр */}
+      {visibleGenre ? (
+        <S.FilterWrap>
+          <S.FilterButtonClick
+            type="button"
+            onClick={toggleVisibilityGenre}
+          >
+            жанру
+          </S.FilterButtonClick>
+          <S.FilterLength>{genrerArr.length}</S.FilterLength>
+          <S.FilterMenu>
+            <S.FilterListMenu>
+              {genrerArr.map((item) => (
+                <S.FilterListMenu key={item}>
+                  <S.FilterListMenuLink href="#">{item}</S.FilterListMenuLink>
+                </S.FilterListMenu>
+              ))}
+            </S.FilterListMenu>
+          </S.FilterMenu>
+        </S.FilterWrap>
+      ) : (
+        <S.FilterButton
           type="button"
           onClick={toggleVisibilityGenre}
         >
           жанру
-        </button>
-        <div className="filter__length">{genrerArr.length}</div>
-        <div className = "filter__menu">
-          <ul className = "filter__list">
-            {genrerArr.map((item) =>(
-              <li key={item}>
-                <a href='#'>{item}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        </div>
-      ) : (
-        <button
-        className="filter__button button-genre _btn-text"
-        type="button"
-        onClick={toggleVisibilityGenre}
-      >
-        жанру
-      </button>
+        </S.FilterButton>
       )}
-
-    </div>
+    </S.CenterblockFilter>
   )
 }
