@@ -10,8 +10,8 @@ import { CenterBlock } from './components/CenterBlock/CenterBlock'
 import Nav from './components/Nav/Nav'
 import { SideBar } from './components/SideBar/SidBar'
 import { Footer } from './components/Footer/Footer'
-import { GlobalStyle } from './styles/global'
 import * as S from './styles/styles'
+import { GlobalStyle } from './global'
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false)

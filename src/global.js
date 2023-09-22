@@ -40,11 +40,12 @@ ul li {
 
 @font-face {
     font-family: StratosSkyeng;
-    src:
-      local('StratosSkyeng'),
-      local('StratosSkyeng'),
-      url('/public/fonts/StratosSkyeng.woff2') format('woff2'),
-      url('/public/fonts/StratosSkyeng.woff') format('woff');
+    // src:
+    //   local('StratosSkyeng'),
+    //   local('StratosSkyeng'),
+    //   url('/public/fonts/stratosskyengweb-regular.woff2') format('woff2'),
+    //   url('/public/fonts/stratosskyengweb-regular.woff') format('woff');
+    src: url("./public/fonts/stratosskyengweb-regular.woff") format("woff");
     font-weight: 400;
     font-style: normal;
   }
