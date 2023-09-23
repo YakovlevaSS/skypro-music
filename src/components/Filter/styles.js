@@ -138,9 +138,9 @@ a:hover {
 }
 `
 export const FilterListMenu = styled.ul`
-  ${FilterListMixin};
   width: 180px;
   height: 305px;
+  ${FilterListMixin};
 `;
 export const FilterListMenuItem = styled.li``
 
