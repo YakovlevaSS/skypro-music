@@ -1,4 +1,6 @@
-.content__playlist {
+import styled, { css, keyframes } from 'styled-components';
+
+export const ContentPlaylist = styled.ul`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -7,14 +9,14 @@
     -ms-flex-direction: column;
     flex-direction: column;
     overflow-y: auto;
-  }
-.playlist__item {
+  `
+export const PlaylistItem = styled.li`
     width: 100%;
     display: block;
     margin-bottom: 12px;
-  }
+  `
   
-  .playlist__track {
+  export const PlaylistTrack = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -28,10 +30,9 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-  }
+  `
   
-  .track__title,
-  .skeleton__title {
+  export const TrackTitle = styled.div`
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -43,10 +44,9 @@
     -ms-flex-align: center;
     align-items: center;
     width: 447px;
-  }
-  
-  .track__title-image,
-  .skeleton__title-image {
+  `
+
+  export const TrackTitleImage = styled.div`
     width: 51px;
     height: 51px;
     padding: 16px;
@@ -61,33 +61,32 @@
     -ms-flex-pack: center;
     justify-content: center;
     margin-right: 17px;
-  }
+  `
   
-  .track__title-svg {
+  export const TrackTitleSvg = styled.svg`
     width: 18px;
     height: 17px;
     fill: transparent;
     stroke: #4e4e4e;
-  }
+  `
   
-  .track__title-link {
+  export const TrackTitleLink = styled.a`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #ffffff;
-  }
+  `
   
-  .track__title-span {
+  export const TrackTitleSpan = styled.span`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #4e4e4e;
-  }
+  `
   
-  .track__author,
-  .skeleton__author {
+  export const TrackAuthor = styled.div`
     width: 321px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -95,72 +94,78 @@
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-  }
+  `
   
-  .track__author-link{
+  export const TrackAuthorLink = styled.a`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #ffffff;
     text-align: left;
-  }
+  `
   
-  .track__album{
+  export const TrackAlbum = styled.div`
     width: 245px;
-  }
+  `
   
-  .track__album-link {
+  export const TrackAlbumLink = styled.a`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     color: #696969;
-  }
+  `
   
-  .track__time-svg {
+  export const TrackTimeSvg = styled.svg`
     width: 14px;
     height: 12px;
     margin-right: 17px;
     fill: transparent;
     stroke: #696969;
-  }
+  `
   
-  .track__time-text {
+  export const TrackTimeText = styled.span`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     text-align: right;
     color: #696969;
-  }
-
-  .skeleton__album {
-    width: 305px;
-  }
-
-  .skeleton__title,
-.skeleton__author,
-.skeleton__album {
-  height: 19px;
-}
-
-  .skeleton__title-image,
-.skeleton__title,
-.skeleton__author,
-.skeleton__album {
-  background-color: #313131;
-  animation: blink 1s infinite alternate;
-}
-
-@keyframes blink {
+  `
+  const blink = keyframes`
   from {
     opacity: 1;
   }
-
   to {
     opacity: 0.2;
   }
-}
+  }`;
 
+const SceletonMixin = css`
+  background-color: #313131;
+  animation: ${blink} 1s infinite alternate;
+`
+
+export const SkeletonTitle = styled(TrackTitle) `
+${SceletonMixin}
+height: 19px;
+`
+
+export const SkeletonTitleImage = styled(TrackTitleImage) `
+${SceletonMixin}
+`
+
+export const SkeletonAuthor = styled(TrackAuthor)`
+${SceletonMixin}
+height: 19px;
+`
+
+export const SkeletonAlbum = styled.div`
+${SceletonMixin}
+height: 19px;
+width: 305px;
+`
+export const TrackTime = styled.div``
+export const TrackTitleText = styled.div``
   

@@ -1,4 +1,7 @@
-.bar__player {
+/* eslint-disable import/prefer-default-export */
+import { styled } from 'styled-components'
+
+export const BarPlayer = styled.div `
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -12,4 +15,4 @@
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-  }
+  `

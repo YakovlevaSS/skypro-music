@@ -1,13 +1,13 @@
-import './volumeControl.css'
+import * as S from './styles'
+
 /* eslint-disable import/prefer-default-export */
 export function VolumeControl() {
     return (
-                <div className="volume__progress _btn">
-                  <input
-                    className="volume__progress-line _btn"
+                <S.VolumeProgress>
+                  <S.VolumeProgressLine 
                     type="range"
                     name="range"
                   />
-                </div>
+                </S.VolumeProgress>
     )
   }

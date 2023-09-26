@@ -1,54 +1,55 @@
-import './playerTrackPlay.css'
+import * as S from './styles'
+
 /* eslint-disable import/prefer-default-export */
 export function PlayerTrackPlay({isLoaded}) {
     return (
-        <div className="player__track-play track-play">
-          <div className="track-play__contain">
+        <S.PlayerTrackPlay>
+          <S.TrackPlayerContain>
 
           {isLoaded? (
-            <div className="track-play__image">
-            <svg className="track-play__svg" alt="music">
+            <S.TrackPlayerImage>
+            <S.TrackPlaySvg alt="music">
               <use xlinkHref="img/icon/sprite.svg#icon-note" />
-            </svg>
-          </div>
+            </S.TrackPlaySvg>
+          </S.TrackPlayerImage>
             ) : (
-                 <div className="skeleton-play__image"> </div>
+                 <S.SceletonPlayerImage> </S.SceletonPlayerImage>
             )}
 
           {isLoaded? (
-            <div className="track-play__author">
-            <a className="track-play__author-link" href="http://">
+            <S.TrackPlayAuthor>
+            <S.TrackPlayAuthorLink href="http://">
               Ты та...
-            </a>
-          </div>
+            </S.TrackPlayAuthorLink>
+          </S.TrackPlayAuthor>
             ) : (
-                 <div className="skeleton-play__author"> </div>
+                 <S.SceletonPlayAuthor> </S.SceletonPlayAuthor>
             )}
 
           {isLoaded? (
-            <div className="track-play__album">
-            <a className="track-play__album-link" href="http://">
+            <S.TrackPlayAlbum>
+            <S.TrackPlayAlbumLink href="http://">
               Баста
-            </a>
-          </div>
+            </S.TrackPlayAlbumLink>
+          </S.TrackPlayAlbum>
             ) : (
-                 <div className="skeleton-play__album"> </div>
+                 <S.SceletonPlayAlbum> </S.SceletonPlayAlbum>
             )}
 
-          </div>
-          <div className="track-play__like-dis">
-            <div className="track-play__like _btn-icon">
-              <svg className="track-play__like-svg" alt="like">
+          </S.TrackPlayerContain>
+          <S.TrackPlayLikeDis>
+            <S.TrackPlayLike>
+              <S.TrackPlayLikeSvg alt="like">
                 <use xlinkHref="img/icon/sprite.svg#icon-like" />
-              </svg>
-            </div>
-            <div className="track-play__dislike _btn-icon">
-              <svg className="track-play__dislike-svg" alt="dislike">
+              </S.TrackPlayLikeSvg>
+            </S.TrackPlayLike>
+            <S.TrackPlayDisLike>
+              <S.TrackPlayDisLikeSvg alt="dislike">
                 <use xlinkHref="img/icon/sprite.svg#icon-dislike" />
-              </svg>
-            </div>
-          </div>
-        </div>
+              </S.TrackPlayDisLikeSvg>
+            </S.TrackPlayDisLike>
+          </S.TrackPlayLikeDis>
+        </S.PlayerTrackPlay>
     )
   }
   

@@ -1,20 +1,19 @@
-import './sideBarItem.css'
+import * as S from './styles'
 // eslint-disable-next-line import/prefer-default-export
 export function SideBarItem(props) {
     return (
-        <div className="sidebar__item">
+        <S.SidebarItem >
 
             {props.item.load? (
-        <a className="sidebar__link" href={props.item.link}>
-        <img
-          className="sidebar__img"
+        <S.SidebarLink href={props.item.link}>
+        <S.SidebarImg
           src={props.item.img}
           alt="day's playlist"
         />
-      </a>) : (
-               <div className="skeleton__sidebar"> </div>
+      </S.SidebarLink>) : (
+               <S.SkeletonSidebar> </S.SkeletonSidebar>
             )}
 
-      </div>
+      </S.SidebarItem>
     )
     }

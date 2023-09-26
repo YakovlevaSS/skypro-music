@@ -1,14 +1,14 @@
-import './sideBarPerson.css'
+import * as S from './styles'
 // eslint-disable-next-line import/prefer-default-export
 export function SideBarPerson(props) {
     return (
-        <div className="sidebar__personal">
-          <p className="sidebar__personal-name">{props.person.name}.{props.person.family}</p>
-          <div className="sidebar__icon">
+        <S.SidebarPersonal>
+          <S.SidebarPersonalName>{props.person.name}.{props.person.family}</S.SidebarPersonalName>
+          <S.SidebarIcon>
             <svg alt="logout">
               <use xlinkHref="img/icon/sprite.svg#logout" />
             </svg>
-          </div>
-        </div>
+          </S.SidebarIcon>
+        </S.SidebarPersonal>
     )
     }

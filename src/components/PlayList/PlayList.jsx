@@ -1,60 +1,66 @@
-import './playList.css'
-import { trackArr } from "../../utilits/trackArr";
+import * as S from './styles'
+import { trackArr } from '../../utilits/trackArr'
 
 // eslint-disable-next-line import/prefer-default-export
-export function PlayList({isLoaded}) {
-    const fullPlayList = trackArr.map(track =>
-          <li key={track.id} className="playlist__item">
-        <div className="playlist__track track">
-          <div className="track__title">
-
-            {isLoaded? (
-            <div className="track__title-image">
-              <svg className="track__title-svg" alt="music">
+export function PlayList({ isLoaded }) {
+  const fullPlayList = trackArr.map((track) => (
+    <S.PlaylistItem key={track.id}>
+      <S.PlaylistTrack>
+        <S.TrackTitle>
+          {isLoaded ? (
+            <S.TrackTitleImage>
+              <S.TrackTitleSvg alt="music">
                 <use xlinkHref="img/icon/sprite.svg#icon-note" />
-              </svg>
-            </div>) : (
-               <div className="skeleton__title-image"> </div>
-            )}
+              </S.TrackTitleSvg>
+            </S.TrackTitleImage>
+          ) : (
+            <S.SkeletonTitleImage> </S.SkeletonTitleImage>
+          )}
 
-            {isLoaded? (
-                          <div className="track__title-text">
-                          <a className="track__title-link" href="http://">
-                            {track.trackTitleLink.title} <span className="track__title-span" />
-                          </a>
-                        </div>
-            ) : (
-                 <div className="skeleton__title"> </div>
-            )}
-          </div>
+          {isLoaded ? (
+            <S.TrackTitleText>
+              <S.TrackTitleLink href="http://">
+                {track.trackTitleLink.title} <S.TrackTitleSpan />
+              </S.TrackTitleLink>
+            </S.TrackTitleText>
+          ) : (
+            <S.SkeletonTitle> </S.SkeletonTitle>
+          )}
+        </S.TrackTitle>
 
-          {isLoaded? (
-          <div className="track__author">
-          <a className="track__author-link" href="http://">
-            {track.trackAuthorLink}
-          </a>
-        </div>
-            ) : (
-                 <div className="skeleton__author"> </div>
-            )}
+        {isLoaded ? (
+          <S.TrackAuthor>
+            <S.TrackAuthorLink href="http://">
+              {track.trackAuthorLink}
+            </S.TrackAuthorLink>
+          </S.TrackAuthor>
+        ) : (
+          <S.SkeletonAuthor> </S.SkeletonAuthor>
+        )}
 
-           {isLoaded? (
-          <><div className="track__album">
-              <a className="track__album-link" href="http://">
+        {isLoaded ? (
+          <>
+            <S.TrackAlbum>
+              <S.TrackAlbumLink href="http://">
                 {track.trackAlbumLink}
-              </a>
-            </div><div className="track__time">
-                <svg className="track__time-svg" alt="time">
-                  <use xlinkHref="img/icon/sprite.svg#icon-like" />
-                </svg>
-                <span className="track__time-text">{track.trackTimeText}</span>
-              </div></>
-            ) : (
-                 <div className="skeleton__album"> </div>
-            )}
-
-        </div>
-      </li>
-);
-return <ul className="content__playlist">{fullPlayList}</ul>;
+              </S.TrackAlbumLink>
+            </S.TrackAlbum>
+            <S.TrackTime>
+              <S.TrackTimeSvg alt="time">
+                <use xlinkHref="img/icon/sprite.svg#icon-like" />
+              </S.TrackTimeSvg>
+              <S.TrackTimeText>{track.trackTimeText}</S.TrackTimeText>
+            </S.TrackTime>
+          </>
+        ) : (
+          <S.SkeletonAlbum> </S.SkeletonAlbum>
+        )}
+      </S.PlaylistTrack>
+    </S.PlaylistItem>
+  ))
+  return (
+    <S.ContentPlaylist>
+      {fullPlayList}
+    </S.ContentPlaylist>
+  )
 }
