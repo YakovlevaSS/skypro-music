@@ -1,7 +1,4 @@
 /* eslint-disable consistent-return */
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 // import React from 'react';
 import { useState, useEffect } from 'react'
 // import './App.css'
