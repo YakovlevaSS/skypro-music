@@ -1,9 +1,9 @@
 /* eslint-disable consistent-return */
 import { useState, useEffect } from 'react'
 import { Bar } from '../../components/Bar/Bar'
-import { CenterBlock } from '../../components/CenterBlock/CenterBlock'
+import { Search } from '../../components/Search/Search'
 import Nav from '../../components/Nav/Nav'
-import { SideBar } from '../../components/SideBar/SidBar'
+import { NotFound } from '../../components/NotFound/NotFound'
 import { Footer } from '../../components/Footer/Footer'
 import * as S from './styles'
 
@@ -24,8 +24,8 @@ function Main() {
           <S.Container>
             <S.Content>
               <Nav />
-              <CenterBlock isLoaded={isLoaded} />
-              <SideBar isLoaded={isLoaded} />
+              <Search />
+              <NotFound/>
             </S.Content>
             <Bar isLoaded={isLoaded} />
             <Footer />

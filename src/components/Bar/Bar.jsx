@@ -2,7 +2,7 @@ import * as S from './styles';
 import { Player } from "../Player/Player";
 import { VolumeBlock } from "../VolumeBlock/VolumeBlock";
 
-/* eslint-disable import/prefer-default-export */
+// /* eslint-disable import/prefer-default-export */
 export function Bar({isLoaded}) {
     return (
         <S.Bar>

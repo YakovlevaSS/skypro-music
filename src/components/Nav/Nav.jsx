@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
+// /* eslint-disable jsx-a11y/click-events-have-key-events */
+// /* eslint-disable jsx-a11y/interactive-supports-focus */
 import { useState } from 'react'
 import * as S from './styles';
 import { NavItem } from '../NavItem/NavItem'
