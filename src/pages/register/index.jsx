@@ -1,7 +1,8 @@
 /* eslint-disable consistent-return */
 import * as S from './styles'
 
-function Registration() {
+export const Registration = () => {
+  return (
 <S.Wrapper>
   <S.Container>
     <S.ModalBlock>
@@ -33,6 +34,5 @@ function Registration() {
     </S.ModalBlock>
   </S.Container>
 </S.Wrapper>
+  )
 }
-
-export default Registration

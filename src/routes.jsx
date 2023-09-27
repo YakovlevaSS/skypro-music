@@ -2,9 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import Main from "./pages/main";
 import { Category } from "./pages/category";
 import { Favorites } from "./pages/favorites";
-import LogIn from "./pages/login";
-import Registration from "./pages/register";
 import { NotFound } from "./pages/not-found";
+import { LogIn } from "./pages/login";
+import { Registration } from "./pages/register";
+
 
 export const AppRoutes = () => {
   return (

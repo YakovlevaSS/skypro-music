@@ -5,8 +5,6 @@ export const Wrapper = styled.div `
     min-height: 100%;
     overflow: hidden;
     background-color: #383838;
-    // font-family: "StratosSkyeng", sans-serif;
-    // color: #ffffff;
   `
   
   export const Container = styled.div `

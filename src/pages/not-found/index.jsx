@@ -9,6 +9,18 @@ import * as S from './styles'
 
 export function NotFound() {
 
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    if (!isLoaded) {
+      const timeout = setTimeout(() => {
+        setIsLoaded(true)
+      }, 10000)
+
+      return () => clearTimeout(timeout)
+    }
+  }, [isLoaded])
+  
   return (
         <S.Wrapper>
           <S.Container>

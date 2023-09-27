@@ -1,7 +1,8 @@
 /* eslint-disable consistent-return */
 import * as S from './styles'
 
-function LogIn() {
+export const LogIn = () => {
+  return (
 <S.Wrapper>
   <S.Container>
     <S.ModalBlock>
@@ -31,6 +32,5 @@ function LogIn() {
     </S.ModalBlock>
   </S.Container>
 </S.Wrapper>
+)
 }
-
-export default LogIn

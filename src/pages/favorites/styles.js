@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const FavoritesBlock = styled.div`
 
 font-size: 24px
-color: var(--main-text);
-background-color: var(--container);
+color: #fff;
+background-color:  #383838;
 display: flex;
 justify-content: center;
 align-items: center;

@@ -1,10 +1,10 @@
 import * as S from './styles';
 
-export function Category() {
+export const Category = () => {
 
   return (
     <S.CategoryBlock>
       <h1>CategoryPage </h1>
     </S.CategoryBlock>
-  );
+  )
 }
