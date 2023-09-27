@@ -32,7 +32,7 @@ export const ProblemDis = styled.p`
   line-height: 40px;
 `
 
-export const ProblemImj = styled.img`
+export const ProblemImg = styled.img`
   width: 52px;
 height: 52px;
 `

@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-export function NotFound() {
+export function NotFoundContent() {
     return (
   <S.NotFoundBloc>
     <S.ProblemBig>404</S.ProblemBig>
