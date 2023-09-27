@@ -1,19 +1,26 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import * as S from './styles'
-import { SideBarItem } from '../SideBarItem/SideBarItem'
+import { NavLink } from 'react-router-dom'
 import { SideBarPerson } from '../SideBarPerson/SideBarPerson'
+import { categoryArr } from '../../utilits/categoryes'
 
-// eslint-disable-next-line import/prefer-default-export
-export function SideBar({isLoaded}) {
+export function SideBar({ isLoaded }) {
+  const fullCategory = categoryArr.map((category) => (
+    <S.SidebarItem key={category.id}>
+      {isLoaded ? (
+        <NavLink to={`/category/${category.id}`}>
+          <S.SidebarImg src={category.img} alt={category.alt} />
+        </NavLink>
+      ) : (
+        <S.SkeletonSidebar> </S.SkeletonSidebar>
+      )}
+    </S.SidebarItem>
+  ))
+
   return (
     <S.MainSidebar>
-      <SideBarPerson person={{ name: 'Sergey', family: 'Ivanov'}} />
+      <SideBarPerson person={{ name: 'Sergey', family: 'Ivanov' }} />
       <S.SidebarBlock>
-        <S.SidebarList>
-          <SideBarItem item={{ link: '#', img: 'img/playlist01.png', load: isLoaded }} />
-          <SideBarItem item={{ link: '#', img: 'img/playlist02.png', load: isLoaded  }} />
-          <SideBarItem item={{ link: '#', img: 'img/playlist03.png', load: isLoaded  }} />
-        </S.SidebarList>
+        <S.SidebarList>{fullCategory}</S.SidebarList>
       </S.SidebarBlock>
     </S.MainSidebar>
   )

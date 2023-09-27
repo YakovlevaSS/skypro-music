@@ -1,7 +1,6 @@
 import * as S from './styles'
 import { trackArr } from '../../utilits/trackArr'
 
-// eslint-disable-next-line import/prefer-default-export
 export function PlayList({ isLoaded }) {
   const fullPlayList = trackArr.map((track) => (
     <S.PlaylistItem key={track.id}>
