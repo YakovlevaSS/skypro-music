@@ -106,6 +106,12 @@ border-radius: 6px;
 margin-top: 60px;
 margin-bottom: 20px;
 border: none;
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: -0.05px;
+color: #ffffff;
 display: -webkit-box;
 display: -ms-flexbox;
 display: flex;
@@ -124,25 +130,6 @@ justify-content: center;
           }
 `
 
-export const ModalButtonEnterLink = styled.a`
-width: 100%;
-height: 100%;
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 24px;
-letter-spacing: -0.05px;
-color: #ffffff;
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-align: center;
--ms-flex-align: center;
-align-items: center;
--webkit-box-pack: center;
--ms-flex-pack: center;
-justify-content: center;
-`
 
 export const ModalButtonReg = styled.button`
 width: 278px;
