@@ -1,7 +1,7 @@
 export const categoryArr = [
     {
         id: 1,
-        imgU: './../img/playlist01.png',
+        img: './../img/playlist01.png',
         alt: "Плейлист дня",
       },
       {
