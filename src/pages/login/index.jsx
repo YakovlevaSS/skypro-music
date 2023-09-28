@@ -2,7 +2,7 @@
 import * as S from './styles'
 import { NavLink } from 'react-router-dom'
 
-export const LogIn = () => {
+export const LogIn = ({ onAuthButtonClick }) => {
   return (
     <S.Wrapper>
       <S.Container>
@@ -19,7 +19,7 @@ export const LogIn = () => {
               name="password"
               placeholder="Пароль"
             />
-            <S.ModalButtonEnter>Войти</S.ModalButtonEnter>
+            <S.ModalButtonEnter onClick={onAuthButtonClick} to='/'>Войти</S.ModalButtonEnter>
             <NavLink to = '/register'>
             <S.ModalButtonReg>
                 Зарегистрироваться

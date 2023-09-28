@@ -7,10 +7,10 @@ import { LogIn } from './pages/login'
 import { Registration } from './pages/register'
 import { ProtectedRoute } from './components/ProtectedRoute'
 
-export const AppRoutes = ({ user }) => {
+export const AppRoutes = ({ user, onAuthButtonClick }) => {
   return (
     <Routes>
-      <Route path="/login" element={<LogIn />} />
+      <Route path="/login" element={<LogIn onAuthButtonClick = {onAuthButtonClick}/>} />
       <Route path="/register" element={<Registration />} />
 
       <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>

@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 export const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
@@ -98,7 +99,7 @@ export const ModalInput = styled.input`
   }
 `
 
-export const ModalButtonEnter = styled.button`
+export const ModalButtonEnter = styled(NavLink)`
 width: 278px;
 height: 52px;
 background-color: #580ea2;
