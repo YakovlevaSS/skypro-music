@@ -6,7 +6,6 @@ import Nav from '../../components/Nav/Nav'
 import SideBar from '../../components/SideBar/SidBar'
 import Footer from '../../components/Footer/Footer'
 import * as S from './styles'
-import { getAllTracks } from '../../api'
 
 function Main() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -20,8 +19,6 @@ function Main() {
       return () => clearTimeout(timeout)
     }
   }, [isLoaded])
-
-getAllTracks().then((tracks) => console.log(tracks))
   return (
         <S.Wrapper>
           <S.Container>
