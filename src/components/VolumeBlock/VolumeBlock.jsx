@@ -1,8 +1,7 @@
 import * as S from './styles'
-import { VolumeControl } from "../VolumeControl/VolumeControl";
+import VolumeControl from "../VolumeControl/VolumeControl";
 
-/* eslint-disable import/prefer-default-export */
-export function VolumeBlock() {
+export default function VolumeBlock() {
     return (
             <S.BarVolumeBlock>
               <S.VolumeContent>

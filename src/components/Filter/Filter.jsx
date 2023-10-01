@@ -1,10 +1,8 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react'
-import { trackArr } from '../../utilits/trackArr'
+import trackArr from '../../utilits/trackArr'
 import * as S from './styles'
-/* eslint-disable import/prefer-default-export */
 
-export function Filter() {
+function Filter() {
   // создаем переменные состояния для каждой кнопки
   const [visibleAuthor, setVisibleAuthor] = useState(false)
   const [visibleYear, setVisibleYear] = useState(false)
@@ -129,3 +127,4 @@ export function Filter() {
     </S.CenterblockFilter>
   )
 }
+export default Filter

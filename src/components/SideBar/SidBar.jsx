@@ -1,9 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import {NavLink} from 'react-router-dom'
 import * as S from './styles'
-import { NavLink } from 'react-router-dom'
-import { SideBarPerson } from '../SideBarPerson/SideBarPerson'
-import { categoryArr } from '../../utilits/categoryes'
+import SideBarPerson from '../SideBarPerson/SideBarPerson'
+import categoryArr from '../../utilits/categoryes'
 
-export function SideBar({ isLoaded }) {
+function SideBar({ isLoaded }) {
   const fullCategory = categoryArr.map((category) => (
     <S.SidebarItem key={category.id}>
       {isLoaded ? (
@@ -25,3 +26,5 @@ export function SideBar({ isLoaded }) {
     </S.MainSidebar>
   )
 }
+
+export default SideBar;

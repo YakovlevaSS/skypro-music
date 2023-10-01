@@ -1,8 +1,9 @@
-/* eslint-disable consistent-return */
+/* eslint-disable import/no-extraneous-dependencies */
+import { NavLink } from 'react-router-dom';
 import * as S from './styles'
-import { NavLink } from 'react-router-dom'
 
-export const LogIn = ({ onAuthButtonClick }) => {
+
+function LogIn({ onAuthButtonClick }) {
   return (
     <S.Wrapper>
       <S.Container>
@@ -31,3 +32,5 @@ export const LogIn = ({ onAuthButtonClick }) => {
     </S.Wrapper>
   )
 }
+
+export default LogIn

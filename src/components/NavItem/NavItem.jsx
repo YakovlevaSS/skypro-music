@@ -1,5 +1,7 @@
+/* eslint-disable react/destructuring-assignment */
 import * as S from './styles'
-export function NavItem (props) {
+
+export default function NavItem (props) {
 return (
     <S.MenuItem>
     <S.MenuLink to={props.item.link}>

@@ -1,4 +1,4 @@
-export const trackArr = [
+const trackArr = [
     { 
       id: 0,
       trackTitleLink: {
@@ -192,3 +192,5 @@ export const trackArr = [
       genre: 'Рок'
     }
   ];
+
+  export default trackArr

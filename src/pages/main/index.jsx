@@ -1,10 +1,10 @@
 /* eslint-disable consistent-return */
 import { useState, useEffect } from 'react'
-import { Bar } from '../../components/Bar/Bar'
-import { CenterBlock } from '../../components/CenterBlock/CenterBlock'
+import Bar from '../../components/Bar/Bar'
+import CenterBlock from '../../components/CenterBlock/CenterBlock'
 import Nav from '../../components/Nav/Nav'
-import { SideBar } from '../../components/SideBar/SidBar'
-import { Footer } from '../../components/Footer/Footer'
+import SideBar from '../../components/SideBar/SidBar'
+import Footer from '../../components/Footer/Footer'
 import * as S from './styles'
 
 function Main() {

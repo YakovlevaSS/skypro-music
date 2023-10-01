@@ -1,9 +1,9 @@
 import * as S from './styles';
-import { Player } from "../Player/Player";
-import { VolumeBlock } from "../VolumeBlock/VolumeBlock";
+import Player from "../Player/Player";
+import VolumeBlock from "../VolumeBlock/VolumeBlock";
 
 // /* eslint-disable import/prefer-default-export */
-export function Bar({isLoaded}) {
+function Bar({isLoaded}) {
     return (
         <S.Bar>
         <S.BarContent>
@@ -16,4 +16,6 @@ export function Bar({isLoaded}) {
       </S.Bar>
     )
   }
+
+  export default Bar
   

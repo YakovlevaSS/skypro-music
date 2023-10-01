@@ -1,11 +1,10 @@
-/* eslint-disable import/prefer-default-export */
 import * as S from './styles';
-import { Search } from '../Search/Search'
-import { Filter } from '../Filter/Filter'
-import { PlayListTitle } from '../PlayListTitle/PlayListTitle'
-import { PlayList } from '../PlayList/PlayList'
+import Search from '../Search/Search'
+import Filter from '../Filter/Filter'
+import PlayListTitle from '../PlayListTitle/PlayListTitle'
+import PlayList from '../PlayList/PlayList'
 
-export function CenterBlock({ isLoaded }) {
+function CenterBlock({ isLoaded }) {
     return (
         <S.MainCenterblock>
         <Search />
@@ -18,3 +17,5 @@ export function CenterBlock({ isLoaded }) {
       </S.MainCenterblock>
     )
     }
+
+    export default CenterBlock

@@ -1,9 +1,8 @@
 /* eslint-disable consistent-return */
-// import React from 'react';
-// import './App.css'
-import { GlobalStyle } from './global'
-import { AppRoutes } from './routes'
 import { useState } from "react";
+import { GlobalStyle } from './global'
+import AppRoutes from './routes'
+
 
 function App() {
   const [user, setUser] = useState(false)
@@ -18,14 +17,14 @@ function App() {
     // console.log(user)
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    const curentLocalStorage = localStorage.getItem('user');
-    console.log(curentLocalStorage)
-    setUser(curentLocalStorage);
-    // setUser(false);
-    // console.log(user)
-  }
+  // const handleLogout = () => {
+  //   localStorage.removeItem('user');
+  //   const curentLocalStorage = localStorage.getItem('user');
+  //   console.log(curentLocalStorage)
+  //   setUser(curentLocalStorage);
+  //   // setUser(false);
+  //   // console.log(user)
+  // }
   return (
     <>
       <GlobalStyle />

@@ -2,7 +2,7 @@
 // /* eslint-disable jsx-a11y/interactive-supports-focus */
 import { useState } from 'react'
 import * as S from './styles';
-import { NavItem } from '../NavItem/NavItem'
+import NavItem from '../NavItem/NavItem'
 
 function ShowMenu({isShow}) {
   if (isShow) {

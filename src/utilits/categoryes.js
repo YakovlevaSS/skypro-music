@@ -1,4 +1,4 @@
-export const categoryArr = [
+const categoryArr = [
     {
         id: 1,
         img: './../img/playlist01.png',
@@ -15,3 +15,4 @@ export const categoryArr = [
         alt: "Инди-заряд",
       }  
 ]
+export default categoryArr

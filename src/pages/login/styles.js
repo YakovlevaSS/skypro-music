@@ -1,5 +1,7 @@
-import styled, { css, keyframes } from 'styled-components';
+/* eslint-disable import/no-extraneous-dependencies */
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
 export const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;

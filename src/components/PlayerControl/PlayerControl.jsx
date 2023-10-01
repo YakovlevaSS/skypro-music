@@ -1,6 +1,6 @@
 import * as S from './styles'
-/* eslint-disable import/prefer-default-export */
-export function PlayerControl() {
+
+export default function PlayerControl() {
     return (
         <S.PlayerControls>
           <S.PlayerBtnPrev>

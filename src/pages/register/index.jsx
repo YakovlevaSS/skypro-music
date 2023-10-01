@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import * as S from './styles'
 
-export const Registration = () => {
+export default function Registration() {
   return (
 <S.Wrapper>
   <S.Container>

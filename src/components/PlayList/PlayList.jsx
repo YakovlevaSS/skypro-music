@@ -1,7 +1,7 @@
 import * as S from './styles'
-import { trackArr } from '../../utilits/trackArr'
+import trackArr from '../../utilits/trackArr'
 
-export function PlayList({ isLoaded }) {
+export default function PlayList({ isLoaded }) {
   const fullPlayList = trackArr.map((track) => (
     <S.PlaylistItem key={track.id}>
       <S.PlaylistTrack>
