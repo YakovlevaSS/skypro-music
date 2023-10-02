@@ -61,7 +61,6 @@ function Main() {
             <Bar 
             isLoaded={isLoaded}
             currentTrack={currentTrack}
-            setCurrentTrack={setCurrentTrack}
             />
             )}
             <Footer />
