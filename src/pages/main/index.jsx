@@ -24,9 +24,9 @@ function Main() {
       setError(false);
     })      
     }
-    catch{
+    catch (curenterror) {
       setIsLoaded(true);
-      setError(error.message);
+      setError(curenterror.message);
     }
 
   }, [])
