@@ -13,7 +13,9 @@ import * as S from './styles'
 function Main() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [tracks, setTrackArr] = useState(trackArr)
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null)
+  // const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState(null);
 
   useEffect(() => {
     setIsLoaded(false)
@@ -48,10 +50,20 @@ function Main() {
               <CenterBlock 
               isLoaded={isLoaded}
               tracks={tracks} 
-              error={error}/>
+              error={error}
+              currentTrack={currentTrack}
+              setCurrentTrack={setCurrentTrack}
+              />
+
               <SideBar isLoaded={isLoaded} />
             </S.Content>
-            <Bar isLoaded={isLoaded} />
+            {currentTrack && (
+            <Bar 
+            isLoaded={isLoaded}
+            currentTrack={currentTrack}
+            setCurrentTrack={setCurrentTrack}
+            />
+            )}
             <Footer />
           </S.Container>
         </S.Wrapper>
