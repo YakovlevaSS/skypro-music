@@ -16,10 +16,10 @@ function Main() {
   const [tracks, setTrackArr] = useState(trackArr)
 
   useEffect(() => {
-    setIsLoaded(true)
+    setIsLoaded(false)
     getAllTracks().then((tracksArr) => {
       setTrackArr(tracksArr)
-      setIsLoaded(false)
+      setIsLoaded(true)
     })
   }, [])
 
