@@ -1,7 +1,6 @@
 import * as S from './styles'
-
-/* eslint-disable import/prefer-default-export */
-export function Search () {
+ 
+export default function Search () {
     return (
               <S.CenterblockSearch>
                 <S.SearchSvg>

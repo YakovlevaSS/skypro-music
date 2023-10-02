@@ -1,6 +1,6 @@
 import * as S from './styles'
-/* eslint-disable import/prefer-default-export */
-export function PlayListTitle() {
+
+export default function PlayListTitle() {
   return (
     <S.ContentTitle>
       <S.Col01>Трек</S.Col01>

@@ -1,17 +1,17 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
+// /* eslint-disable jsx-a11y/click-events-have-key-events */
+// /* eslint-disable jsx-a11y/interactive-supports-focus */
 import { useState } from 'react'
 import * as S from './styles';
-import { NavItem } from '../NavItem/NavItem'
+import NavItem from '../NavItem/NavItem'
 
 function ShowMenu({isShow}) {
   if (isShow) {
     return (
       <S.NavMenu>
         <S.MenuList>
-          <NavItem item={{ link: '#', text: 'Главное' }} />
-          <NavItem item={{ link: '#', text: 'Мой плейлист' }} />
-          <NavItem item={{ link: '../signin.html', text: 'Войти' }} />
+          <NavItem item={{ link: '/', text: 'Главное' }} />
+          <NavItem item={{ link: '/favorites', text: 'Мой плейлист' }} />
+          <NavItem item={{ link: '/login', text: 'Войти' }} />
         </S.MenuList>
       </S.NavMenu>
     )

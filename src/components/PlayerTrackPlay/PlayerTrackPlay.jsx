@@ -1,7 +1,6 @@
 import * as S from './styles'
 
-/* eslint-disable import/prefer-default-export */
-export function PlayerTrackPlay({isLoaded}) {
+export default function PlayerTrackPlay({isLoaded}) {
     return (
         <S.PlayerTrackPlay>
           <S.TrackPlayerContain>

@@ -1,13 +1,6 @@
 import styled from "styled-components";
 
-export const App = styled.div `
-    width: 100%;
-    height: 100%;
-    font-family: "StratosSkyeng", sans-serif;
-    color: #ffffff;
-  `
-  
-  export const Wrapper = styled.div `
+export const Wrapper = styled.div `
     width: 100%;
     min-height: 100%;
     overflow: hidden;
@@ -22,7 +15,7 @@ export const App = styled.div `
     background-color: #181818;
   `
   
-  export const Main = styled.main `
+  export const Content = styled.main `
     -webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;

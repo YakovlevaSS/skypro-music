@@ -1,46 +1,37 @@
 /* eslint-disable consistent-return */
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-// import React from 'react';
-import { useState, useEffect } from 'react'
-// import './App.css'
-import { Bar } from './components/Bar/Bar'
-import { CenterBlock } from './components/CenterBlock/CenterBlock'
-import Nav from './components/Nav/Nav'
-import { SideBar } from './components/SideBar/SidBar'
-import { Footer } from './components/Footer/Footer'
-import * as S from './styles/styles'
+import { useState } from "react";
 import { GlobalStyle } from './global'
+import AppRoutes from './routes'
+
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [user, setUser] = useState(false)
+  console.log(localStorage)
 
-  useEffect(() => {
-    if (!isLoaded) {
-      const timeout = setTimeout(() => {
-        setIsLoaded(true)
-      }, 10000)
+  const handleLogin = () => {
+    localStorage.setItem('user', 'true');
+    const curentLocalStorage = localStorage.getItem('user');
+    console.log(curentLocalStorage)
+    setUser(curentLocalStorage);
+  // setUser(true);
+    // console.log(user)
+  }
 
-      return () => clearTimeout(timeout)
-    }
-  }, [isLoaded])
+  // const handleLogout = () => {
+  //   localStorage.removeItem('user');
+  //   const curentLocalStorage = localStorage.getItem('user');
+  //   console.log(curentLocalStorage)
+  //   setUser(curentLocalStorage);
+  //   // setUser(false);
+  //   // console.log(user)
+  // }
   return (
     <>
       <GlobalStyle />
-      <S.App>
-        <S.Wrapper>
-          <S.Container>
-            <S.Main>
-              <Nav />
-              <CenterBlock isLoaded={isLoaded} />
-              <SideBar isLoaded={isLoaded} />
-            </S.Main>
-            <Bar isLoaded={isLoaded} />
-            <Footer />
-          </S.Container>
-        </S.Wrapper>
-      </S.App>
+      <AppRoutes
+        user={user}
+        onAuthButtonClick={handleLogin}
+      />
     </>
   )
 }

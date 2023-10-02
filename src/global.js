@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
@@ -55,6 +54,8 @@ ul li {
     width: 100%;
     height: 100%;
     font-family: StratosSkyeng, sans-serif;
+    font-family: "StratosSkyeng", sans-serif;
+    color: #ffffff;
   }
 
   `
