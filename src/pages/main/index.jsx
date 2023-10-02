@@ -12,15 +12,23 @@ import * as S from './styles'
 
 function Main() {
   const [isLoaded, setIsLoaded] = useState(false)
-
   const [tracks, setTrackArr] = useState(trackArr)
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoaded(false)
+    try {
     getAllTracks().then((tracksArr) => {
       setTrackArr(tracksArr)
       setIsLoaded(true)
-    })
+      setError(false);
+    })      
+    }
+    catch{
+      setIsLoaded(true);
+      setError(error.message);
+    }
+
   }, [])
 
   // useEffect(() => {
@@ -39,7 +47,8 @@ function Main() {
               <Nav />
               <CenterBlock 
               isLoaded={isLoaded}
-              tracks={tracks} />
+              tracks={tracks} 
+              error={error}/>
               <SideBar isLoaded={isLoaded} />
             </S.Content>
             <Bar isLoaded={isLoaded} />

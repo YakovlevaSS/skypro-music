@@ -26,3 +26,13 @@ export const CenterblockContent = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
 `
+export const ErrorBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ErrorMessage = styled.p`
+  font-size: 24px;
+  color: #ad61ff;
+`;
