@@ -11,8 +11,6 @@ function App() {
     localStorage.setItem('user', 'true');
     const curentLocalStorage = localStorage.getItem('user');
     setUser(curentLocalStorage);
-  // setUser(true);
-    // console.log(user)
   }
 
   // const handleLogout = () => {
@@ -20,8 +18,6 @@ function App() {
   //   const curentLocalStorage = localStorage.getItem('user');
   //   console.log(curentLocalStorage)
   //   setUser(curentLocalStorage);
-  //   // setUser(false);
-  //   // console.log(user)
   // }
   return (
     <>

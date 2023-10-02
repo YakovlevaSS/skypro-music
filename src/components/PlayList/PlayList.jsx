@@ -1,19 +1,6 @@
-import { useEffect, useState } from 'react'
 import * as S from './styles'
-import trackArr from '../../utilits/trackArr'
-import { getAllTracks } from '../../api'
 
-
-export default function PlayList({ isLoaded }) {
-
-  const [tracks, setTrackArr] = useState(trackArr)
-
-  useEffect(() => {
-    getAllTracks().then((tracksArr) => {
-      console.log(tracksArr)
-      setTrackArr(tracksArr)
-    })
-  }, [])
+export default function PlayList({ isLoaded, tracks }) {
 
   const fullPlayList = tracks.map((track) => (
     <S.PlaylistItem key={track.id}>

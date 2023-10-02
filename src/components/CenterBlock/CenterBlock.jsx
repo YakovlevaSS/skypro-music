@@ -4,7 +4,7 @@ import Filter from '../Filter/Filter'
 import PlayListTitle from '../PlayListTitle/PlayListTitle'
 import PlayList from '../PlayList/PlayList'
 
-function CenterBlock({ isLoaded }) {
+function CenterBlock({ isLoaded, tracks  }) {
     return (
         <S.MainCenterblock>
         <Search />
@@ -12,7 +12,10 @@ function CenterBlock({ isLoaded }) {
         <Filter />
         <S.CenterblockContent>
           <PlayListTitle />
-          <PlayList isLoaded={ isLoaded }/>
+          <PlayList 
+          isLoaded={ isLoaded }
+          tracks={tracks}
+          />
         </S.CenterblockContent>
       </S.MainCenterblock>
     )
