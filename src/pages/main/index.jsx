@@ -14,22 +14,20 @@ function Main() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [tracks, setTrackArr] = useState(trackArr)
   const [error, setError] = useState(null)
-  // const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(null);
 
   useEffect(() => {
     setIsLoaded(false)
-    try {
-    getAllTracks().then((tracksArr) => {
+    getAllTracks()
+      .then((tracksArr) => {
       setTrackArr(tracksArr)
-      setIsLoaded(true)
-      setError(false);
     })      
-    }
-    catch (curenterror) {
-      setIsLoaded(true);
+    .catch ((curenterror) => {
       setError(curenterror.message);
-    }
+    })
+    .finally(() => {
+      setIsLoaded(true);
+    });
 
   }, [])
 
