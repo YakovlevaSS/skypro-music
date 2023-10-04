@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-export default function PlayerTrackPlay({isLoaded}) {
+export default function PlayerTrackPlay({isLoaded, currentTrack}) {
     return (
         <S.PlayerTrackPlay>
           <S.TrackPlayerContain>
@@ -17,8 +17,8 @@ export default function PlayerTrackPlay({isLoaded}) {
 
           {isLoaded? (
             <S.TrackPlayAuthor>
-            <S.TrackPlayAuthorLink href="http://">
-              Ты та...
+            <S.TrackPlayAuthorLink>
+            {currentTrack.name}
             </S.TrackPlayAuthorLink>
           </S.TrackPlayAuthor>
             ) : (
@@ -27,8 +27,8 @@ export default function PlayerTrackPlay({isLoaded}) {
 
           {isLoaded? (
             <S.TrackPlayAlbum>
-            <S.TrackPlayAlbumLink href="http://">
-              Баста
+            <S.TrackPlayAlbumLink>
+            {currentTrack.author}
             </S.TrackPlayAlbumLink>
           </S.TrackPlayAlbum>
             ) : (

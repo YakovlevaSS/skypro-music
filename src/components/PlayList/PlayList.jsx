@@ -1,22 +1,11 @@
-import { useEffect, useState } from 'react'
 import * as S from './styles'
-import trackArr from '../../utilits/trackArr'
-import { getAllTracks } from '../../api'
 
+export default function PlayList({ isLoaded, tracks, setCurrentTrack  }) {
 
-export default function PlayList({ isLoaded }) {
-
-  const [tracks, setTrackArr] = useState(trackArr)
-
-  useEffect(() => {
-    getAllTracks().then((tracksArr) => {
-      console.log(tracksArr)
-      setTrackArr(tracksArr)
-    })
-  }, [])
+  const handleCurrentTrack = (track) => setCurrentTrack(track);
 
   const fullPlayList = tracks.map((track) => (
-    <S.PlaylistItem key={track.id}>
+    <S.PlaylistItem key={track.id} onClick={() => handleCurrentTrack(track)}>
       <S.PlaylistTrack>
         <S.TrackTitle>
           {isLoaded ? (
@@ -31,7 +20,7 @@ export default function PlayList({ isLoaded }) {
 
           {isLoaded ? (
             <S.TrackTitleText>
-              <S.TrackTitleLink href="http://">
+              <S.TrackTitleLink >
                 {track.name} <S.TrackTitleSpan />
               </S.TrackTitleLink>
             </S.TrackTitleText>
@@ -42,7 +31,7 @@ export default function PlayList({ isLoaded }) {
 
         {isLoaded ? (
           <S.TrackAuthor>
-            <S.TrackAuthorLink href="http://">
+            <S.TrackAuthorLink>
               {track.author}
             </S.TrackAuthorLink>
           </S.TrackAuthor>
@@ -53,7 +42,7 @@ export default function PlayList({ isLoaded }) {
         {isLoaded ? (
           <>
             <S.TrackAlbum>
-              <S.TrackAlbumLink href="http://">
+              <S.TrackAlbumLink >
                 {track.album}
               </S.TrackAlbumLink>
             </S.TrackAlbum>
