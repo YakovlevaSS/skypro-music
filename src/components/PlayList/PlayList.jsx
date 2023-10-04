@@ -1,8 +1,11 @@
 import * as S from './styles'
 
-export default function PlayList({ isLoaded, tracks, setCurrentTrack  }) {
+export default function PlayList({ isLoaded, tracks, setCurrentTrackID  }) {
 
-  const handleCurrentTrack = (track) => setCurrentTrack(track);
+  const handleCurrentTrack = (track) => {
+    setCurrentTrackID(track.id)
+    console.log('click');
+  }
 
   const fullPlayList = tracks.map((track) => (
     <S.PlaylistItem key={track.id} onClick={() => handleCurrentTrack(track)}>

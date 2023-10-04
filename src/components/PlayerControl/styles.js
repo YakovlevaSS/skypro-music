@@ -133,7 +133,12 @@ export const PlayerControls = styled.div `
       stroke: #ffffff;
       cursor: pointer;
     }
+
   `
+  export const AudioComponent = styled.audio`
+  width: 600px;
+  display: none;
+`
 
 //   ._btn-icon:active .track-play__like-svg,
 // ._btn-icon:active .track-play__dislike-svg {
