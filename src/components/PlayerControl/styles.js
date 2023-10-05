@@ -139,10 +139,3 @@ export const PlayerControls = styled.div `
   width: 600px;
   display: none;
 `
-
-//   ._btn-icon:active .track-play__like-svg,
-// ._btn-icon:active .track-play__dislike-svg {
-//   fill: #696969;
-//   stroke: #ffffff;
-//   cursor: pointer;
-// }
