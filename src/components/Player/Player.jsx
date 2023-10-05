@@ -26,7 +26,7 @@ export default function Player({
     
   }, [currentTrackID])
 
-  console.log(currentTrackID);
+  console.log(currentTrack);
 
   return (
     <S.BarPlayer>

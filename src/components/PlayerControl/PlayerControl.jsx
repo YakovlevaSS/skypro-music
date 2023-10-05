@@ -1,29 +1,32 @@
-import { useRef} from 'react'
+/* eslint-disable jsx-a11y/media-has-caption */
+import { useRef, useEffect} from 'react'
 import * as S from './styles'
 
-
-export default function PlayerControl({isPlaying, setIsPlaying, currentTrack}) {
-
+function AudioPlayer({ isPlaying, currentTrack}) {
   const playRef = useRef(null)
 
-  const handleClick = () => {
+  useEffect(() => {
     if (isPlaying) {
       playRef.current.pause()
-      setIsPlaying(false)
     } else {
       playRef.current.play()
-      setIsPlaying(true)
     }
-    }
+    }, [isPlaying])
+
+  return <audio
+  controls
+  src={currentTrack.track_file}
+  ref={playRef}
+  autoPlay />;
+}
+
+export default function PlayerControl({isPlaying, setIsPlaying}) {
+
+
 
     return (
         <S.PlayerControls>
-          <S.AudioComponent
-          controls
-          src={currentTrack.track_file}
-          ref={playRef}
-          autoPlay
-         />
+          <AudioPlayer/>
           <S.PlayerBtnPrev>
             <S.PlayerBtnPrevSvg alt="prev">
               <use xlinkHref="img/icon/sprite.svg#icon-prev" />
@@ -32,8 +35,7 @@ export default function PlayerControl({isPlaying, setIsPlaying, currentTrack}) {
           <S.PlayerBtnPlay>
             <S.PlayerBtnPlaySvg 
             alt="play"
-            onClick={handleClick}
-            >
+            onClick={() => setIsPlaying(!isPlaying)}>
                   {isPlaying ? (
                     <use xlinkHref="/img/icon/sprite.svg#icon-pause"/>
                   ) : (

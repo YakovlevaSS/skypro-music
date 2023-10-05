@@ -59,7 +59,7 @@ function Main() {
 
               <SideBar isLoaded={isLoaded} />
             </S.Content>
-            {currentTrack && (
+            {currentTrackID && (
             <Bar 
             isLoaded={isLoaded}
             currentTrack={currentTrack}
