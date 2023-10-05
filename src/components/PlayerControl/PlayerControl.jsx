@@ -1,32 +1,39 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { useRef, useEffect } from 'react'
+import { useRef} from 'react'
 import * as S from './styles'
 
-function AudioPlayer({ isPlaying, currentTrack }) {
+export default function PlayerControl({
+  isPlaying,
+  setIsPlaying,
+  currentTrack,
+}) {
   const playRef = useRef(null)
-
-  useEffect(() => {
+  const handleClick = () => {
     if (isPlaying) {
       playRef.current.pause()
+      setIsPlaying(false)
     } else {
       playRef.current.play()
+      setIsPlaying(true)
     }
-  }, [isPlaying])
+  }
   console.log(playRef)
-  return <audio controls src={currentTrack?.track_file} ref={playRef} autoPlay />
-}
 
-export default function PlayerControl({ isPlaying, setIsPlaying }) {
   return (
     <S.PlayerControls>
-      <AudioPlayer />
+      <S.AudioComponent
+        controls
+        src={currentTrack?.track_file}
+        ref={playRef}
+        autoPlay
+      />
       <S.PlayerBtnPrev>
         <S.PlayerBtnPrevSvg alt="prev">
           <use xlinkHref="img/icon/sprite.svg#icon-prev" />
         </S.PlayerBtnPrevSvg>
       </S.PlayerBtnPrev>
       <S.PlayerBtnPlay>
-        <S.PlayerBtnPlaySvg alt="play" onClick={() => setIsPlaying(!isPlaying)}>
+        <S.PlayerBtnPlaySvg alt="play" onClick={handleClick}>
           {isPlaying ? (
             <use xlinkHref="/img/icon/sprite.svg#icon-pause" />
           ) : (
