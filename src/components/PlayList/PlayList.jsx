@@ -4,7 +4,6 @@ export default function PlayList({ isLoaded, tracks, setCurrentTrackID  }) {
 
   const handleCurrentTrack = (track) => {
     setCurrentTrackID(track.id)
-    console.log('click');
   }
 
   const fullPlayList = tracks.map((track) => (

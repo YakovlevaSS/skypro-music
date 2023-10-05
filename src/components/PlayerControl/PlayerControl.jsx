@@ -17,7 +17,6 @@ export default function PlayerControl({
       setIsPlaying(true)
     }
   }
-  console.log(playRef)
 
   return (
     <S.PlayerControls>
