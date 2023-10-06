@@ -10,7 +10,7 @@ export default function PlayerControl({
   isRepeat,
   setIsRepeat,
   playRef,
-  // volume
+  volume
 }) {
 
   const handleClick = () => {
@@ -37,11 +37,11 @@ export default function PlayerControl({
   }
   console.log(isRepeat);
 
-  // useEffect(() => {
-  //   if (playRef && currentTrack) {
-  //     playRef.current.volume = volume;
-  //   }
-  // }, [currentTrack, playRef, volume]);
+  useEffect(() => {
+    if (playRef && currentTrack) {
+      playRef.current.volume = volume;
+    }
+  }, [currentTrack, playRef, volume]);
 
   const prevClick = () => {
     alert ('Еще не реализовано')

@@ -14,7 +14,7 @@ function Bar({
 }) {
   const [isRepeat, setIsRepeat] = useState(false)
   const playRef = useRef(null)
-  const [volume, setVolume] = useState(0, 5)
+  const [volume, setVolume] = useState(0.5)
 
   return (
     <S.Bar>
@@ -35,7 +35,8 @@ function Bar({
           />
           <VolumeBlock 
           volume={volume}
-          setVolume={setVolume} />
+          setVolume={setVolume}
+          playRef={playRef} />
         </S.BarPlayerBlock>
       </S.BarContent>
     </S.Bar>
