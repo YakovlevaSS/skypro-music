@@ -65,7 +65,7 @@ export default function PlayerControl({
         </S.PlayerBtnNextSvg>
       </S.PlayerBtnNext>
       <S.PlayerBtnRepeat>
-        <S.PlayerBtnRepeatSvg alt="repeat" onClick = {repeatClick}>
+        <S.PlayerBtnRepeatSvg $isRepeat={isRepeat} alt="repeat" onClick = {repeatClick}>
           <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
         </S.PlayerBtnRepeatSvg>
       </S.PlayerBtnRepeat>
