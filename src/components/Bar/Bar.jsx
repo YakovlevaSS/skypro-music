@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react'
 import * as S from './styles'
 import Player from '../Player/Player'
 import VolumeBlock from '../VolumeBlock/VolumeBlock'
@@ -9,8 +10,12 @@ function Bar({
   isPlaying,
   setIsPlaying,
   currentTrackID,
-  setCurrentTrack
+  setCurrentTrack,
 }) {
+  const [isRepeat, setIsRepeat] = useState(false)
+  const playRef = useRef(null)
+  const [volume, setVolume] = useState(0, 5)
+
   return (
     <S.Bar>
       <S.BarContent>
@@ -23,8 +28,14 @@ function Bar({
             setIsPlaying={setIsPlaying}
             currentTrackID={currentTrackID}
             setCurrentTrack={setCurrentTrack}
+            isRepeat={isRepeat}
+            setIsRepeat={setIsRepeat}
+            playRef={playRef}
+            volume={volume}
           />
-          <VolumeBlock />
+          <VolumeBlock 
+          volume={volume}
+          setVolume={setVolume} />
         </S.BarPlayerBlock>
       </S.BarContent>
     </S.Bar>

@@ -1,7 +1,9 @@
 import * as S from './styles'
-import VolumeControl from "../VolumeControl/VolumeControl";
 
-export default function VolumeBlock() {
+
+export default function VolumeBlock(
+
+) {
     return (
             <S.BarVolumeBlock>
               <S.VolumeContent>
@@ -10,7 +12,12 @@ export default function VolumeBlock() {
                     <use xlinkHref="img/icon/sprite.svg#icon-volume" />
                   </S.VolumeSvg>
                 </S.VolumeImage>
-               <VolumeControl/>
+                <S.VolumeProgress>
+                  <S.VolumeProgressLine 
+                    type="range"
+                    name="range"
+                  />
+                </S.VolumeProgress>
               </S.VolumeContent>
             </S.BarVolumeBlock>
     )

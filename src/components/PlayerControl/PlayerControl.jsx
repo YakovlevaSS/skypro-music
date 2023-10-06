@@ -1,15 +1,18 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/media-has-caption */
-import { useRef, useState} from 'react'
+import { useEffect} from 'react'
 import * as S from './styles'
 
 export default function PlayerControl({
   isPlaying,
   setIsPlaying,
   currentTrack,
+  isRepeat,
+  setIsRepeat,
+  playRef,
+  // volume
 }) {
-  const [isRepeat, setIsRepeat] = useState(false)
 
-  const playRef = useRef(null)
   const handleClick = () => {
     if (isPlaying) {
       playRef.current.pause()
@@ -20,11 +23,25 @@ export default function PlayerControl({
     }
   }
 
+  useEffect(() => {
+    if (isPlaying && currentTrack) {
+      playRef.current.play();
+    } else {
+     playRef.current.pause();
+    }
+  }, [isPlaying, currentTrack, playRef]);
+  
   const repeatClick = () => {
     playRef.current.loop = !isRepeat;
     setIsRepeat(!isRepeat)
   }
   console.log(isRepeat);
+
+  // useEffect(() => {
+  //   if (playRef && currentTrack) {
+  //     playRef.current.volume = volume;
+  //   }
+  // }, [currentTrack, playRef, volume]);
 
   const prevClick = () => {
     alert ('Еще не реализовано')
