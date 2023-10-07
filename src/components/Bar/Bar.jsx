@@ -16,9 +16,21 @@ function Bar({
   const playRef = useRef(null)
   const [volume, setVolume] = useState(0.5)
 
+  const [currentTime, setCurrentTime] = useState(70);
+  const duration = 230;
+
   return (
     <S.Bar>
       <S.BarContent>
+      <S.StyledProgressInput
+      type="range"
+      min={0}
+      max={duration}
+      value={currentTime}
+      step={0.01}
+      onChange={(event) => setCurrentTime(event.target.value)}
+      // $color="#ff0000"
+    />
         <S.BarPlayerProgress />
         <S.BarPlayerBlock>
           <Player

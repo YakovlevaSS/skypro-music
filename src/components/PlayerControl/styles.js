@@ -96,10 +96,9 @@ export const PlayerControls = styled.div `
     height: 12px;
     fill: transparent;
    stroke: ${(props) =>
-    (console.log(props.isRepeat)
-      // props.isRepeat
-      //   ? '#FFFFFF'
-      //   : '#696969')};
+    (props.$isRepeat
+        ? '#FFFFFF'
+        : '#696969')};
     )}
     &:hover {
       fill: transparent;

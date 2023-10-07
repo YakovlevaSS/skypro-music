@@ -35,7 +35,6 @@ export default function PlayerControl({
     playRef.current.loop = !isRepeat;
     setIsRepeat(!isRepeat)
   }
-  console.log(isRepeat);
 
   useEffect(() => {
     if (playRef && currentTrack) {
