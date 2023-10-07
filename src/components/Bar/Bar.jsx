@@ -20,8 +20,7 @@ function Bar({
   const [duration, setDuration] = useState(0)
 
   const handleTimeChange = (event) => {
-    setCurrentTime(event.target.value)
-    console.log(currentTime);
+    playRef.current.currentTime = event.target.value
   }
 
   useEffect(() => {
