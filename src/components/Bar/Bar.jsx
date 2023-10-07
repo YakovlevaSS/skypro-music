@@ -21,11 +21,12 @@ function Bar({
 
   const handleTimeChange = (event) => {
     setCurrentTime(event.target.value)
+    console.log(currentTime);
   }
 
   useEffect(() => {
     const doNewTime = () => {
-      if (playRef.current) {
+      if (playRef.current.currentTime && playRef.current.duration) {
         setCurrentTime(playRef.current.currentTime)
         setDuration(playRef.current.duration)
       } else {
