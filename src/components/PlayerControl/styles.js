@@ -95,7 +95,11 @@ export const PlayerControls = styled.div `
     width: 18px;
     height: 12px;
     fill: transparent;
-    stroke: #696969;
+   stroke: ${(props) =>
+    (props.$isRepeat
+        ? '#FFFFFF'
+        : '#696969')};
+    )}
     &:hover {
       fill: transparent;
       stroke: #acacac;
@@ -133,11 +137,9 @@ export const PlayerControls = styled.div `
       stroke: #ffffff;
       cursor: pointer;
     }
-  `
 
-//   ._btn-icon:active .track-play__like-svg,
-// ._btn-icon:active .track-play__dislike-svg {
-//   fill: #696969;
-//   stroke: #ffffff;
-//   cursor: pointer;
-// }
+  `
+  export const AudioComponent = styled.audio`
+  width: 600px;
+  display: none;
+`

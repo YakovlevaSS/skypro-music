@@ -18,7 +18,7 @@ export default function PlayerTrackPlay({isLoaded, currentTrack}) {
           {isLoaded? (
             <S.TrackPlayAuthor>
             <S.TrackPlayAuthorLink>
-            {currentTrack.name}
+            {currentTrack?.name}
             </S.TrackPlayAuthorLink>
           </S.TrackPlayAuthor>
             ) : (
@@ -28,7 +28,7 @@ export default function PlayerTrackPlay({isLoaded, currentTrack}) {
           {isLoaded? (
             <S.TrackPlayAlbum>
             <S.TrackPlayAlbumLink>
-            {currentTrack.author}
+            {currentTrack?.author}
             </S.TrackPlayAlbumLink>
           </S.TrackPlayAlbum>
             ) : (
