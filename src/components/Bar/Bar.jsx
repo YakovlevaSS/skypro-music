@@ -25,7 +25,7 @@ function Bar({
 
   useEffect(() => {
     const doNewTime = () => {
-      if (playRef.current.currentTime && playRef.current.duration) {
+      if (playRef.current?.currentTime && playRef.current.duration) {
         setCurrentTime(playRef.current.currentTime)
         setDuration(playRef.current.duration)
       } else {
@@ -34,10 +34,10 @@ function Bar({
       }
     }
 
-    playRef.current.addEventListener('timeupdate', doNewTime)
+    playRef.current?.addEventListener('timeupdate', doNewTime)
 
     return () => {
-      playRef.current.removeEventListener('timeupdate', doNewTime)
+      playRef.current?.removeEventListener('timeupdate', doNewTime)
     }
   })
 
