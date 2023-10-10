@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { RegApi, LogInApi } from '../../Api/authApi'
 
 import * as S from './styles'
 
@@ -13,8 +14,8 @@ export default function AuthPage({ isLoginMode = false }) {
 
   const handleLogin = async () => {
     try {
-      // const result = await LogInApi(email, password);
-      // console.log(result)
+      const result = await LogInApi(email, password);
+      console.log(result)
       setOffButton(true)
       useNavigate('/')
     } catch (curenterror) {
@@ -29,8 +30,8 @@ export default function AuthPage({ isLoginMode = false }) {
       setError('Пароли не совпадают')
     } else {
       try {
-        // const result = await RegApi(email, password);
-        // console.log(result)
+        const result = await RegApi(email, password);
+        console.log(result)
         setOffButton(true)
         useNavigate('/')
       } catch (curenterror) {

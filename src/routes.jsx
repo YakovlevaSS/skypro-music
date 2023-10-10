@@ -4,15 +4,17 @@ import Main from './pages/main'
 import Category from './pages/category'
 import Favorites from './pages/favorites'
 import NotFound from './pages/not-found'
-import LogIn from './pages/login'
-import Registration from './pages/register'
+// import LogIn from './pages/login'
+// import Registration from './pages/register'
 import ProtectedRoute from './components/ProtectedRoute'
+import AuthPage from './pages/Auth/AuthPage'
 
-function AppRoutes({ user, onAuthButtonClick }) {
+function AppRoutes({ user }) {
   return (
     <Routes>
-      <Route path="/login" element={<LogIn onAuthButtonClick = {onAuthButtonClick}/>} />
-      <Route path="/register" element={<Registration />} />
+      {/* <Route path="/login" element={<LogIn onAuthButtonClick = {onAuthButtonClick}/>} />
+      <Route path="/register" element={<Registration />} /> */}
+       <Route path="/Auth" element={<AuthPage />} />
 
       <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
       <Route path="/" element={<Main />} />
