@@ -28,12 +28,6 @@ export async function RegApi(email, password) {
         throw new Error('Сервер сломался')
       } return response.json()
     })
-    .then((data) => {
-      console.log(data)
-    })
-  //   .catch((error) => {
-  //     throw error;
-  //   });
 }
 
 export async function LogInApi(email, password) {
@@ -65,10 +59,4 @@ export async function LogInApi(email, password) {
         })
       } return response.json()
     })
-    .then((data) => {
-        console.log(data)
-      })
-    // .catch((error) => {
-    //   throw error
-    // })
 }

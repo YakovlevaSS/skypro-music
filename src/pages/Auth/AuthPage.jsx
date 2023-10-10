@@ -5,7 +5,7 @@ import { RegApi, LogInApi } from '../../Api/authApi'
 
 import * as S from './styles'
 
-export default function AuthPage({ isLoginMode = false }) {
+export default function AuthPage({ isLoginMode = true}) {
   const [error, setError] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
