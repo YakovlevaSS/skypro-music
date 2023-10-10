@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { RegApi, LogInApi } from '../../Api/authApi'
 
@@ -14,12 +14,12 @@ export default function AuthPage({isLoginMode = true, setUser}) {
 
   const handleLogin = async () => {
     try {
-      const result = await LogInApi(email, password);
-      console.log(result)
-      setUser(result.username);
-      localStorage.setItem('user', result.username);
+      const response = await LogInApi(email, password);
+      console.log(response)
+      setUser(response.username);
+      localStorage.setItem('user', response.username);
       setOffButton(true)
-      useNavigate('/')
+      window.location.href = "/";
     } catch (curenterror) {
       setError(curenterror.message)
     } finally {
@@ -32,12 +32,12 @@ export default function AuthPage({isLoginMode = true, setUser}) {
       setError('Пароли не совпадают')
     } else {
       try {
-        const result = await RegApi(email, password);
-        console.log(result)
+        const response = await RegApi(email, password);
+        console.log(response)
         setOffButton(true)
-        setUser(result.username);
-        localStorage.setItem('user', result.username);
-        useNavigate('/')
+        setUser(response.username);
+        localStorage.setItem('user', response.username);
+        window.location.href = "/";
       } catch (curenterror) {
         setError(curenterror.message)
       } finally {

@@ -18,7 +18,7 @@ function AppRoutes({ isLoginMode, setUser, user }) {
        isLoginMode={isLoginMode}  
        setUser={setUser}/>} />
 
-      <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
+      <Route element={<ProtectedRoute isAllowed={user} />}>
       <Route path="/" element={<Main />} />
       <Route path="/category/:id" element={<Category />} />
       <Route path="/favorites" element={<Favorites />} />
