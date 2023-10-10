@@ -6,18 +6,13 @@ import AppRoutes from './routes'
 
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(localStorage.getItem('user') || null,
+  )
   const [isLoginMode, setIsLoginMode] = useState(true);
 
-  if (user) {
-    setUser(localStorage.getItem('user'))
-  }
-
   useEffect(() => {
-    const isLoginModeFromStorage = JSON.parse(
-      localStorage.getItem('isLoginMode'),
-    );
-    setIsLoginMode(isLoginModeFromStorage || true);
+    const isLoginModeFromStorage = localStorage.getItem('isLoginMode');
+    setIsLoginMode(isLoginModeFromStorage || false);
   }, []);
 
   // const handleLogout = () => {
