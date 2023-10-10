@@ -5,7 +5,7 @@ import { RegApi, LogInApi } from '../../Api/authApi'
 
 import * as S from './styles'
 
-export default function AuthPage({ isLoginMode = true}) {
+export default function AuthPage({isLoginMode = true, setUser}) {
   const [error, setError] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,6 +16,8 @@ export default function AuthPage({ isLoginMode = true}) {
     try {
       const result = await LogInApi(email, password);
       console.log(result)
+      setUser(result.username);
+      localStorage.setItem('user', result.username);
       setOffButton(true)
       useNavigate('/')
     } catch (curenterror) {
@@ -33,6 +35,8 @@ export default function AuthPage({ isLoginMode = true}) {
         const result = await RegApi(email, password);
         console.log(result)
         setOffButton(true)
+        setUser(result.username);
+        localStorage.setItem('user', result.username);
         useNavigate('/')
       } catch (curenterror) {
         setError(curenterror.message)

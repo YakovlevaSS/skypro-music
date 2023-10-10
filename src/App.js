@@ -1,17 +1,24 @@
 /* eslint-disable consistent-return */
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import GlobalStyle from './global'
 import AppRoutes from './routes'
 
 
 function App() {
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(null)
+  const [isLoginMode, setIsLoginMode] = useState(true);
 
-  const handleLogin = () => {
-    localStorage.setItem('user', 'true');
-    const curentLocalStorage = localStorage.getItem('user');
-    setUser(curentLocalStorage);
+  if (user) {
+    setUser(localStorage.getItem('user'))
   }
+
+  useEffect(() => {
+    const isLoginModeFromStorage = JSON.parse(
+      localStorage.getItem('isLoginMode'),
+    );
+    setIsLoginMode(isLoginModeFromStorage || true);
+  }, []);
 
   // const handleLogout = () => {
   //   localStorage.removeItem('user');
@@ -24,7 +31,8 @@ function App() {
       <GlobalStyle />
       <AppRoutes
         user={user}
-        onAuthButtonClick={handleLogin}
+        setUser={setUser}
+        isLoginMode={isLoginMode}
       />
     </>
   )
