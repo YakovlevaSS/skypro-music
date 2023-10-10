@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import * as S from './styles'
 import PlayerControl from '../PlayerControl/PlayerControl'
 import PlayerTrackPlay from '../PlayerTrackPlay/PlayerTrackPlay'
-import { getTracksByID } from '../../api'
+import { getTracksByID } from '../../Api/api'
 
 export default function Player({
   isLoaded,
