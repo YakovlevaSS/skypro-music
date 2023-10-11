@@ -5,7 +5,7 @@ import { RegApi, LogInApi } from '../../Api/authApi'
 
 import * as S from './styles'
 
-export default function AuthPage({isLoginMode = true, setUser}) {
+export default function AuthPage({isLoginMode = false, setUser}) {
   const [error, setError] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -59,39 +59,8 @@ export default function AuthPage({isLoginMode = true, setUser}) {
             <S.ModalLogoImage src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>
         </Link>
-        {isLoginMode ? (
-          <>
-            <S.Inputs>
-              <S.ModalInput
-                type="text"
-                name="login"
-                placeholder="Почта"
-                value={email}
-                onChange={(event) => {
-                  setEmail(event.target.value)
-                }}
-              />
-              <S.ModalInput
-                type="password"
-                name="password"
-                placeholder="Пароль"
-                value={password}
-                onChange={(event) => {
-                  setPassword(event.target.value)
-                }}
-              />
-            </S.Inputs>
-            {error && <S.Error>{error}</S.Error>}
-            <S.Buttons>
-              <S.PrimaryButton onClick={handleLogin} disabled={offButton}>
-              {offButton? 'Загружаем информацию...':'Войти'}
-              </S.PrimaryButton>
-              <Link to="/register">
-                <S.SecondaryButton>Зарегистрироваться</S.SecondaryButton>
-              </Link>
-            </S.Buttons>
-          </>
-        ) : (
+        {isLoginMode ? 
+        (
           <>
             <S.Inputs>
               <S.ModalInput
@@ -129,7 +98,40 @@ export default function AuthPage({isLoginMode = true, setUser}) {
               </S.PrimaryButton>
             </S.Buttons>
           </>
-        )}
+        ) :
+        (
+          <>
+            <S.Inputs>
+              <S.ModalInput
+                type="text"
+                name="login"
+                placeholder="Почта"
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value)
+                }}
+              />
+              <S.ModalInput
+                type="password"
+                name="password"
+                placeholder="Пароль"
+                value={password}
+                onChange={(event) => {
+                  setPassword(event.target.value)
+                }}
+              />
+            </S.Inputs>
+            {error && <S.Error>{error}</S.Error>}
+            <S.Buttons>
+              <S.PrimaryButton onClick={handleLogin} disabled={offButton}>
+              {offButton? 'Загружаем информацию...':'Войти'}
+              </S.PrimaryButton>
+              <Link to="/register">
+                <S.SecondaryButton>Зарегистрироваться</S.SecondaryButton>
+              </Link>
+            </S.Buttons>
+          </>
+        ) }
       </S.ModalForm>
     </S.PageContainer>
   )
