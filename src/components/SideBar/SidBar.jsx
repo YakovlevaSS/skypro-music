@@ -4,7 +4,7 @@ import * as S from './styles'
 import SideBarPerson from '../SideBarPerson/SideBarPerson'
 import categoryArr from '../../utilits/categoryes'
 
-function SideBar({ isLoaded }) {
+function SideBar({ isLoaded, user, setUser }) {
   const fullCategory = categoryArr.map((category) => (
     <S.SidebarItem key={category.id}>
       {isLoaded ? (
@@ -19,7 +19,9 @@ function SideBar({ isLoaded }) {
 
   return (
     <S.MainSidebar>
-      <SideBarPerson person={{ name: 'Sergey', family: 'Ivanov' }} />
+      <SideBarPerson 
+      user={user}
+    setUser={setUser} />
       <S.SidebarBlock>
         <S.SidebarList>{fullCategory}</S.SidebarList>
       </S.SidebarBlock>
