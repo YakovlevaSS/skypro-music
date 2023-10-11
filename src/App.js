@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable consistent-return */
 
 import { useState, useEffect } from "react";
 import GlobalStyle from './global'
 import AppRoutes from './routes'
+import UserContext from "./Context/UserContext";
 
 
 function App() {
@@ -27,11 +29,13 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <UserContext.Provider value={{ user, setUser }}>
       <AppRoutes
         user={user}
         setUser={setUser}
         isLoginMode={isLoginMode}
       />
+      </UserContext.Provider>
     </>
   )
 }

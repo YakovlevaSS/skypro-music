@@ -10,7 +10,7 @@ import { getAllTracks} from '../../Api/api'
 
 import * as S from './styles'
 
-function Main({user, setUser}) {
+function Main() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [tracks, setTrackArr] = useState(trackArr)
   const [error, setError] = useState(null)
@@ -57,8 +57,7 @@ function Main({user, setUser}) {
               setIsPlaying={setIsPlaying}
               />
 
-              <SideBar isLoaded={isLoaded} user={user}
-    setUser={setUser}/>
+              <SideBar isLoaded={isLoaded}/>
             </S.Content>
             {currentTrackID && (
             <Bar 
