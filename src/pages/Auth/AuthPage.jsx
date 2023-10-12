@@ -5,7 +5,7 @@ import { RegApi, LogInApi } from '../../Api/authApi'
 
 import * as S from './styles'
 
-export default function AuthPage({isLoginMode = false, setUser}) {
+export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode}) {
   const [error, setError] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -44,6 +44,10 @@ export default function AuthPage({isLoginMode = false, setUser}) {
         setOffButton(false)
       }
     }
+  }
+
+  const handleIsLoginMode = () =>{
+setIsLoginMode(true)
   }
 
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
@@ -126,8 +130,8 @@ export default function AuthPage({isLoginMode = false, setUser}) {
               <S.PrimaryButton onClick={handleLogin} disabled={offButton}>
               {offButton? 'Загружаем информацию...':'Войти'}
               </S.PrimaryButton>
-              <Link to="/register">
-                <S.SecondaryButton>Зарегистрироваться</S.SecondaryButton>
+              <Link to="/Auth">
+                <S.SecondaryButton onClick={handleIsLoginMode}>Зарегистрироваться</S.SecondaryButton>
               </Link>
             </S.Buttons>
           </>
