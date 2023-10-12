@@ -1,3 +1,6 @@
+Оценка времени реализации этапов:
+1. автторизация и регистрация + context: плановое время 8 часов/итоговое время 6 часов
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -6,7 +6,7 @@ import Nav from '../../components/Nav/Nav'
 import SideBar from '../../components/SideBar/SidBar'
 import Footer from '../../components/Footer/Footer'
 import trackArr from '../../utilits/trackArr'
-import { getAllTracks} from '../../api'
+import { getAllTracks} from '../../Api/api'
 
 import * as S from './styles'
 
@@ -57,7 +57,7 @@ function Main() {
               setIsPlaying={setIsPlaying}
               />
 
-              <SideBar isLoaded={isLoaded} />
+              <SideBar isLoaded={isLoaded}/>
             </S.Content>
             {currentTrackID && (
             <Bar 

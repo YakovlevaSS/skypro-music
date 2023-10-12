@@ -19,7 +19,7 @@ function SideBar({ isLoaded }) {
 
   return (
     <S.MainSidebar>
-      <SideBarPerson person={{ name: 'Sergey', family: 'Ivanov' }} />
+      <SideBarPerson/>
       <S.SidebarBlock>
         <S.SidebarList>{fullCategory}</S.SidebarList>
       </S.SidebarBlock>
