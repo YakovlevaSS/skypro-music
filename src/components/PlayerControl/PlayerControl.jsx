@@ -188,7 +188,7 @@ export default function PlayerControl({
         </S.PlayerBtnRepeatSvg>
       </S.PlayerBtnRepeat>
       <S.PlayerBtnShuffle>
-        <S.PlayerBtnShuffleSvg alt="shuffle" onClick = {shuffleClick}>
+        <S.PlayerBtnShuffleSvg $shuffleTrackEnable={shuffleTrackEnable} alt="shuffle" onClick = {shuffleClick}>
           <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
         </S.PlayerBtnShuffleSvg>
       </S.PlayerBtnShuffle>
