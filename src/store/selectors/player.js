@@ -4,4 +4,7 @@ export const currentTrackSelector = (store) => store.player.currentTrack;
 
 export const isPlayingTrackSelector = (store) => store.player.playingTrack
 
-// export const trackIdsSelector = (store) => trackSelector(store)?.id || [];
+export const shuffledSelector = (store) => store.player.shuffled
+
+export const shuffledPlaylistSelector = (store) => store.player.shuffledPlaylist
+

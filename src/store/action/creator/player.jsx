@@ -2,7 +2,8 @@ import {
     SHUFFLE_TRACKS,
     NEXT_TRACK,
     PREV_TRACK, 
-    SET_CURRENT_TRACK 
+    SET_CURRENT_TRACK,
+
 } from "../types/player";
 
 export const nextTrack = (track) => ({
@@ -18,16 +19,11 @@ export const nextTrack = (track) => ({
     type: SET_CURRENT_TRACK,
     payload: { track },
   });
-  
-  export const shuffleTracks = (shufledPlaylist) => ({
-    type: SHUFFLE_TRACKS,
-    payload: { shufledPlaylist },
-  });
 
-//   export const toggleShuffled = (shuffledPlaylist, shuffled) => ({
-//     type: TOGGLE_SHUFFLED,
-//     payload: {
-//       shuffledPlaylist,
-//       shuffled,
-//     },
-//   });
+  export const toggleShuffled = (shuffledPlaylist, shuffled) => ({
+    type: SHUFFLE_TRACKS ,
+    payload: {
+      shuffledPlaylist,
+      shuffled,
+    },
+  });
