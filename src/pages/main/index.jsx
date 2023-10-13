@@ -62,6 +62,7 @@ function Main() {
             {currentTrackID && (
             <Bar 
             isLoaded={isLoaded}
+            tracks={tracks} 
             currentTrack={currentTrack}
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}

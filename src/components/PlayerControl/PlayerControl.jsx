@@ -1,17 +1,27 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/media-has-caption */
-import { useEffect} from 'react'
+import { useEffect, useState} from 'react'
+import { useDispatch } from 'react-redux';
 import * as S from './styles'
+import { nextTrack, prevTrack, toggleShuffled } from '../../store/action/creator/player';
 
 export default function PlayerControl({
   isPlaying,
   setIsPlaying,
   currentTrack,
+  setCurrentTrack,
   isRepeat,
   setIsRepeat,
   playRef,
-  volume
+  volume,
+  tracks
 }) {
+  const dispatch = useDispatch();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [shuffledTracks, setShuffledTracks] = useState([]);
+  const [shuffledIndex, setShuffledIndex] = useState(0);
+  const [shuffleTrackEnable, setShuffleTrackEnable] = useState(false);
 
   const handleClick = () => {
     if (isPlaying) {
@@ -42,16 +52,107 @@ export default function PlayerControl({
     }
   }, [currentTrack, playRef, volume]);
 
+    const nextClick = () => {
+      let nextIndex;
+
+      if (shuffleTrackEnable) {
+        if (shuffledIndex === shuffledTracks.length - 1) {
+          setIsPlaying(false);
+         playRef.current.pause();
+          return;
+        }
+        nextIndex = (shuffledIndex + 1) % shuffledTracks.length;
+        setShuffledIndex(nextIndex);
+      } else {
+        if (currentIndex === tracks.length - 1) {
+          setIsPlaying(false);
+          playRef.current.pause();
+          return;
+        }
+        nextIndex = (currentIndex + 1) % tracks.length;
+        setCurrentIndex(nextIndex);
+      }
+  
+      const nextMusic = shuffleTrackEnable
+        ? shuffledTracks[nextIndex]
+        : tracks[nextIndex];
+      setCurrentTrack(nextMusic);
+  
+      dispatch(nextTrack(nextMusic));
+  }
+  
   const prevClick = () => {
-    alert ('Еще не реализовано')
+    if (playRef.current.currentTime > 5) {
+      playRef.current.currentTime = 0;
+      // setCurrentTime(0);
+      return;
+    }
+
+    let prevIndex;
+
+    if (shuffleTrackEnable) {
+      if (shuffledIndex === 0) {
+        setIsPlaying(false);
+        playRef.current.pause();
+        return;
+      }
+      prevIndex =
+        (shuffledIndex - 1 + shuffledTracks.length) % shuffledTracks.length;
+      setShuffledIndex(prevIndex);
+    } else {
+      if (currentIndex === 0) {
+        setIsPlaying(false);
+        playRef.current.pause();
+        setCurrentIndex(tracks.length - 1);
+        return;
+      }
+      prevIndex = (currentIndex - 1 + tracks.length) % tracks.length;
+      setCurrentIndex(prevIndex);
+    }
+
+    const prevMusic = shuffleTrackEnable
+      ? shuffledTracks[prevIndex]
+      : tracks[prevIndex];
+    setCurrentTrack(prevMusic);
+
+    dispatch(prevTrack(prevMusic));
   }
 
-  const nextClick = () => {
-    alert ('Еще не реализовано')
-  }
+  const shuffleTracks = () => {
+    const shuffledMusic = [...tracks];
+    for (let i = shuffledMusic.length - 1; i > 0; i-=1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledMusic[i], shuffledMusic[j]] = [
+        shuffledMusic[j],
+        shuffledMusic[i],
+      ];
+    }
+    return shuffledMusic;
+  };
+
+  useEffect(() => {
+    if (shuffleTrackEnable) {
+      const newShuffledTracks = shuffleTracks();
+      setShuffledTracks(newShuffledTracks);
+      setShuffledIndex(0);
+    } else {
+      setShuffledTracks([]);
+    }
+  }, [shuffleTrackEnable]);
+
 
   const shuffleClick = () => {
-    alert ('Еще не реализовано')
+    if (!shuffleTrackEnable) {
+      setShuffleTrackEnable(true);
+      const newShuffledTracks = shuffleTracks();
+      setShuffledTracks(newShuffledTracks);
+      setShuffledIndex(0);
+      dispatch(toggleShuffled(newShuffledTracks, true));
+    } else {
+      setShuffleTrackEnable(false);
+      setShuffledTracks([]);
+      dispatch(toggleShuffled([], false));
+    }
   }
 
   return (

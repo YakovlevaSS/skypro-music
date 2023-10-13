@@ -14,7 +14,8 @@ export default function Player({
   isRepeat,
   setIsRepeat,
   playRef,
-  volume
+  volume,
+  tracks,
 }) {
   useEffect(() => {
    
@@ -40,6 +41,8 @@ export default function Player({
         setIsRepeat={setIsRepeat}
         playRef={playRef}
         volume={volume}
+        setCurrentTrack={setCurrentTrack}
+        tracks={tracks} 
       />
       <PlayerTrackPlay isLoaded={isLoaded} currentTrack={currentTrack} />
     </S.BarPlayer>
