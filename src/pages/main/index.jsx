@@ -17,6 +17,7 @@ function Main() {
   const [currentTrack, setCurrentTrack] = useState(null);
   const [currentTrackID, setCurrentTrackID] = useState(null);
   const [isPlaying, setIsPlaying] = useState(true)
+  const [pause, setPause] = useState(false);
 
   useEffect(() => {
     setIsLoaded(false)
@@ -55,6 +56,8 @@ function Main() {
               setCurrentTrackID={setCurrentTrackID}
               isPlaying={isPlaying}
               setIsPlaying={setIsPlaying}
+              currentTrackID={currentTrackID}
+              pause={pause}
               />
 
               <SideBar isLoaded={isLoaded}/>
@@ -68,6 +71,7 @@ function Main() {
             setIsPlaying={setIsPlaying}
             currentTrackID={currentTrackID}
             setCurrentTrack={setCurrentTrack}
+            setPause={setPause}
             />
             )}
             <Footer />

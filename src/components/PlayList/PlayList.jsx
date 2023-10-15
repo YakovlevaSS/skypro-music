@@ -14,7 +14,16 @@ export default function PlayList({ isLoaded, tracks, setCurrentTrackID  }) {
           {isLoaded ? (
             <S.TrackTitleImage>
               <S.TrackTitleSvg alt="music">
+              {false ? (
+                <S.Circle
+                  // $isAnimate={isAnimatePlayTrack}
+                  cx="10px"
+                  cy="10px"
+                  r="7.5"
+                />
+              ) : (
                 <use xlinkHref="img/icon/sprite.svg#icon-note" />
+              )}
               </S.TrackTitleSvg>
             </S.TrackTitleImage>
           ) : (
