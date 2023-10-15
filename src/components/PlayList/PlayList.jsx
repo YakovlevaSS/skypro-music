@@ -1,7 +1,7 @@
 import * as S from './styles'
 import getDuration from '../../utilits/getduration'
 
-export default function PlayList({ isLoaded, tracks, setCurrentTrackID  }) {
+export default function PlayList({ isLoaded, tracks, setCurrentTrackID, isPlaying  }) {
 
   const handleCurrentTrack = (track) => {
     setCurrentTrackID(track.id)
@@ -14,9 +14,9 @@ export default function PlayList({ isLoaded, tracks, setCurrentTrackID  }) {
           {isLoaded ? (
             <S.TrackTitleImage>
               <S.TrackTitleSvg alt="music">
-              {false ? (
+              {true ? (
                 <S.Circle
-                  // $isAnimate={isAnimatePlayTrack}
+                  $isPlaying={isPlaying}
                   cx="10px"
                   cy="10px"
                   r="7.5"

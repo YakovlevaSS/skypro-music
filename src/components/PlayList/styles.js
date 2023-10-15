@@ -201,6 +201,6 @@ animation: pulse 2s ease-in 0s infinite normal forwards;
 `
 export const Circle = styled.circle`
   fill: #ad61ff;
-  ${(props) => (props.$isAnimate === true ? animation : '')}
+  ${(props) => (props.$isPlaying === true ? animation : '')}
 `
   
