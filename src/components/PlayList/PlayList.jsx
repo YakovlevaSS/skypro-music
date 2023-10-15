@@ -1,12 +1,22 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { useSelector } from 'react-redux'
 import * as S from './styles'
 import getDuration from '../../utilits/getduration'
+import { allTracksSelector } from '../../store/selectors/player'
 
-export default function PlayList({ isLoaded, tracks, setCurrentTrackID, isPlaying  }) {
-
+export default function PlayList({
+  isLoaded,
+  // tracks,
+  setCurrentTrackID,
+  isPlaying,
+}) {
   const handleCurrentTrack = (track) => {
     setCurrentTrackID(track.id)
   }
-
+  const tracks = useSelector(allTracksSelector)
+  console.log(tracks);
+  
+if (tracks?.length > 0) {
   const fullPlayList = tracks.map((track) => (
     <S.PlaylistItem key={track.id} onClick={() => handleCurrentTrack(track)}>
       <S.PlaylistTrack>
@@ -14,16 +24,16 @@ export default function PlayList({ isLoaded, tracks, setCurrentTrackID, isPlayin
           {isLoaded ? (
             <S.TrackTitleImage>
               <S.TrackTitleSvg alt="music">
-              {true ? (
-                <S.Circle
-                  $isPlaying={isPlaying}
-                  cx="10px"
-                  cy="10px"
-                  r="7.5"
-                />
-              ) : (
-                <use xlinkHref="img/icon/sprite.svg#icon-note" />
-              )}
+                {true ? (
+                  <S.Circle
+                    $isPlaying={isPlaying}
+                    cx="10px"
+                    cy="10px"
+                    r="7.5"
+                  />
+                ) : (
+                  <use xlinkHref="img/icon/sprite.svg#icon-note" />
+                )}
               </S.TrackTitleSvg>
             </S.TrackTitleImage>
           ) : (
@@ -32,7 +42,7 @@ export default function PlayList({ isLoaded, tracks, setCurrentTrackID, isPlayin
 
           {isLoaded ? (
             <S.TrackTitleText>
-              <S.TrackTitleLink >
+              <S.TrackTitleLink>
                 {track.name} <S.TrackTitleSpan />
               </S.TrackTitleLink>
             </S.TrackTitleText>
@@ -43,9 +53,7 @@ export default function PlayList({ isLoaded, tracks, setCurrentTrackID, isPlayin
 
         {isLoaded ? (
           <S.TrackAuthor>
-            <S.TrackAuthorLink>
-              {track.author}
-            </S.TrackAuthorLink>
+            <S.TrackAuthorLink>{track.author}</S.TrackAuthorLink>
           </S.TrackAuthor>
         ) : (
           <S.SkeletonAuthor> </S.SkeletonAuthor>
@@ -54,15 +62,15 @@ export default function PlayList({ isLoaded, tracks, setCurrentTrackID, isPlayin
         {isLoaded ? (
           <>
             <S.TrackAlbum>
-              <S.TrackAlbumLink >
-                {track.album}
-              </S.TrackAlbumLink>
+              <S.TrackAlbumLink>{track.album}</S.TrackAlbumLink>
             </S.TrackAlbum>
             <S.TrackTime>
               <S.TrackTimeSvg alt="time">
                 <use xlinkHref="img/icon/sprite.svg#icon-like" />
               </S.TrackTimeSvg>
-              <S.TrackTimeText>{getDuration(track.duration_in_seconds)}</S.TrackTimeText>
+              <S.TrackTimeText>
+                {getDuration(track.duration_in_seconds)}
+              </S.TrackTimeText>
             </S.TrackTime>
           </>
         ) : (
@@ -71,10 +79,6 @@ export default function PlayList({ isLoaded, tracks, setCurrentTrackID, isPlayin
       </S.PlaylistTrack>
     </S.PlaylistItem>
   ))
-
-  return (
-    <S.ContentPlaylist>
-      {fullPlayList}
-    </S.ContentPlaylist>
-  )
+  return <S.ContentPlaylist>{fullPlayList}</S.ContentPlaylist>
+} 
 }

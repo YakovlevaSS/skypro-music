@@ -1,65 +1,57 @@
 /* eslint-disable default-param-last */
-import { 
-    SHUFFLE_TRACKS,
-    NEXT_TRACK,
-    PREV_TRACK, 
-    SET_CURRENT_TRACK,
-} from "../action/types/player";
+import {
+  SHUFFLE_TRACKS,
+  NEXT_TRACK,
+  PREV_TRACK,
+  SET_CURRENT_PLAYLIST,
+  // PLAY_LIST,
+} from '../action/types/player'
 
 const initialState = {
-    playingTrack: false,
-    currentTrack: null,
-    shuffled: false,
-    shufflePlaylist: [],
-  };
+  playingTrack: false,
+  currentTrack: null,
+  shuffled: false,
+  shufflePlaylist: [],
+  tracks: [],
+}
 
-  export default function trackReducer(state = initialState, action) {
-    
-    switch (action.type) {
-      case SET_CURRENT_TRACK: {
-        const { track } = action.payload;
-        return {
-          ...state,
-          currentTrack: track,
-          playingTrack: true,
-        };
-      }
+export default function trackReducer(state = initialState, action) {
+  switch (action.type) {
+    case SET_CURRENT_PLAYLIST: {
+      const { tracks } = action.payload
 
-      case NEXT_TRACK: {
-        const { track } = action.payload;
-        return {
-          ...state,
-          currentTrack: track,
-        };
-      }
-
-      case PREV_TRACK: {
-        const { track } = action.payload;
-        return {
-          ...state,
-          currentTrack: track,
-        };
-      }
-
-      case SHUFFLE_TRACKS: {
-        const { shuffledPlaylist, shuffled } = action.payload;
-        return {
-          ...state,
-          shuffled: !shuffled,
-          shuffledPlaylist,
-        };
-      }
-
-      // case SET_PLAYLIST: {
-      //   const { playlist} = action.payload;
-      //   return {
-      //     ...state,
-      //     playlist,
-      //   };
-      // }
-
-      default:
-        return state;
+      return {
+        ...state,
+        tracks,
+        }
     }
-  }
 
+    case NEXT_TRACK: {
+      const { track } = action.payload
+      return {
+        ...state,
+        currentTrack: track,
+      }
+    }
+
+    case PREV_TRACK: {
+      const { track } = action.payload
+      return {
+        ...state,
+        currentTrack: track,
+      }
+    }
+
+    case SHUFFLE_TRACKS: {
+      const { shuffledPlaylist, shuffled } = action.payload
+      return {
+        ...state,
+        shuffled: !shuffled,
+        shuffledPlaylist,
+      }
+    }
+
+    default:
+      return state
+  }
+}

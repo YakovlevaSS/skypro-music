@@ -1,4 +1,5 @@
 export const NEXT_TRACK = "NEXT_TRACK";
 export const PREV_TRACK = "PREV_TRACK";
-export const SET_CURRENT_TRACK = "SET_CURRENT_TRACK";
+export const SET_CURRENT_PLAYLIST = "SET_CURRENT_PLAYLIST";
 export const SHUFFLE_TRACKS = "SHUFFLE_TRACKS";
+export const PLAY_LIST = "PLAY_LIST"
