@@ -33,7 +33,7 @@ export default function trackReducer(state = initialState, action) {
       return {
         ...state,
         playingTrack: true,
-        track
+        track,
         }
     }
 
