@@ -4,7 +4,7 @@ import {
   NEXT_TRACK,
   PREV_TRACK,
   SET_CURRENT_PLAYLIST,
-  // PLAY_LIST,
+ SET_CURRENT_TRACK
 } from '../action/types/player'
 
 const initialState = {
@@ -13,6 +13,7 @@ const initialState = {
   shuffled: false,
   shufflePlaylist: [],
   tracks: [],
+  track: null,
 }
 
 export default function trackReducer(state = initialState, action) {
@@ -23,6 +24,16 @@ export default function trackReducer(state = initialState, action) {
       return {
         ...state,
         tracks,
+        }
+    }
+
+    case SET_CURRENT_TRACK: {
+      const { track } = action.payload
+
+      return {
+        ...state,
+        playingTrack: true,
+        track
         }
     }
 

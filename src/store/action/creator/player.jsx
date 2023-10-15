@@ -4,6 +4,7 @@ import {
   NEXT_TRACK,
   PREV_TRACK,
   SET_CURRENT_PLAYLIST,
+  SET_CURRENT_TRACK
 } from '../types/player'
 
 export const nextTrack = (track) => ({
@@ -13,6 +14,11 @@ export const nextTrack = (track) => ({
 
 export const prevTrack = (track) => ({
   type: PREV_TRACK,
+  payload: { track },
+})
+
+export const setCurrentTrackRedux = (track) => ({
+  type: SET_CURRENT_TRACK,
   payload: { track },
 })
 

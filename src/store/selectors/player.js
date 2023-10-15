@@ -8,3 +8,5 @@ export const shuffledPlaylistSelector = (store) => store.player.shuffledPlaylist
 
 export const allTracksSelector = (store) => store.player.tracks
 
+export const currentTrackRedux = (store) => store.player.track
+

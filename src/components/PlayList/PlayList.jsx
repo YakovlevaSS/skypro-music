@@ -6,7 +6,6 @@ import { allTracksSelector } from '../../store/selectors/player'
 
 export default function PlayList({
   isLoaded,
-  // tracks,
   setCurrentTrackID,
   isPlaying,
 }) {
