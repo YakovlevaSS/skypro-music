@@ -15,7 +15,6 @@ export default function Player({
   setIsRepeat,
   playRef,
   volume,
-  tracks,
 }) {
   const currentTrack = useSelector(currentTrackSelector)
 
@@ -43,7 +42,6 @@ export default function Player({
         setIsRepeat={setIsRepeat}
         playRef={playRef}
         volume={volume}
-        tracks={tracks} 
       />
       <PlayerTrackPlay isLoaded={isLoaded} currentTrack={currentTrack} />
     </S.BarPlayer>

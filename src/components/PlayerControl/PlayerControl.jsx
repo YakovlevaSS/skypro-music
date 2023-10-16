@@ -53,7 +53,6 @@ export default function PlayerControl({
     }
   }, [currentTrack, playRef, volume]);
 
-
   const shuffleTracks = () => {
     const shuffledMusic = [...tracks].sort(function () {
       return Math.round(Math.random()) - 0.5
@@ -88,10 +87,10 @@ export default function PlayerControl({
         dispatch(setCurrentTrackRedux(nextMusic));
   }
   
+
   const prevClick = () => {
     if (playRef.current.currentTime > 5) {
       playRef.current.currentTime = 0;
-      // setCurrentTime(0);
       return;
     }
 
@@ -123,6 +122,12 @@ export default function PlayerControl({
       dispatch(setCurrentTrackRedux(prevMusic));
   }
 
+  const playingTrack = () => {
+    const durationtrack = playRef.current.duration
+    const curTime = playRef.current.currentTime
+    if (durationtrack === curTime) {
+      nextClick()
+    }}
 
   useEffect(() => {
     if (shuffleTrackEnable) {
@@ -133,7 +138,6 @@ export default function PlayerControl({
       setShuffledTracks([]);
     }
   }, [shuffleTrackEnable]);
-
 
   const shuffleClick = () => {
     if (!shuffleTrackEnable) {
@@ -156,6 +160,7 @@ export default function PlayerControl({
         src={currentTrack?.track_file}
         ref={playRef}
         autoPlay
+        onTimeUpdate={playingTrack}
       />
       <S.PlayerBtnPrev>
         <S.PlayerBtnPrevSvg alt="prev"onClick = {prevClick}>

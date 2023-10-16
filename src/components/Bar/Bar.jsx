@@ -8,7 +8,6 @@ function Bar({
   isLoaded,
   isPlaying,
   setIsPlaying,
-  tracks,
 }) {
   const [isRepeat, setIsRepeat] = useState(false)
   const playRef = useRef(null)
@@ -61,7 +60,6 @@ function Bar({
             setIsRepeat={setIsRepeat}
             playRef={playRef}
             volume={volume}
-            tracks={tracks} 
           />
           <VolumeBlock
             volume={volume}

@@ -68,7 +68,6 @@ function Main() {
             {currentTrack && (
             <Bar 
             isLoaded={isLoaded}
-            tracks={tracks} 
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}
             setPause={setPause}
