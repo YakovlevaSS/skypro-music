@@ -1,7 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { useSelector } from 'react-redux';
+import { currentTrackSelector } from '../../store/selectors/player'
 import * as S from './styles'
 
-export default function PlayerTrackPlay({isLoaded, currentTrack}) {
-    return (
+export default function PlayerTrackPlay({isLoaded}) {
+  const currentTrack = useSelector(currentTrackSelector)  
+  
+  return (
         <S.PlayerTrackPlay>
           <S.TrackPlayerContain>
 

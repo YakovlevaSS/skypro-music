@@ -9,14 +9,11 @@ export default function PlayList({ isLoaded, isPlaying }) {
   const dispatch = useDispatch()
 
   const handleCurrentTrack = (track) => {
-   dispatch(setCurrentTrackRedux(track.id))
-   console.log(track.id)
+   dispatch(setCurrentTrackRedux(track))
+   console.log(track);
   }
 
-  
-
   const tracks = useSelector(allTracksSelector)
-  console.log(tracks)
 
   if (tracks?.length > 0) {
     const fullPlayList = tracks.map((track) => (

@@ -2,15 +2,14 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/media-has-caption */
 import { useEffect, useState} from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styles'
-import { nextTrack, prevTrack, toggleShuffled } from '../../store/action/creator/player';
+import { nextTrack, prevTrack, toggleShuffled, setCurrentTrackRedux } from '../../store/action/creator/player';
+import { currentTrackSelector } from '../../store/selectors/player'
 
 export default function PlayerControl({
   isPlaying,
   setIsPlaying,
-  currentTrack,
-  setCurrentTrack,
   isRepeat,
   setIsRepeat,
   playRef,
@@ -22,6 +21,7 @@ export default function PlayerControl({
   const [shuffledTracks, setShuffledTracks] = useState([]);
   const [shuffledIndex, setShuffledIndex] = useState(0);
   const [shuffleTrackEnable, setShuffleTrackEnable] = useState(false);
+  const currentTrack = useSelector(currentTrackSelector)
 
   const handleClick = () => {
     if (isPlaying) {
@@ -76,7 +76,7 @@ export default function PlayerControl({
       const nextMusic = shuffleTrackEnable
         ? shuffledTracks[nextIndex]
         : tracks[nextIndex];
-      setCurrentTrack(nextMusic);
+        dispatch(setCurrentTrackRedux(nextMusic));
   
       dispatch(nextTrack(nextMusic));
   }
@@ -113,7 +113,8 @@ export default function PlayerControl({
     const prevMusic = shuffleTrackEnable
       ? shuffledTracks[prevIndex]
       : tracks[prevIndex];
-    setCurrentTrack(prevMusic);
+      dispatch(setCurrentTrackRedux(prevMusic));
+      console.log(prevMusic)
 
     dispatch(prevTrack(prevMusic));
   }

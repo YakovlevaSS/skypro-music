@@ -96,7 +96,7 @@ export const PlayerControls = styled.div `
     height: 12px;
     fill: transparent;
    stroke: ${(props) =>
-    (props.$shuffleTrackEnable
+    (props.$isRepeat
         ? '#FFFFFF'
         : '#696969')};
     )}
@@ -126,8 +126,9 @@ export const PlayerControls = styled.div `
     width: 19px;
     height: 12px;
     fill: transparent;
-    stroke: ${(props) =>
-      (props.$isRepeat
+    stroke: 
+    ${(props) =>
+      (props.$shuffleTrackEnable
           ? '#FFFFFF'
           : '#696969')};
     &:hover {
