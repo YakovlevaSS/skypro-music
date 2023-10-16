@@ -1,11 +1,12 @@
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/media-has-caption */
 import { useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from './styles'
-import { nextTrack, prevTrack, toggleShuffled, setCurrentTrackRedux } from '../../store/action/creator/player';
-import { currentTrackSelector } from '../../store/selectors/player'
+import { toggleShuffled, setCurrentTrackRedux } from '../../store/action/creator/player';
+import { currentTrackSelector, allTracksSelector } from '../../store/selectors/player'
 
 export default function PlayerControl({
   isPlaying,
@@ -14,7 +15,6 @@ export default function PlayerControl({
   setIsRepeat,
   playRef,
   volume,
-  tracks
 }) {
   const dispatch = useDispatch();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,6 +22,7 @@ export default function PlayerControl({
   const [shuffledIndex, setShuffledIndex] = useState(0);
   const [shuffleTrackEnable, setShuffleTrackEnable] = useState(false);
   const currentTrack = useSelector(currentTrackSelector)
+  const tracks = useSelector(allTracksSelector)
 
   const handleClick = () => {
     if (isPlaying) {
@@ -52,6 +53,14 @@ export default function PlayerControl({
     }
   }, [currentTrack, playRef, volume]);
 
+
+  const shuffleTracks = () => {
+    const shuffledMusic = [...tracks].sort(function () {
+      return Math.round(Math.random()) - 0.5
+    })
+    return shuffledMusic;
+  };
+
     const nextClick = () => {
       let nextIndex;
 
@@ -77,8 +86,6 @@ export default function PlayerControl({
         ? shuffledTracks[nextIndex]
         : tracks[nextIndex];
         dispatch(setCurrentTrackRedux(nextMusic));
-  
-      dispatch(nextTrack(nextMusic));
   }
   
   const prevClick = () => {
@@ -114,22 +121,8 @@ export default function PlayerControl({
       ? shuffledTracks[prevIndex]
       : tracks[prevIndex];
       dispatch(setCurrentTrackRedux(prevMusic));
-      console.log(prevMusic)
-
-    dispatch(prevTrack(prevMusic));
   }
 
-  const shuffleTracks = () => {
-    const shuffledMusic = [...tracks];
-    for (let i = shuffledMusic.length - 1; i > 0; i-=1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledMusic[i], shuffledMusic[j]] = [
-        shuffledMusic[j],
-        shuffledMusic[i],
-      ];
-    }
-    return shuffledMusic;
-  };
 
   useEffect(() => {
     if (shuffleTrackEnable) {
