@@ -2,15 +2,15 @@
 import { useSelector, useDispatch } from 'react-redux'
 import * as S from './styles'
 import getDuration from '../../utilits/getduration'
-import { allTracksSelector } from '../../store/selectors/player'
+import { allTracksSelector, currentTrackSelector } from '../../store/selectors/player'
 import { setCurrentTrackRedux } from '../../store/action/creator/player'
 
 export default function PlayList({ isLoaded, isPlaying }) {
   const dispatch = useDispatch()
+  const currentTrack = useSelector(currentTrackSelector)
 
   const handleCurrentTrack = (track) => {
    dispatch(setCurrentTrackRedux(track))
-   console.log(track);
   }
 
   const tracks = useSelector(allTracksSelector)
@@ -23,7 +23,7 @@ export default function PlayList({ isLoaded, isPlaying }) {
             {isLoaded ? (
               <S.TrackTitleImage>
                 <S.TrackTitleSvg alt="music">
-                  {true ? (
+                  {currentTrack && currentTrack.id === track.id && isPlaying ? (
                     <S.Circle
                       $isPlaying={isPlaying}
                       cx="10px"
