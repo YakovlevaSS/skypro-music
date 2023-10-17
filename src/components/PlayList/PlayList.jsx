@@ -23,7 +23,7 @@ export default function PlayList({ isLoaded, isPlaying }) {
             {isLoaded ? (
               <S.TrackTitleImage>
                 <S.TrackTitleSvg alt="music">
-                  {currentTrack && currentTrack.id === track.id && isPlaying ? (
+                  {currentTrack && currentTrack.id === track.id ? (
                     <S.Circle
                       $isPlaying={isPlaying}
                       cx="10px"
