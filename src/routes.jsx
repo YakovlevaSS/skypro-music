@@ -9,14 +9,14 @@ import NotFound from './pages/not-found'
 import ProtectedRoute from './components/ProtectedRoute'
 import AuthPage from './pages/Auth/AuthPage'
 
-function AppRoutes({ isLoginMode, setUser, user }) {
+function AppRoutes({ isLoginMode, setIsLoginMode, setUser, user }) {
   return (
     <Routes>
       {/* <Route path="/login" element={<LogIn onAuthButtonClick = {onAuthButtonClick}/>} />
       <Route path="/register" element={<Registration />} /> */}
       <Route
         path="/Auth"
-        element={<AuthPage isLoginMode={isLoginMode} setUser={setUser} />}
+        element={<AuthPage isLoginMode={isLoginMode} setIsLoginMode={setIsLoginMode} setUser={setUser} />}
       />
 
       <Route element={<ProtectedRoute isAllowed={user} />}>

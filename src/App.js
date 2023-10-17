@@ -34,6 +34,7 @@ function App() {
         user={user}
         setUser={setUser}
         isLoginMode={isLoginMode}
+        setIsLoginMode={setIsLoginMode}
       />
       </UserContext.Provider>
     </>

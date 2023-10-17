@@ -11,7 +11,7 @@ function ShowMenu({isShow}) {
         <S.MenuList>
           <NavItem item={{ link: '/', text: 'Главное' }} />
           <NavItem item={{ link: '/favorites', text: 'Мой плейлист' }} />
-          <NavItem item={{ link: '/login', text: 'Войти' }} />
+          <NavItem item={{ link: '/Auth', text: 'Войти' }} />
         </S.MenuList>
       </S.NavMenu>
     )
