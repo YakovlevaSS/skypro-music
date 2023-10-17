@@ -12,6 +12,8 @@ import {
 import {
   currentTrackSelector,
   allTracksSelector,
+  shuffledSelector,
+  shuffledPlaylistSelector,
 } from '../../store/selectors/player'
 
 export default function PlayerControl({
@@ -24,11 +26,11 @@ export default function PlayerControl({
 }) {
   const dispatch = useDispatch()
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [shuffledTracks, setShuffledTracks] = useState([])
   const [shuffledIndex, setShuffledIndex] = useState(0)
-  const [shuffleTrackEnable, setShuffleTrackEnable] = useState(false)
   const currentTrack = useSelector(currentTrackSelector)
   const tracks = useSelector(allTracksSelector)
+  const shuffledTracks = useSelector(shuffledPlaylistSelector)
+  const isShufled = useSelector(shuffledSelector)
 
   const handleClick = () => {
     if (isPlaying) {
@@ -58,18 +60,25 @@ export default function PlayerControl({
       playRef.current.volume = volume
     }
   }, [currentTrack, playRef, volume])
+  
 
-  const shuffleTracks = () => {
-    const shuffledMusic = [...tracks].sort(function () {
-      return Math.round(Math.random()) - 0.5
-    })
-    return shuffledMusic
+  const shuffledMusic = [...tracks].sort(function () {
+    return Math.round(Math.random()) - 0.5
+  })
+
+  const shuffleClick = () => {
+    if (!isShufled) {
+      setShuffledIndex(0)
+      dispatch(toggleShuffled(shuffledMusic, true))
+    } else {
+      dispatch(toggleShuffled([], false))
+    }
   }
 
   const nextClick = () => {
     let nextIndex
 
-    if (shuffleTrackEnable) {
+    if (isShufled) {
       if (shuffledIndex === shuffledTracks.length - 1) {
         setIsPlaying(false)
         playRef.current.pause()
@@ -91,9 +100,7 @@ export default function PlayerControl({
       setIsPlaying(true)
     }
 
-    const nextMusic = shuffleTrackEnable
-      ? shuffledTracks[nextIndex]
-      : tracks[nextIndex]
+    const nextMusic = isShufled ? shuffledTracks[nextIndex] : tracks[nextIndex]
     dispatch(setCurrentTrackRedux(nextMusic))
   }
 
@@ -105,7 +112,7 @@ export default function PlayerControl({
 
     let prevIndex
 
-    if (shuffleTrackEnable) {
+    if (isShufled) {
       if (shuffledIndex === 0) {
         setIsPlaying(false)
         playRef.current.pause()
@@ -119,7 +126,6 @@ export default function PlayerControl({
       if (currentIndex === 0) {
         setIsPlaying(false)
         playRef.current.pause()
-        // setCurrentIndex(tracks.length - 1);
         return
       }
       prevIndex = (currentIndex - 1) % tracks.length
@@ -128,9 +134,7 @@ export default function PlayerControl({
       setIsPlaying(true)
     }
 
-    const prevMusic = shuffleTrackEnable
-      ? shuffledTracks[prevIndex]
-      : tracks[prevIndex]
+    const prevMusic = isShufled ? shuffledTracks[prevIndex] : tracks[prevIndex]
     dispatch(setCurrentTrackRedux(prevMusic))
   }
 
@@ -139,30 +143,6 @@ export default function PlayerControl({
     const curTime = playRef.current.currentTime
     if (durationtrack === curTime) {
       nextClick()
-    }
-  }
-
-  useEffect(() => {
-    if (shuffleTrackEnable) {
-      const newShuffledTracks = shuffleTracks()
-      setShuffledTracks(newShuffledTracks)
-      setShuffledIndex(0)
-    } else {
-      setShuffledTracks([])
-    }
-  }, [shuffleTrackEnable])
-
-  const shuffleClick = () => {
-    if (!shuffleTrackEnable) {
-      setShuffleTrackEnable(true)
-      const newShuffledTracks = shuffleTracks()
-      setShuffledTracks(newShuffledTracks)
-      setShuffledIndex(0)
-      dispatch(toggleShuffled(newShuffledTracks, true))
-    } else {
-      setShuffleTrackEnable(false)
-      setShuffledTracks([])
-      dispatch(toggleShuffled([], false))
     }
   }
 
@@ -208,7 +188,7 @@ export default function PlayerControl({
       </S.PlayerBtnRepeat>
       <S.PlayerBtnShuffle>
         <S.PlayerBtnShuffleSvg
-          $shuffleTrackEnable={shuffleTrackEnable}
+          $shuffleTrackEnable={isShufled}
           alt="shuffle"
           onClick={shuffleClick}
         >

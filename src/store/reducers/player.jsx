@@ -57,8 +57,8 @@ export default function trackReducer(state = initialState, action) {
       const { shuffledPlaylist, shuffled } = action.payload
       return {
         ...state,
-        shuffled: !shuffled,
         shuffledPlaylist,
+        shuffled,
       }
     }
 
