@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
+// import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as S from './styles'
 import getDuration from '../../utilits/getduration'
-import { allTracksSelector, currentTrackSelector } from '../../store/selectors/player'
+import {currentTrackSelector } from '../../store/selectors/player'
 import { setCurrentTrackRedux } from '../../store/action/creator/player'
 
-export default function PlayList({ isLoaded, isPlaying }) {
+export default function PlayList({ isLoaded, isPlaying, tracks}) {
   const dispatch = useDispatch()
   const currentTrack = useSelector(currentTrackSelector)
 
@@ -13,7 +14,16 @@ export default function PlayList({ isLoaded, isPlaying }) {
    dispatch(setCurrentTrackRedux(track))
   }
 
-  const tracks = useSelector(allTracksSelector)
+  // const allTracks = useSelector(allTracksSelector)
+  // const favoritesTracks = []
+  // const [tracks, setTracks] = useState([])
+  // if (!isFavorites) {
+  //   setTracks(allTracks)
+  // } else {
+  //   setTracks(favoritesTracks)
+  // }
+
+  // const tracks = useSelector(allTracksSelector)
 
   if (tracks?.length > 0) {
     const fullPlayList = tracks.map((track) => (

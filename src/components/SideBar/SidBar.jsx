@@ -5,7 +5,6 @@ import SideBarPerson from '../SideBarPerson/SideBarPerson'
 import categoryArr from '../../utilits/categoryes'
 
 function SideBar({ isLoaded }) {
-  console.log(isLoaded)
   const fullCategory = categoryArr.map((category) => (
     <S.SidebarItem key={category.id}>
       {isLoaded ? (
@@ -17,7 +16,6 @@ function SideBar({ isLoaded }) {
       )}
     </S.SidebarItem>
   ))
-  console.log(isLoaded);
 
   return (
     <S.MainSidebar>

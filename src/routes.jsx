@@ -12,9 +12,10 @@ import ProtectedRoute from './components/ProtectedRoute'
 import AuthPage from './pages/Auth/AuthPage'
 
 function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
-const [isLoaded, setIsLoaded] = useState(true)
+  const [isLoaded, setIsLoaded] = useState(true)
   const [error, setError] = useState(null)
   const [isPlaying, setIsPlaying] = useState(true)
+
 
   return (
     <Routes>
@@ -50,11 +51,24 @@ const [isLoaded, setIsLoaded] = useState(true)
                 isLoaded={isLoaded}
                 isPlaying={isPlaying}
                 error={error}
+                // isFavorits={isFavorits}
+                // setIsFavorites={setIsFavorites}
               />
             }
           />
           <Route path="/category/:id" element={<Category />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route
+            path="/favorites"
+            element={
+              <Favorites
+                isLoaded={isLoaded}
+                isPlaying={isPlaying}
+                error={error}
+                // isFavorits={isFavorits}
+                // setIsFavorites={setIsFavorites}
+              />
+            }
+          />
         </Route>
       </Route>
 

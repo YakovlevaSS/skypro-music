@@ -1,11 +1,15 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { useSelector} from 'react-redux'
 import * as S from './styles';
 import Search from '../../components/Search/Search'
 import Filter from '../../components/Filter/Filter';
 import PlayListTitle from '../../components/PlayListTitle/PlayListTitle'
 import PlayList from '../../components/PlayList/PlayList'
+import { allTracksSelector } from '../../store/selectors/player';
 
-export default function MainPage ({ isLoaded, error, isPlaying  }) {
-    return (
+export default function MainPage ({ isLoaded, error, isPlaying }) {
+  const tracks = useSelector(allTracksSelector)
+  return (
         <S.MainCenterblock>
         <Search />
         <S.CenterblockH2>Треки</S.CenterblockH2>
@@ -23,6 +27,8 @@ export default function MainPage ({ isLoaded, error, isPlaying  }) {
           <PlayList 
           isLoaded={ isLoaded }
           isPlaying={isPlaying}
+          isFavorites={false}
+          tracks={tracks}
           />
         )}
         </S.CenterblockContent>
