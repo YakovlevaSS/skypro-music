@@ -4,7 +4,7 @@ import Filter from '../Filter/Filter'
 import PlayListTitle from '../PlayListTitle/PlayListTitle'
 import PlayList from '../PlayList/PlayList'
 
-function CenterBlock({ isLoaded, tracks, error, currentTrack, isPlaying  }) {
+function CenterBlock({ isLoaded, error, isPlaying  }) {
     return (
         <S.MainCenterblock>
         <Search />
@@ -22,8 +22,7 @@ function CenterBlock({ isLoaded, tracks, error, currentTrack, isPlaying  }) {
         ) : (
           <PlayList 
           isLoaded={ isLoaded }
-          tracks={tracks}
-          currentTrack={currentTrack}
+
           isPlaying={isPlaying}
           />
         )}
