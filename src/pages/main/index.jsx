@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable consistent-return */
 import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import Bar from '../../components/Bar/Bar'
 import CenterBlock from '../../components/CenterBlock/CenterBlock'
 import Nav from '../../components/Nav/Nav'
@@ -7,22 +9,25 @@ import SideBar from '../../components/SideBar/SidBar'
 import Footer from '../../components/Footer/Footer'
 import trackArr from '../../utilits/trackArr'
 import { getAllTracks} from '../../Api/api'
+import { setTracksRedux } from '../../store/action/creator/player'
+import { currentTrackSelector } from '../../store/selectors/player';
 
 import * as S from './styles'
 
 function Main() {
   const [isLoaded, setIsLoaded] = useState(false)
-  const [tracks, setTrackArr] = useState(trackArr)
+  const [tracks,] = useState(trackArr)
   const [error, setError] = useState(null)
-  const [currentTrack, setCurrentTrack] = useState(null);
-  const [currentTrackID, setCurrentTrackID] = useState(null);
   const [isPlaying, setIsPlaying] = useState(true)
+  const [pause, setPause] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsLoaded(false)
     getAllTracks()
       .then((tracksArr) => {
-      setTrackArr(tracksArr)
+        dispatch(setTracksRedux(tracksArr));
+      // setTrackArr(tracksArr)
     })      
     .catch ((curenterror) => {
       setError(curenterror.message);
@@ -32,6 +37,7 @@ function Main() {
     });
 
   }, [])
+  const currentTrack = useSelector(currentTrackSelector)
 
   // useEffect(() => {
   //   if (!isLoaded) {
@@ -52,21 +58,19 @@ function Main() {
               tracks={tracks} 
               error={error}
               currentTrack={currentTrack}
-              setCurrentTrackID={setCurrentTrackID}
               isPlaying={isPlaying}
               setIsPlaying={setIsPlaying}
+              pause={pause}
               />
 
               <SideBar isLoaded={isLoaded}/>
             </S.Content>
-            {currentTrackID && (
+            {currentTrack && (
             <Bar 
             isLoaded={isLoaded}
-            currentTrack={currentTrack}
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}
-            currentTrackID={currentTrackID}
-            setCurrentTrack={setCurrentTrack}
+            setPause={setPause}
             />
             )}
             <Footer />

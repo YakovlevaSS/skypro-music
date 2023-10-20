@@ -126,7 +126,11 @@ export const PlayerControls = styled.div `
     width: 19px;
     height: 12px;
     fill: transparent;
-    stroke: #696969;
+    stroke: 
+    ${(props) =>
+      (props.$shuffleTrackEnable
+          ? '#FFFFFF'
+          : '#696969')};
     &:hover {
       fill: transparent;
       stroke: #acacac;
