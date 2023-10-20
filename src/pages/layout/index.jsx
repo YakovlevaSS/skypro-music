@@ -13,7 +13,7 @@ import { currentTrackSelector } from '../../store/selectors/player';
 
 import * as S from './styles'
 
-function PageLayout(setError, setIsPlaying, isLoaded, isPlaying, error, setIsLoaded) {
+function PageLayout({setError, setIsPlaying, setIsLoaded, isLoaded, isPlaying, error}) {
 
   const dispatch = useDispatch();
 

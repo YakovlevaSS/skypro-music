@@ -12,7 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import AuthPage from './pages/Auth/AuthPage'
 
 function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
-const [isLoaded, setIsLoaded] = useState(false)
+const [isLoaded, setIsLoaded] = useState(true)
   const [error, setError] = useState(null)
   const [isPlaying, setIsPlaying] = useState(true)
 
