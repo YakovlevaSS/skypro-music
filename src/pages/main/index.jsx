@@ -27,7 +27,6 @@ export default function MainPage ({ isLoaded, error, isPlaying }) {
           <PlayList 
           isLoaded={ isLoaded }
           isPlaying={isPlaying}
-          isFavorites={false}
           tracks={tracks}
           />
         )}

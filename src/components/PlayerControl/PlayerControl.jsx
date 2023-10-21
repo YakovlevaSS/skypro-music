@@ -8,7 +8,7 @@ import * as S from './styles'
 import {
   toggleShuffled,
   setCurrentTrackRedux,
-} from '../../store/action/creator/player'
+} from '../../store/slices/player'
 import {
   currentTrackSelector,
   allTracksSelector,

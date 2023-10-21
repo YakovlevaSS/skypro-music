@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as S from './styles'
 import getDuration from '../../utilits/getduration'
 import {currentTrackSelector } from '../../store/selectors/player'
-import { setCurrentTrackRedux } from '../../store/action/creator/player'
+import { setCurrentTrackRedux } from '../../store/slices/player'
 
 export default function PlayList({ isLoaded, isPlaying, tracks}) {
   const dispatch = useDispatch()
