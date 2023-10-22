@@ -67,9 +67,10 @@ export default function PlayerControl({
   })
 
   const shuffleClick = () => {
+    console.log(isShufled)
     if (!isShufled) {
       setShuffledIndex(0)
-      dispatch(toggleShuffled(shuffledMusic, true))
+      dispatch(toggleShuffled([...shuffledMusic], true))
     } else {
       dispatch(toggleShuffled([], false))
     }
@@ -105,6 +106,8 @@ export default function PlayerControl({
   }
 
   const prevClick = () => {
+console.log(isShufled);
+
     if (playRef.current.currentTime > 5) {
       playRef.current.currentTime = 0
       return

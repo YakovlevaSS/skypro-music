@@ -25,13 +25,13 @@ const initialState = {
         state.playingTrack = true
       },
 
-      prevTrack: (state, action) =>{
-        state.currentTrack = action.payload
-     },
+    //   prevTrack: (state, action) =>{
+    //     state.currentTrack = action.payload
+    //  },
 
-     nextTrack: (state, action) =>{
-        state.currentTrack = action.payload
-     },
+    //  nextTrack: (state, action) =>{
+    //     state.currentTrack = action.payload
+    //  },
 
     toggleShuffled: (state, action) =>{
         const { shuffledPlaylist, shuffled } = action.payload
@@ -43,8 +43,8 @@ const initialState = {
   export const {
     setTracksRedux,
     setCurrentTrackRedux,
-    prevTrack,
-    nextTrack,
+    // prevTrack,
+    // nextTrack,
     toggleShuffled
   } = playerSlice.actions
 
