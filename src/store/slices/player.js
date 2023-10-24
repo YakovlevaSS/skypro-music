@@ -4,12 +4,17 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     playingTrack: false,
-    currentTrack: null,
+    // currentTrack: null,
     shuffled: false,
     shufflePlaylist: [],
     tracks: [],
     track: null,
   }
+
+//   const getShuffledAllTracks = (array) => {
+//     const arrayTracks = new Array(...array);
+//     return arrayTracks.sort(() => Math.random() - 0.5);
+//   };
 
   export const playerSlice = createSlice({
     name: "tracksReducer",
@@ -37,7 +42,13 @@ const initialState = {
         const { shuffledPlaylist, shuffled } = action.payload
         state.shufflePlaylist = shuffledPlaylist
         state.shuffled = shuffled
-    }
+        // state.shuffled = action.payload;
+        // if (state.shuffled) {
+        //   console.log("Shuffled", getShuffledAllTracks(state.tracks));
+        // }
+        // state.shuffledAllTracks =
+        //   state.shuffled && getShuffledAllTracks(state.tracks);
+    },
   }
   })
   export const {

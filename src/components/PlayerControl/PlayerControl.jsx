@@ -31,7 +31,7 @@ export default function PlayerControl({
   const tracks = useSelector(allTracksSelector)
   const shuffledTracks = useSelector(shuffledPlaylistSelector)
   const isShufled = useSelector(shuffledSelector)
-
+console.log(shuffledTracks);
   const handleClick = () => {
     if (isPlaying) {
       playRef.current.pause()
@@ -74,6 +74,8 @@ export default function PlayerControl({
     } else {
       dispatch(toggleShuffled([], false))
     }
+    // dispatch(toggleShuffled(!isShufled))
+
   }
 
   const nextClick = () => {

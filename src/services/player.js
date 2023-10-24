@@ -4,6 +4,22 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const DATA_TAG = { type: 'Tracks', id: 'LIST' }
 
+// // автоматическая установка заголовка в запрос
+// // https://redux-toolkit.js.org/rtk-query/api/fetchBaseQuery#setting-default-headers-on-requests:~:text=%D0%9E%D0%B1%D1%89%D0%B8%D0%B5%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B-,%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0,-%D0%B7%D0%B0%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BA%D0%BE%D0%B2%20%D0%BF%D0%BE%20%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E
+
+// const baseQuery = fetchBaseQuery({
+//   baseUrl: 'https://skypro-music-api.skyeng.tech',
+//   prepareHeaders: (headers, { getState }) => {
+//     const token = getState().auth.access
+
+//     if (token) {
+//       headers.set('authorization', `Bearer ${token}`)
+//     }
+
+//     return headers
+//   },
+// })
+
 export const tracksApi = createApi({
   reducerPath: 'tracksApi',
   baseQuery: fetchBaseQuery({
@@ -58,42 +74,44 @@ export const tracksApi = createApi({
     }),
 
     getFavoriteTracks: builder.query({
-        query: () => ({
-          url: '/catalog/track/favorite/all/',
-        }),
-        providesTags: (result = []) => [
-          ...result.map(({ id }) => ({ type: DATA_TAG.type, id })),
-          DATA_TAG,
-        ],
+      query: () => ({
+        url: '/catalog/track/favorite/all/',
       }),
-
+      providesTags: (result = []) => [
+        ...result.map(({ id }) => ({ type: DATA_TAG.type, id })),
+        DATA_TAG,
+      ],
+    }),
 
     likeTrack: builder.mutation({
-        query(data) {
-          const { id } = data;
-          return {
-            url: `/catalog/track/${id}/favorite/`,
-            method: "POST",
-          };
-        },
-        invalidatesTags: (trackId) => [
-          { type: DATA_TAG.type, id: trackId?.id },
-        ],
-      }),
-  
-      dislikeTrack: builder.mutation({
-        query(data) {
-          const { id } = data;
-          return {
-            url: `/catalog/track/${id}/favorite/`,
-            method: "DELETE",
-          };
-        },
-        invalidatesTags: (trackId) => [
-          { type: DATA_TAG.type, id: trackId?.id },
-        ],
-      }),
+      query(data) {
+        const { id } = data
+        return {
+          url: `/catalog/track/${id}/favorite/`,
+          method: 'POST',
+        }
+      },
+      invalidatesTags: (trackId) => [{ type: DATA_TAG.type, id: trackId?.id }],
+    }),
+
+    dislikeTrack: builder.mutation({
+      query(data) {
+        const { id } = data
+        return {
+          url: `/catalog/track/${id}/favorite/`,
+          method: 'DELETE',
+        }
+      },
+      invalidatesTags: (trackId) => [{ type: DATA_TAG.type, id: trackId?.id }],
+    }),
   }),
 })
 
-export const {useGetAllTracksQuery, useGetTracksByIDQuery, useGetSelectionQuery, useGetSelectionByIdQuery, useDislikeTrackMutation, useLikeTrackMutation } = tracksApi
+export const {
+  useGetAllTracksQuery,
+  useGetTracksByIDQuery,
+  useGetSelectionQuery,
+  useGetSelectionByIdQuery,
+  useDislikeTrackMutation,
+  useLikeTrackMutation,
+} = tracksApi
