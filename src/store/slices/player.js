@@ -38,10 +38,21 @@ const initialState = {
     //     state.currentTrack = action.payload
     //  },
 
-    toggleShuffled: (state, action) =>{
-        const { shuffledPlaylist, shuffled } = action.payload
-        state.shufflePlaylist = shuffledPlaylist
-        state.shuffled = shuffled
+    // toggleShuffled: (state, action) =>{
+    //     state.shufflePlaylist = action.payload
+        // state.shuffled = action.payload;
+        // if (state.shuffled) {
+        //   console.log("Shuffled", getShuffledAllTracks(state.tracks));
+        // }
+        // state.shuffledAllTracks =
+        //   state.shuffled && getShuffledAllTracks(state.tracks);
+    // },
+    setShuffledTracks: (state, action) => {
+state.shufflePlaylist = action.payload
+    },
+
+    setIsShuffled: (state, action) =>{
+        state.shuffled = action.payload
         // state.shuffled = action.payload;
         // if (state.shuffled) {
         //   console.log("Shuffled", getShuffledAllTracks(state.tracks));
@@ -56,7 +67,9 @@ const initialState = {
     setCurrentTrackRedux,
     // prevTrack,
     // nextTrack,
-    toggleShuffled
+    // toggleShuffled,
+    setShuffledTracks,
+    setIsShuffled,
   } = playerSlice.actions
 
   export default playerSlice.reducer

@@ -8,7 +8,9 @@ import Nav from '../../components/Nav/Nav'
 import SideBar from '../../components/SideBar/SidBar'
 import Footer from '../../components/Footer/Footer'
 import { getAllTracks} from '../../Api/api'
-import { setTracksRedux } from '../../store/slices/player'
+import { setTracksRedux 
+} from '../../store/slices/player'
+// } from '../../store/action/creator/player'
 import { currentTrackSelector } from '../../store/selectors/player';
 
 import * as S from './styles'
