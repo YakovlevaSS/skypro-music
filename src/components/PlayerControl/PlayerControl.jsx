@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
 import {
-  setShuffledTracks,
   setCurrentTrackRedux,
-  setIsShuffled
+  setIsShuffled,
+  setShuffledTracks
 } from '../../store/slices/player'
 // } from '../../store/action/creator/player'
 import {
@@ -73,15 +73,10 @@ export default function PlayerControl({
       setShuffledIndex(0)
       dispatch(setShuffledTracks([...shuffledMusic]))
       dispatch(setIsShuffled(true))
-      console.log(isShufled);
-      console.log(shuffledTracks)
     } else {
       dispatch(setShuffledTracks([]))
       dispatch(setIsShuffled(false))
     }
-    // dispatch(toggleShuffled(!isShufled))
-    console.log(isShufled);
-    console.log(shuffledTracks)
   }
 
   const nextClick = () => {

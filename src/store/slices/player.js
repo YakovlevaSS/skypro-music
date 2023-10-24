@@ -11,11 +11,6 @@ const initialState = {
     track: null,
   }
 
-//   const getShuffledAllTracks = (array) => {
-//     const arrayTracks = new Array(...array);
-//     return arrayTracks.sort(() => Math.random() - 0.5);
-//   };
-
   export const playerSlice = createSlice({
     name: "tracksReducer",
   initialState,
@@ -30,44 +25,18 @@ const initialState = {
         state.playingTrack = true
       },
 
-    //   prevTrack: (state, action) =>{
-    //     state.currentTrack = action.payload
-    //  },
-
-    //  nextTrack: (state, action) =>{
-    //     state.currentTrack = action.payload
-    //  },
-
-    // toggleShuffled: (state, action) =>{
-    //     state.shufflePlaylist = action.payload
-        // state.shuffled = action.payload;
-        // if (state.shuffled) {
-        //   console.log("Shuffled", getShuffledAllTracks(state.tracks));
-        // }
-        // state.shuffledAllTracks =
-        //   state.shuffled && getShuffledAllTracks(state.tracks);
-    // },
     setShuffledTracks: (state, action) => {
 state.shufflePlaylist = action.payload
     },
 
     setIsShuffled: (state, action) =>{
         state.shuffled = action.payload
-        // state.shuffled = action.payload;
-        // if (state.shuffled) {
-        //   console.log("Shuffled", getShuffledAllTracks(state.tracks));
-        // }
-        // state.shuffledAllTracks =
-        //   state.shuffled && getShuffledAllTracks(state.tracks);
     },
   }
   })
   export const {
     setTracksRedux,
     setCurrentTrackRedux,
-    // prevTrack,
-    // nextTrack,
-    // toggleShuffled,
     setShuffledTracks,
     setIsShuffled,
   } = playerSlice.actions
