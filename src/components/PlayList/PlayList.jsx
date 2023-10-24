@@ -8,14 +8,14 @@ import { setCurrentTrackRedux
 } from '../../store/slices/player'
 // } from '../../store/action/creator/player'
 
-export default function PlayList({ isLoaded, isPlaying, tracks}) {
+export default function PlayList({ isLoading, isPlaying, tracks}) {
   const dispatch = useDispatch()
   const currentTrack = useSelector(currentTrackSelector)
+  console.log(isLoading);
 
   const handleCurrentTrack = (track) => {
    dispatch(setCurrentTrackRedux(track))
   }
-
   // const allTracks = useSelector(allTracksSelector)
   // const favoritesTracks = []
   // const [tracks, setTracks] = useState([])
@@ -32,7 +32,7 @@ export default function PlayList({ isLoaded, isPlaying, tracks}) {
       <S.PlaylistItem key={track.id} onClick={() => handleCurrentTrack(track)}>
         <S.PlaylistTrack>
           <S.TrackTitle>
-            {isLoaded ? (
+            {!isLoading ? (
               <S.TrackTitleImage>
                 <S.TrackTitleSvg alt="music">
                   {currentTrack && currentTrack.id === track.id ? (
@@ -51,7 +51,7 @@ export default function PlayList({ isLoaded, isPlaying, tracks}) {
               <S.SkeletonTitleImage> </S.SkeletonTitleImage>
             )}
 
-            {isLoaded ? (
+            {!isLoading ? (
               <S.TrackTitleText>
                 <S.TrackTitleLink>
                   {track.name} <S.TrackTitleSpan />
@@ -62,7 +62,7 @@ export default function PlayList({ isLoaded, isPlaying, tracks}) {
             )}
           </S.TrackTitle>
 
-          {isLoaded ? (
+          {!isLoading ? (
             <S.TrackAuthor>
               <S.TrackAuthorLink>{track.author}</S.TrackAuthorLink>
             </S.TrackAuthor>
@@ -70,7 +70,7 @@ export default function PlayList({ isLoaded, isPlaying, tracks}) {
             <S.SkeletonAuthor> </S.SkeletonAuthor>
           )}
 
-          {isLoaded ? (
+          {!isLoading ? (
             <>
               <S.TrackAlbum>
                 <S.TrackAlbumLink>{track.album}</S.TrackAlbumLink>

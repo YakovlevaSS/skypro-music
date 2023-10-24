@@ -6,9 +6,11 @@ import Filter from '../../components/Filter/Filter';
 import PlayListTitle from '../../components/PlayListTitle/PlayListTitle'
 import PlayList from '../../components/PlayList/PlayList'
 import { allTracksSelector } from '../../store/selectors/player';
+import { useGetAllTracksQuery } from '../../services/player';
 
-export default function MainPage ({ isLoaded, error, isPlaying }) {
+export default function MainPage ({ isLoading, isPlaying }) {
   const tracks = useSelector(allTracksSelector)
+  const {isError} = useGetAllTracksQuery
   return (
         <S.MainCenterblock>
         <Search />
@@ -17,15 +19,15 @@ export default function MainPage ({ isLoaded, error, isPlaying }) {
         <S.CenterblockContent>
           <PlayListTitle />
 
-          {error ? (
+          {isError? (
           <S.ErrorBlock>
             <S.ErrorMessage>
-              Не удалось загрузить плейлист, попробуйте позже: {error}
+              Не удалось загрузить плейлист, попробуйте позже
             </S.ErrorMessage>
           </S.ErrorBlock>
         ) : (
           <PlayList 
-          isLoaded={ isLoaded }
+          isLoading={ isLoading }
           isPlaying={isPlaying}
           tracks={tracks}
           />

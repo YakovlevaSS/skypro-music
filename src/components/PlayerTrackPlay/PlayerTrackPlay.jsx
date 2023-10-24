@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { currentTrackSelector } from '../../store/selectors/player'
 import * as S from './styles'
 
-export default function PlayerTrackPlay({isLoaded}) {
+export default function PlayerTrackPlay({isLoading}) {
   const currentTrack = useSelector(currentTrackSelector)  
   
   return (
         <S.PlayerTrackPlay>
           <S.TrackPlayerContain>
 
-          {isLoaded? (
+          {!isLoading? (
             <S.TrackPlayerImage>
             <S.TrackPlaySvg alt="music">
               <use xlinkHref="img/icon/sprite.svg#icon-note" />
@@ -20,7 +20,7 @@ export default function PlayerTrackPlay({isLoaded}) {
                  <S.SceletonPlayerImage> </S.SceletonPlayerImage>
             )}
 
-          {isLoaded? (
+          {!isLoading? (
             <S.TrackPlayAuthor>
             <S.TrackPlayAuthorLink>
             {currentTrack?.name}
@@ -30,7 +30,7 @@ export default function PlayerTrackPlay({isLoaded}) {
                  <S.SceletonPlayAuthor> </S.SceletonPlayAuthor>
             )}
 
-          {isLoaded? (
+          {!isLoading? (
             <S.TrackPlayAlbum>
             <S.TrackPlayAlbumLink>
             {currentTrack?.author}

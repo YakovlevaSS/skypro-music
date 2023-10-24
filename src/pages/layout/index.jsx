@@ -7,32 +7,41 @@ import Bar from '../../components/Bar/Bar'
 import Nav from '../../components/Nav/Nav'
 import SideBar from '../../components/SideBar/SidBar'
 import Footer from '../../components/Footer/Footer'
-import { getAllTracks} from '../../Api/api'
+// import { getAllTracks} from '../../Api/api'
 import { setTracksRedux 
 } from '../../store/slices/player'
 // } from '../../store/action/creator/player'
 import { currentTrackSelector } from '../../store/selectors/player';
+import { useGetAllTracksQuery } from '../../services/player';
 
 import * as S from './styles'
 
-function PageLayout({setError, setIsPlaying, setIsLoaded, isLoaded, isPlaying, error}) {
+function PageLayout({ setIsPlaying, isPlaying}) {
 
   const dispatch = useDispatch();
+  const {data, isLoading } = useGetAllTracksQuery()
 
+  // useEffect(() => {
+  //   setIsLoaded(false)
+  //   getAllTracks()
+  //     .then((tracksArr) => {
+  //       dispatch(setTracksRedux(tracksArr));
+  //   })      
+  //   .catch ((curenterror) => {
+  //     setError(curenterror.message);
+  //   })
+  //   .finally(() => {
+  //     setIsLoaded(true);
+  //   });
+
+  // }, [])
   useEffect(() => {
-    setIsLoaded(false)
-    getAllTracks()
-      .then((tracksArr) => {
-        dispatch(setTracksRedux(tracksArr));
-    })      
-    .catch ((curenterror) => {
-      setError(curenterror.message);
-    })
-    .finally(() => {
-      setIsLoaded(true);
-    });
+    if (data) {
+      dispatch(setTracksRedux(data));
+    }
+  }, [data]);
+  
 
-  }, [])
   const currentTrack = useSelector(currentTrackSelector)
 
   return (
@@ -40,24 +49,14 @@ function PageLayout({setError, setIsPlaying, setIsLoaded, isLoaded, isPlaying, e
           <S.Container>
             <S.Content>
               <Nav />
-              {/* <CenterBlock 
-              isLoaded={isLoaded}
-              tracks={tracks} 
-              error={error}
-              currentTrack={currentTrack}
-              isPlaying={isPlaying}
-              setIsPlaying={setIsPlaying}
-              pause={pause}
-              /> */}
                <Outlet />
-              <SideBar isLoaded={isLoaded}/>
+              <SideBar isLoading={isLoading}/>
             </S.Content>
             {currentTrack && (
             <Bar 
-            isLoaded={isLoaded}
+            isLoading={isLoading}
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}
-            error={error}
             />
             )}
             <Footer />

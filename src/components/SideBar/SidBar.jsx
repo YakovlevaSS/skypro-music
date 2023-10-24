@@ -4,10 +4,10 @@ import * as S from './styles'
 import SideBarPerson from '../SideBarPerson/SideBarPerson'
 import categoryArr from '../../utilits/categoryes'
 
-function SideBar({ isLoaded }) {
+function SideBar({ isLoading }) {
   const fullCategory = categoryArr.map((category) => (
     <S.SidebarItem key={category.id}>
-      {isLoaded ? (
+      {!isLoading? (
         <NavLink to={`/category/${category.id}`}>
           <S.SidebarImg src={category.img} alt={category.alt} />
         </NavLink>
