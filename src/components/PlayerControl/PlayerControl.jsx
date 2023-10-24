@@ -5,10 +5,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
-import {
-  setCurrentTrackRedux,
-  toggleShuffled
-} from '../../store/slices/player'
+import { setCurrentTrackRedux, toggleShuffled } from '../../store/slices/player'
 // } from '../../store/action/creator/player'
 import {
   currentTrackSelector,
@@ -60,53 +57,37 @@ export default function PlayerControl({
       playRef.current.volume = volume
     }
   }, [currentTrack, playRef, volume])
-  
 
   const shuffledMusic = [...tracks].sort(function () {
     return Math.round(Math.random()) - 0.5
   })
 
   const shuffleClick = () => {
-    console.log(isShufled);
+    console.log(isShufled)
     if (!isShufled) {
       setShuffledIndex(0)
-      dispatch(toggleShuffled({shufflePlaylist:[...shuffledMusic], shuffled:true}))
+      dispatch(
+        toggleShuffled({ shufflePlaylist: [...shuffledMusic], shuffled: true }),
+      )
     } else {
-      dispatch(toggleShuffled({shufflePlaylist:[], shuffled:false}))
+      dispatch(toggleShuffled({ shufflePlaylist: [], shuffled: false }))
     }
   }
 
   const nextClick = () => {
-    let nextIndex
-
-    if (isShufled) {
-      if (shuffledIndex === shuffledTracks.length - 1) {
-        setIsPlaying(false)
-        playRef.current.pause()
-        return
-      }
-      nextIndex = (shuffledIndex + 1) % shuffledTracks.length
-      setShuffledIndex(nextIndex)
-      playRef.current.play()
-      setIsPlaying(true)
-    } else {
-      if (currentIndex === tracks.length - 1) {
-        setIsPlaying(false)
-        playRef.current.pause()
-        return
-      }
-      nextIndex = (currentIndex + 1) % tracks.length
-      setCurrentIndex(nextIndex)
-      playRef.current.play()
-      setIsPlaying(true)
+    const playList = isShufled ? shuffledTracks : tracks
+    const currentIndexTrack = playList.findIndex(
+      (track) => track.id === currentTrack.id,
+    )
+    const newTrack = tracks[currentIndexTrack + 1]
+    if (!newTrack) {
+      return
     }
-
-    const nextMusic = isShufled ? shuffledTracks[nextIndex] : tracks[nextIndex]
-    dispatch(setCurrentTrackRedux(nextMusic))
+    dispatch(setCurrentTrackRedux(newTrack))
   }
 
   const prevClick = () => {
-console.log(isShufled);
+    console.log(isShufled)
 
     if (playRef.current.currentTime > 5) {
       playRef.current.currentTime = 0
@@ -141,13 +122,13 @@ console.log(isShufled);
     dispatch(setCurrentTrackRedux(prevMusic))
   }
 
-  const playingTrack = () => {
-    const durationtrack = playRef.current.duration
-    const curTime = playRef.current.currentTime
-    if (durationtrack === curTime) {
-      nextClick()
-    }
-  }
+  // const playingTrack = () => {
+  //   const durationtrack = playRef.current.duration
+  //   const curTime = playRef.current.currentTime
+  //   if (durationtrack === curTime) {
+  //     nextClick()
+  //   }
+  // }
 
   return (
     <S.PlayerControls>
@@ -156,7 +137,8 @@ console.log(isShufled);
         src={currentTrack?.track_file}
         ref={playRef}
         autoPlay
-        onTimeUpdate={playingTrack}
+        // onTimeUpdate={playingTrack}
+        onEnded={() => nextClick()}
       />
       <S.PlayerBtnPrev>
         <S.PlayerBtnPrevSvg alt="prev" onClick={prevClick}>
