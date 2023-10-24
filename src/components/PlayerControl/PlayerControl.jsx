@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
 import {
   setCurrentTrackRedux,
-  setIsShuffled,
-  setShuffledTracks
+  toggleShuffled
 } from '../../store/slices/player'
 // } from '../../store/action/creator/player'
 import {
@@ -71,11 +70,9 @@ export default function PlayerControl({
     console.log(isShufled);
     if (!isShufled) {
       setShuffledIndex(0)
-      dispatch(setShuffledTracks([...shuffledMusic]))
-      dispatch(setIsShuffled(true))
+      dispatch(toggleShuffled({shufflePlaylist:[...shuffledMusic], shuffled:true}))
     } else {
-      dispatch(setShuffledTracks([]))
-      dispatch(setIsShuffled(false))
+      dispatch(toggleShuffled({shufflePlaylist:[], shuffled:false}))
     }
   }
 
