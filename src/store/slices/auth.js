@@ -12,7 +12,7 @@ export const authTokenSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuthentication: (state, action) => {
+    setAuth: (state, action) => {
       const { access, refresh, user } = action.payload ?? initialState
       state.access = access
       state.refresh = refresh

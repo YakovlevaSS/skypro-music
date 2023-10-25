@@ -3,7 +3,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import * as S from './styles'
 import getDuration from '../../utilits/getduration'
-import {currentTrackSelector } from '../../store/selectors/player'
+import {currentTrackSelector, accessSelector } from '../../store/selectors/player'
 import { setCurrentTrackRedux 
 } from '../../store/slices/player'
 // } from '../../store/action/creator/player'
@@ -11,7 +11,9 @@ import { setCurrentTrackRedux
 export default function PlayList({ isLoading, isPlaying, tracks}) {
   const dispatch = useDispatch()
   const currentTrack = useSelector(currentTrackSelector)
+  const access = useSelector(accessSelector)
   console.log(isLoading);
+  console.log(access);
 
   const handleCurrentTrack = (track) => {
    dispatch(setCurrentTrackRedux(track))
