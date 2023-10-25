@@ -1,7 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { RegApi, LogInApi } from '../../Api/authApi'
+import { useDispatch } from 'react-redux'
+import { RegApi, LogInApi, getToken } from '../../Api/authApi'
+import { setAuth } from '../../store/slices/auth'
 
 import * as S from './styles'
 
@@ -11,6 +13,24 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
   const [offButton, setOffButton] = useState(false)
+  const dispatch = useDispatch()
+
+  // const setToken = async () => {
+  //   try {
+  //     await getToken({ email, password }).then((token) => {
+  //       console.log(token)
+  //       dispatch(
+  //         setAuth({
+  //           access: token.access,
+  //           refresh: token.refresh,
+  //           user: JSON.parse(sessionStorage.getItem('user')),
+  //         })
+  //       )
+  //     })
+  //   } catch (currentError) {
+  //     console.log(error)
+  //   }
+  // }
 
   const handleLogin = async () => {
     try {
@@ -24,6 +44,20 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
       setError(curenterror.message)
     } finally {
       setOffButton(false)
+    }
+
+    try {
+      await getToken({ email, password }).then((token) => {
+        dispatch(
+          setAuth({
+            access: token.access,
+            refresh: token.refresh,
+            user: JSON.parse(sessionStorage.getItem('user')),
+          })
+        )
+      })
+    } catch (currentError) {
+      console.log(error)
     }
   }
 
@@ -43,6 +77,21 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
       } finally {
         setOffButton(false)
       }
+    }
+
+    try {
+      await getToken({ email, password }).then((token) => {
+        console.log(token)
+        dispatch(
+          setAuth({
+            access: token.access,
+            refresh: token.refresh,
+            user: JSON.parse(sessionStorage.getItem('user')),
+          })
+        )
+      })
+    } catch (currentError) {
+      console.log(error)
     }
   }
 
