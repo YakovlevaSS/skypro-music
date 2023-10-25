@@ -47,7 +47,7 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
     }
 
     try {
-      await getToken({ email, password }).then((token) => {
+      const token = await getToken({ email, password });
         dispatch(
           setAuth({
             access: token.access,
@@ -55,7 +55,6 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
             user: JSON.parse(sessionStorage.getItem('user')),
           })
         )
-      })
     } catch (currentError) {
       console.log(error)
     }
@@ -80,8 +79,7 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
     }
 
     try {
-      await getToken({ email, password }).then((token) => {
-        console.log(token)
+      const token = await getToken({ email, password });
         dispatch(
           setAuth({
             access: token.access,
@@ -89,7 +87,6 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
             user: JSON.parse(sessionStorage.getItem('user')),
           })
         )
-      })
     } catch (currentError) {
       console.log(error)
     }
