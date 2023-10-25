@@ -1,11 +1,13 @@
 /* eslint-disable react/jsx-boolean-value */
 import * as S from './styles';
+import { useGetAllTracksQuery } from '../../services/player';
 import Search from '../../components/Search/Search'
 import Filter from '../../components/Filter/Filter';
 import PlayListTitle from '../../components/PlayListTitle/PlayListTitle'
 import PlayList from '../../components/PlayList/PlayList'
 
-export default function Favorites({ isLoaded, error, isPlaying}) { 
+export default function Favorites({ isLoading, isPlaying}) { 
+  const {isError} = useGetAllTracksQuery
   const tracks = []
   return (
         <S.MainCenterblock>
@@ -15,15 +17,15 @@ export default function Favorites({ isLoaded, error, isPlaying}) {
         <S.CenterblockContent>
           <PlayListTitle />
 
-          {error ? (
+          {isError ? (
           <S.ErrorBlock>
             <S.ErrorMessage>
-              Не удалось загрузить плейлист, попробуйте позже: {error}
+              Не удалось загрузить плейлист, попробуйте позже
             </S.ErrorMessage>
           </S.ErrorBlock>
         ) : (
           <PlayList 
-          isLoaded={ isLoaded }
+          isLoading={ isLoading }
           isPlaying={isPlaying}
           isFavorites={true}
           tracks={tracks}

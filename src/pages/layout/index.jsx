@@ -16,10 +16,10 @@ import { useGetAllTracksQuery } from '../../services/player';
 
 import * as S from './styles'
 
-function PageLayout({ setIsPlaying, isPlaying}) {
+function PageLayout({ setIsPlaying, isPlaying, isLoading}) {
 
   const dispatch = useDispatch();
-  const {data, isLoading } = useGetAllTracksQuery()
+  const {data} = useGetAllTracksQuery()
 
   // useEffect(() => {
   //   setIsLoaded(false)

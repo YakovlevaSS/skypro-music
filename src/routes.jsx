@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
+import { useGetAllTracksQuery } from './services/player'
 import MainPage from './pages/main'
 import Category from './pages/category'
 import Favorites from './pages/favorites'
@@ -12,9 +13,8 @@ import ProtectedRoute from './components/ProtectedRoute'
 import AuthPage from './pages/Auth/AuthPage'
 
 function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
-  const [isLoaded, setIsLoaded] = useState(true)
-  const [error, setError] = useState(null)
   const [isPlaying, setIsPlaying] = useState(true)
+  const {isLoading } = useGetAllTracksQuery()
 
 
   return (
@@ -35,12 +35,9 @@ function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
           path="/"
           element={
             <PageLayout
-              setIsLoaded={setIsLoaded}
+            isLoading ={isLoading }
               setIsPlaying={setIsPlaying}
-              setError={setError}
-              isLoaded={isLoaded}
               isPlaying={isPlaying}
-              error={error}
             />
           }
         >
@@ -48,9 +45,8 @@ function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
             path="/"
             element={
               <MainPage
-                isLoaded={isLoaded}
+              isLoading ={isLoading }
                 isPlaying={isPlaying}
-                error={error}
                 // isFavorits={isFavorits}
                 // setIsFavorites={setIsFavorites}
               />
@@ -61,9 +57,8 @@ function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
             path="/favorites"
             element={
               <Favorites
-                isLoaded={isLoaded}
+              isLoading ={isLoading }
                 isPlaying={isPlaying}
-                error={error}
                 // isFavorits={isFavorits}
                 // setIsFavorites={setIsFavorites}
               />
