@@ -45,6 +45,7 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
     } finally {
       setOffButton(false)
     }
+    console.log('ok');
 
     try {
       const token = await getToken({ email, password });

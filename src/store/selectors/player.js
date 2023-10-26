@@ -10,7 +10,7 @@ export const allTracksSelector = (store) => store.player.tracks
 
 export const currentTrackSelector = (store) => store.player.track
 
-export const userSelector =  (store) => store.auth.user
+export const authSelector =  (store) => store.auth
 
 export const accessSelector =  (store) => store.auth.access
 

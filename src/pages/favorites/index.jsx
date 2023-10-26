@@ -1,14 +1,21 @@
+/* eslint-disable import/order */
 /* eslint-disable react/jsx-boolean-value */
 import * as S from './styles';
-import { useGetAllTracksQuery } from '../../services/player';
+import { useSelector } from 'react-redux';
+import { useGetAllMyTracksQuery  } from '../../services/player';
 import Search from '../../components/Search/Search'
 import Filter from '../../components/Filter/Filter';
 import PlayListTitle from '../../components/PlayListTitle/PlayListTitle'
 import PlayList from '../../components/PlayList/PlayList'
+import { authSelector } from '../../store/selectors/player';
 
-export default function Favorites({ isLoading, isPlaying}) { 
-  const {isError} = useGetAllTracksQuery
-  const tracks = []
+
+
+export default function Favorites({ isPlaying}) { 
+const auth = useSelector(authSelector)
+const {data = [], isLoading, isError} = useGetAllMyTracksQuery({auth})
+const tracks = data
+
   return (
         <S.MainCenterblock>
         <Search />

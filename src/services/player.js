@@ -104,6 +104,24 @@ export const tracksApi = createApi({
       },
       invalidatesTags: (trackId) => [{ type: DATA_TAG.type, id: trackId?.id }],
     }),
+// как этто работае
+    getAllMyTracks: builder.query({
+      query: () => ({
+        url: "/catalog/track/favorite/all/",
+      }),
+      providesTags: (result = []) => [
+        ...result.map(({ id }) => ({ type: DATA_TAG.type, id })),
+        DATA_TAG,
+      ],
+      transformResponse: (response) => {
+        const transformedResponse = response.map((item) => ({
+          ...item,
+          stared_user: [JSON.parse(localStorage.getItem("user"))],
+        }));
+
+        return transformedResponse;
+      },
+    }),
   }),
 })
 
@@ -114,4 +132,5 @@ export const {
   useGetSelectionByIdQuery,
   useDislikeTrackMutation,
   useLikeTrackMutation,
+  useGetAllMyTracksQuery
 } = tracksApi
