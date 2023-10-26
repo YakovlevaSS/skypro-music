@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable import/no-extraneous-dependencies */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { setAuth } from '../store/slices/auth';
 
 const DATA_TAG = { type: 'Tracks', id: 'LIST' }
 
@@ -20,11 +21,63 @@ const DATA_TAG = { type: 'Tracks', id: 'LIST' }
 //   },
 // })
 
+const baseQueryWithReauth = async (args, api, extraOptions) => {
+  const baseQuery = fetchBaseQuery({
+    baseUrl: "https://skypro-music-api.skyeng.tech",
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.access;
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  });
+  const result = await baseQuery(args, api, extraOptions);
+  if (result?.error?.status !== 401) {
+    return result;
+  }
+  const goLogout = () => {
+    api.dispatch(setAuth(null));
+    window.location.navigate("/login");
+  };
+  
+  const { auth } = api.getState();
+  if (!auth.refresh) {
+    return goLogout();
+  }
+
+  const refreshToken = await baseQuery(
+    {
+      url: "/user/token/refresh/",
+      method: "POST",
+      body: {
+        refresh: auth.refresh,
+      },
+    },
+    api,
+    extraOptions,
+  );
+
+  if (!refreshToken.data.access) {
+    return goLogout();
+  }
+
+  api.dispatch(setAuth({ ...auth, access: refreshToken.data.access }));
+
+  const retryResult = await baseQuery(args, api, extraOptions);
+
+  if (retryResult?.error?.status === 401) {
+    return goLogout();
+  }
+  return retryResult;
+};
+
 export const tracksApi = createApi({
   reducerPath: 'tracksApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://skypro-music-api.skyeng.tech',
-  }),
+  baseQuery: baseQueryWithReauth,
+  // fetchBaseQuery({
+  //   baseUrl: 'https://skypro-music-api.skyeng.tech',
+  // }),
 
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.access
