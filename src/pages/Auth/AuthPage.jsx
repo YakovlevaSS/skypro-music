@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { RegApi, LogInApi, getToken } from '../../Api/authApi'
 import { setAuth } from '../../store/slices/auth'
+
 
 import * as S from './styles'
 
@@ -14,7 +15,7 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
   const [repeatPassword, setRepeatPassword] = useState('')
   const [offButton, setOffButton] = useState(false)
   const dispatch = useDispatch()
-
+const  navigate = useNavigate();
   // const setToken = async () => {
   //   try {
   //     await getToken({ email, password }).then((token) => {
@@ -39,7 +40,7 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
       setUser(response.username);
       localStorage.setItem('user', response.username);
       setOffButton(true)
-      window.location.href = "/";
+      navigate('/');
     } catch (curenterror) {
       setError(curenterror.message)
     } finally {
@@ -71,7 +72,7 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
         setOffButton(true)
         setUser(response.username);
         localStorage.setItem('user', response.username);
-        window.location.href = "/";
+        navigate('/');
       } catch (curenterror) {
         setError(curenterror.message)
       } finally {

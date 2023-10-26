@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable import/no-extraneous-dependencies */
+import { useNavigate } from 'react-router-dom';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setAuth } from '../store/slices/auth';
 
@@ -22,6 +23,7 @@ const DATA_TAG = { type: 'Tracks', id: 'LIST' }
 // })
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
+  const  navigate = useNavigate();
   const baseQuery = fetchBaseQuery({
     baseUrl: "https://skypro-music-api.skyeng.tech",
     prepareHeaders: (headers, { getState }) => {
@@ -38,7 +40,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   }
   const goLogout = () => {
     api.dispatch(setAuth(null));
-    window.location.navigate("/login");
+    navigate('/Auth');
   };
   
   const { auth } = api.getState();
