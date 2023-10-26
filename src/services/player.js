@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable import/no-extraneous-dependencies */
-import { useNavigate } from 'react-router-dom';
+import { 
+  // useNavigate 
+} from 'react-router-dom';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setAuth } from '../store/slices/auth';
 
@@ -23,7 +25,7 @@ const DATA_TAG = { type: 'Tracks', id: 'LIST' }
 // })
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
-  const  navigate = useNavigate();
+  // const  navigate = useNavigate();
   const baseQuery = fetchBaseQuery({
     baseUrl: "https://skypro-music-api.skyeng.tech",
     prepareHeaders: (headers, { getState }) => {
@@ -40,7 +42,8 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   }
   const goLogout = () => {
     api.dispatch(setAuth(null));
-    navigate('/Auth');
+    // // navigate('/Auth');
+    // window.location.href = '/Auth'
   };
   
   const { auth } = api.getState();
@@ -179,14 +182,14 @@ export const tracksApi = createApi({
         ...result.map(({ id }) => ({ type: DATA_TAG.type, id })),
         DATA_TAG,
       ],
-      // transformResponse: (response) => {
-      //   const transformedResponse = response.map((item) => ({
-      //     ...item,
-      //     stared_user: [JSON.parse(localStorage.getItem("user"))],
-      //   }));
+      transformResponse: (response) => {
+        const transformedResponse = response.map((item) => ({
+          ...item,
+          stared_user: [JSON.parse(localStorage.getItem("user"))],
+        }));
 
-      //   return transformedResponse;
-      // },
+        return transformedResponse;
+      },
     }),
   }),
 })
