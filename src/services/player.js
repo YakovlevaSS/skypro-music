@@ -25,6 +25,17 @@ export const tracksApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://skypro-music-api.skyeng.tech',
   }),
+
+  prepareHeaders: (headers, { getState }) => {
+    const token = getState().auth.access
+
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`)
+    }
+
+    return headers
+  },
+
   endpoints: (builder) => ({
     // all tracks
     getAllTracks: builder.query({
@@ -104,23 +115,23 @@ export const tracksApi = createApi({
       },
       invalidatesTags: (trackId) => [{ type: DATA_TAG.type, id: trackId?.id }],
     }),
-// как этто работае
+    // как этто работае
     getAllMyTracks: builder.query({
       query: () => ({
-        url: "/catalog/track/favorite/all/",
+        url: '/catalog/track/favorite/all/',
       }),
       providesTags: (result = []) => [
         ...result.map(({ id }) => ({ type: DATA_TAG.type, id })),
         DATA_TAG,
       ],
-      transformResponse: (response) => {
-        const transformedResponse = response.map((item) => ({
-          ...item,
-          stared_user: [JSON.parse(localStorage.getItem("user"))],
-        }));
+      // transformResponse: (response) => {
+      //   const transformedResponse = response.map((item) => ({
+      //     ...item,
+      //     stared_user: [JSON.parse(localStorage.getItem("user"))],
+      //   }));
 
-        return transformedResponse;
-      },
+      //   return transformedResponse;
+      // },
     }),
   }),
 })
@@ -132,5 +143,5 @@ export const {
   useGetSelectionByIdQuery,
   useDislikeTrackMutation,
   useLikeTrackMutation,
-  useGetAllMyTracksQuery
+  useGetAllMyTracksQuery,
 } = tracksApi
