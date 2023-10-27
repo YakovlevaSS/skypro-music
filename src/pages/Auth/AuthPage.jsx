@@ -37,8 +37,8 @@ const  navigate = useNavigate();
     try {
       const response = await LogInApi(email, password);
       console.log(response)
-      setUser(response.username);
-      localStorage.setItem('user', response.username);
+      setUser(response);
+      localStorage.setItem('user', JSON.stringify(response));
       setOffButton(true)
       navigate('/');
     } catch (curenterror) {
@@ -49,12 +49,13 @@ const  navigate = useNavigate();
     console.log('ok');
 
     try {
-      const token = await getToken({ email, password });
+      const token = await getToken(email, password);
+      console.log(token)
         dispatch(
           setAuth({
             access: token.access,
             refresh: token.refresh,
-            user: JSON.parse(sessionStorage.getItem('user')),
+            user: JSON.parse(localStorage.getItem('user')),
           })
         )
     } catch (currentError) {
@@ -70,8 +71,8 @@ const  navigate = useNavigate();
         const response = await RegApi(email, password);
         console.log(response)
         setOffButton(true)
-        setUser(response.username);
-        localStorage.setItem('user', response.username);
+        setUser(response);
+        localStorage.setItem('user', JSON.stringify(response));
         navigate('/');
       } catch (curenterror) {
         setError(curenterror.message)
@@ -81,12 +82,12 @@ const  navigate = useNavigate();
     }
 
     try {
-      const token = await getToken({ email, password });
+      const token = await getToken(email, password);
         dispatch(
           setAuth({
             access: token.access,
             refresh: token.refresh,
-            user: JSON.parse(sessionStorage.getItem('user')),
+            user: JSON.parse(localStorage.getItem('user')),
           })
         )
     } catch (currentError) {
