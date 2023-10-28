@@ -9,9 +9,11 @@ import { setCurrentTrackRedux, toggleShuffled } from '../../store/slices/player'
 // } from '../../store/action/creator/player'
 import {
   currentTrackSelector,
-  allTracksSelector,
+  // allTracksSelector,
   shuffledSelector,
   shuffledPlaylistSelector,
+  // currentPlaylistSelector,
+  activePlaylistSelector,
 } from '../../store/selectors/player'
 
 export default function PlayerControl({
@@ -26,7 +28,10 @@ export default function PlayerControl({
   const [currentIndex, setCurrentIndex] = useState(0)
   const [shuffledIndex, setShuffledIndex] = useState(0)
   const currentTrack = useSelector(currentTrackSelector)
-  const tracks = useSelector(allTracksSelector)
+  // const tracks = useSelector(allTracksSelector)
+  const tracks = useSelector(activePlaylistSelector)
+
+
   const shuffledTracks = useSelector(shuffledPlaylistSelector)
   const isShufled = useSelector(shuffledSelector)
   const handleClick = () => {
@@ -63,7 +68,6 @@ export default function PlayerControl({
   })
 
   const shuffleClick = () => {
-    console.log(isShufled)
     if (!isShufled) {
       setShuffledIndex(0)
       dispatch(
@@ -87,7 +91,6 @@ export default function PlayerControl({
   }
 
   const prevClick = () => {
-    console.log(isShufled)
 
     if (playRef.current.currentTime > 5) {
       playRef.current.currentTime = 0

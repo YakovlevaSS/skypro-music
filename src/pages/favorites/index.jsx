@@ -1,20 +1,28 @@
 /* eslint-disable import/order */
 /* eslint-disable react/jsx-boolean-value */
+import { useEffect } from 'react';
 import * as S from './styles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import { useGetAllMyTracksQuery  } from '../../services/player';
 import Search from '../../components/Search/Search'
 import Filter from '../../components/Filter/Filter';
 import PlayListTitle from '../../components/PlayListTitle/PlayListTitle'
 import PlayList from '../../components/PlayList/PlayList'
 import { authSelector } from '../../store/selectors/player';
+import { setCurrentPlaylist } from '../../store/slices/player';
+
+
 
 
 
 export default function Favorites({ isPlaying}) { 
+  const dispatch = useDispatch()
 const auth = useSelector(authSelector)
 const {data = [], isLoading, isError} = useGetAllMyTracksQuery({auth})
 const tracks = data
+useEffect(() => {
+  dispatch(setCurrentPlaylist(data))
+}, [data])
 
   return (
         <S.MainCenterblock>

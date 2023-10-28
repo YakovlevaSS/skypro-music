@@ -9,6 +9,8 @@ const initialState = {
   shufflePlaylist: [],
   tracks: [],
   track: null,
+  currentPlaylist: [],
+  activePlaylist: [],
 }
 
 export const playerSlice = createSlice({
@@ -38,12 +40,21 @@ export const playerSlice = createSlice({
       state.shuffled = shuffled
       state.shufflePlaylist = shufflePlaylist
     },
+    setCurrentPlaylist : (state, action) => {
+      state.currentPlaylist = action.payload
+    },
+    setActivePlaylist : (state, action) => {
+      state.activePlaylist = action.payload
+    },
   },
 })
 export const {
   setTracksRedux,
   setCurrentTrackRedux,
-toggleShuffled
+toggleShuffled,
+setActivePlaylist,
+setCurrentPlaylist
+
 } = playerSlice.actions
 
 export default playerSlice.reducer

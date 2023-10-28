@@ -7,8 +7,8 @@ import {
 import { useState, useEffect } from 'react'
 import * as S from './styles'
 import getDuration from '../../utilits/getduration'
-import { currentTrackSelector } from '../../store/selectors/player'
-import { setCurrentTrackRedux, setTracksRedux } from '../../store/slices/player'
+import { currentTrackSelector, currentPlaylistSelector  } from '../../store/selectors/player'
+import { setCurrentTrackRedux, setTracksRedux, setActivePlaylist} from '../../store/slices/player'
 import {
   useLikeTrackMutation,
   useDislikeTrackMutation,
@@ -19,13 +19,15 @@ export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
   const dispatch = useDispatch()
   const currentTrack = useSelector(currentTrackSelector)
 
+  const trackList = useSelector(currentPlaylistSelector) 
+
   const handleCurrentTrack = () => {
     dispatch(setCurrentTrackRedux(track))
+    dispatch(setActivePlaylist(trackList))
   }
   const [like] = useLikeTrackMutation()
   const [dislike] = useDislikeTrackMutation()
   const auth = localStorage.getItem('user')
-  console.log(like, dislike, auth)
 
   const isUserLike = Boolean(
     track.stared_user.find(({ id }) => id === auth.id),

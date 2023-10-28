@@ -39,7 +39,6 @@ export default function AuthPage({
   const handleLogin = async () => {
     try {
       const response = await LogInApi(email, password)
-      console.log(response)
       setUser(response)
       localStorage.setItem('user', JSON.stringify(response))
       setOffButton(true)
@@ -52,7 +51,6 @@ export default function AuthPage({
 
     try {
       const token = await getToken(email, password)
-      console.log(token)
       dispatch(
         setAuth({
           access: token.access,
@@ -71,7 +69,6 @@ export default function AuthPage({
     } else {
       try {
         const response = await RegApi(email, password)
-        console.log(response)
         setOffButton(true)
         setUser(response)
         localStorage.setItem('user', JSON.stringify(response))

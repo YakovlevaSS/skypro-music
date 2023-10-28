@@ -8,7 +8,7 @@ import Nav from '../../components/Nav/Nav'
 import SideBar from '../../components/SideBar/SidBar'
 import Footer from '../../components/Footer/Footer'
 // import { getAllTracks} from '../../Api/api'
-import { setTracksRedux 
+import { setTracksRedux, setCurrentPlaylist
 } from '../../store/slices/player'
 // } from '../../store/action/creator/player'
 import { currentTrackSelector } from '../../store/selectors/player';
@@ -41,6 +41,11 @@ function PageLayout({ setIsPlaying, isPlaying, isLoading}) {
     }
   }, [data]);
   
+  useEffect(() => {
+    if (data) {
+      dispatch(setCurrentPlaylist(data));
+    }
+  }, [data]);
 
   const currentTrack = useSelector(currentTrackSelector)
 

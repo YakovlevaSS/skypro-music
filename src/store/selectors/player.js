@@ -15,3 +15,7 @@ export const authSelector =  (store) => store.auth
 export const accessSelector =  (store) => store.auth.access
 
 export const refreshSelector =  (store) => store.auth.refresh
+
+export const currentPlaylistSelector = (store) => store.player.currentPlaylist
+
+export const activePlaylistSelector = (store) => store.player.activePlaylist
