@@ -7,10 +7,10 @@ import * as S from './styles'
 import getDuration from '../../utilits/getduration'
 import { currentTrackSelector } from '../../store/selectors/player'
 import { setCurrentTrackRedux } from '../../store/slices/player'
-// import {
-//   useLikeTrackMutation,
-//   useDislikeTrackMutation,
-// } from '../../services/player'
+import {
+  useLikeTrackMutation,
+  useDislikeTrackMutation,
+} from '../../services/player'
 // } from '../../store/action/creator/player'
 
 export default function PlayList({ isLoading, isPlaying, tracks }) {
@@ -20,10 +20,10 @@ export default function PlayList({ isLoading, isPlaying, tracks }) {
   const handleCurrentTrack = (track) => {
     dispatch(setCurrentTrackRedux(track))
   }
-  // const [like] = useLikeTrackMutation()
-  // const [dislike] = useDislikeTrackMutation()
-  // const auth = localStorage.getItem('user')
-  // console.log(like, dislike, auth)
+  const [like] = useLikeTrackMutation()
+  const [dislike] = useDislikeTrackMutation()
+  const auth = localStorage.getItem('user')
+  console.log(like, dislike, auth)
 
   // const isUserLike = Boolean(
   //   track.stared_user.find(({ id }) => id === auth.id),

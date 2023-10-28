@@ -10,9 +10,10 @@ console.log(user)
     setUser(null);
     localStorage.removeItem('user');
   };
+  const authUser = JSON.parse(localStorage.getItem('user'))
     return (
         <S.SidebarPersonal>
-          <S.SidebarPersonalName>{user.username}</S.SidebarPersonalName>
+          <S.SidebarPersonalName>{authUser.username}</S.SidebarPersonalName>
           <S.SidebarIcon onClick={handleLogout}>
             <svg alt="logout">
               <use xlinkHref="img/icon/sprite.svg#logout" />
