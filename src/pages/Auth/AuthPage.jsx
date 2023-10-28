@@ -60,8 +60,6 @@ export default function AuthPage({
           user: JSON.parse(localStorage.getItem('user')),
         }),
       )
-      localStorage.setItem('access', token.access)
-      localStorage.setItem('refresh', token.refresh)
     } catch (currentError) {
       console.log(error)
     }
@@ -94,8 +92,6 @@ export default function AuthPage({
           user: JSON.parse(localStorage.getItem('user')),
         }),
       )
-      localStorage.setItem('access', token.access)
-      localStorage.setItem('refresh', token.refresh)
     } catch (currentError) {
       console.log(error)
     }
