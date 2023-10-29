@@ -42,14 +42,14 @@ export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
   const handleLike = async (id) => {
     setIsLiked(true)
     await like({ id }).unwrap()
-    dispatch(setCurrentTrackRedux(track))
+    // dispatch(setCurrentTrackRedux(track))
     dispatch(setTracksRedux(tracks))
   }
 
   const handleDislike = async (id) => {
     setIsLiked(false)
     await dislike({ id }).unwrap()
-    dispatch(setCurrentTrackRedux(track))
+    // dispatch(setCurrentTrackRedux(track))
     dispatch(setTracksRedux(tracks))
   }
 
@@ -70,7 +70,10 @@ export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
 return (
       <S.PlaylistItem 
       key={track.id} 
-      onClick={() => handleCurrentTrack(track)}>
+      onClick={() => {
+        handleCurrentTrack(track)
+        // event.stopPropagation()
+      }}>
         <S.PlaylistTrack>
           <S.TrackTitle>
             {!isLoading ? (
@@ -119,8 +122,9 @@ return (
               <S.TrackTime>
                 <S.TrackTimeSvg
                   alt="time"
-                  onClick={() => {
+                  onClick={(event) => {
                     toggleLikeDislike(track.id)
+                    event.stopPropagation()
                   }}
                 >
                   {isLiked ? (
