@@ -16,7 +16,7 @@ import {
 // } from '../../store/action/creator/player'
 
 export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
-  const dispatch = useDispatch()
+    const dispatch = useDispatch()
   const currentTrack = useSelector(currentTrackSelector)
 
   const trackList = useSelector(currentPlaylistSelector) 

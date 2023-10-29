@@ -47,8 +47,6 @@ function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
               <MainPage
               isLoading ={isLoading }
                 isPlaying={isPlaying}
-                // isFavorits={isFavorits}
-                // setIsFavorites={setIsFavorites}
               />
             }
           />
@@ -59,8 +57,6 @@ function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
               <Favorites
               isLoading ={isLoading }
                 isPlaying={isPlaying}
-                // isFavorits={isFavorits}
-                // setIsFavorites={setIsFavorites}
               />
             }
           />
