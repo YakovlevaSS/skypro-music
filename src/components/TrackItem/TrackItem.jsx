@@ -27,7 +27,7 @@ export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
   }
   const [like] = useLikeTrackMutation()
   const [dislike] = useDislikeTrackMutation()
-  const auth = localStorage.getItem('user')
+  const auth = JSON.parse(localStorage.getItem('user'))
 
   const isUserLike = Boolean(
     track.stared_user.find(({ id }) => id === auth.id),
