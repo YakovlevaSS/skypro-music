@@ -11,7 +11,7 @@ import { useGetAllTracksQuery } from '../../services/player';
 import { setCurrentPlaylist } from '../../store/slices/player';
 
 export default function MainPage ({ isPlaying  }) {
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
   const {data = [], isError, isLoading} = useGetAllTracksQuery()
 
     dispatch(setCurrentPlaylist(data))
