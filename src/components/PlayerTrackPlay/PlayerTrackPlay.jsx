@@ -13,7 +13,7 @@ export default function PlayerTrackPlay({isLoading}) {
           {!isLoading? (
             <S.TrackPlayerImage>
             <S.TrackPlaySvg alt="music">
-              <use xlinkHref="img/icon/sprite.svg#icon-note" />
+              <use xlinkHref="/img/icon/sprite.svg#icon-note" />
             </S.TrackPlaySvg>
           </S.TrackPlayerImage>
             ) : (
@@ -44,12 +44,12 @@ export default function PlayerTrackPlay({isLoading}) {
           <S.TrackPlayLikeDis>
             <S.TrackPlayLike>
               <S.TrackPlayLikeSvg alt="like">
-                <use xlinkHref="img/icon/sprite.svg#icon-like" />
+                <use xlinkHref="/img/icon/sprite.svg#icon-like" />
               </S.TrackPlayLikeSvg>
             </S.TrackPlayLike>
             <S.TrackPlayDisLike>
               <S.TrackPlayDisLikeSvg alt="dislike">
-                <use xlinkHref="img/icon/sprite.svg#icon-dislike" />
+                <use xlinkHref="/img/icon/sprite.svg#icon-dislike" />
               </S.TrackPlayDisLikeSvg>
             </S.TrackPlayDisLike>
           </S.TrackPlayLikeDis>

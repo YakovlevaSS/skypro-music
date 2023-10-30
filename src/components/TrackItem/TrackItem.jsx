@@ -87,7 +87,7 @@ return (
                       r="7.5"
                     />
                   ) : (
-                    <use xlinkHref="img/icon/sprite.svg#icon-note" />
+                    <use xlinkHref="/img/icon/sprite.svg#icon-note" />
                   )}
                 </S.TrackTitleSvg>
               </S.TrackTitleImage>
@@ -129,11 +129,11 @@ return (
                 >
                   {isLiked ? (
                     <use
-                      xlinkHref="img/icon/sprite.svg#icon-like"
+                      xlinkHref="/img/icon/sprite.svg#icon-like"
                       fill="#B672FF"
                      />
                   ) : (
-                  <use xlinkHref="img/icon/sprite.svg#icon-like" />
+                  <use xlinkHref="/img/icon/sprite.svg#icon-like" />
                   )}
                 </S.TrackTimeSvg>
                 <S.TrackTimeText>

@@ -4,6 +4,7 @@ import TrackItem from "../TrackItem/TrackItem"
 import * as S from './styles'
 
 export default function PlayList({ isLoading, isPlaying, tracks }) {
+  
     return (<S.ContentPlaylist>             
  {isLoading &&
             Array(20)

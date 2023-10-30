@@ -145,7 +145,7 @@ export default function PlayerControl({
       />
       <S.PlayerBtnPrev>
         <S.PlayerBtnPrevSvg alt="prev" onClick={prevClick}>
-          <use xlinkHref="img/icon/sprite.svg#icon-prev" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-prev" />
         </S.PlayerBtnPrevSvg>
       </S.PlayerBtnPrev>
       <S.PlayerBtnPlay>
@@ -162,7 +162,7 @@ export default function PlayerControl({
       </S.PlayerBtnPlay>
       <S.PlayerBtnNext>
         <S.PlayerBtnNextSvg alt="next" onClick={nextClick}>
-          <use xlinkHref="img/icon/sprite.svg#icon-next" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-next" />
         </S.PlayerBtnNextSvg>
       </S.PlayerBtnNext>
       <S.PlayerBtnRepeat>
@@ -171,7 +171,7 @@ export default function PlayerControl({
           alt="repeat"
           onClick={repeatClick}
         >
-          <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-repeat" />
         </S.PlayerBtnRepeatSvg>
       </S.PlayerBtnRepeat>
       <S.PlayerBtnShuffle>
@@ -180,7 +180,7 @@ export default function PlayerControl({
           alt="shuffle"
           onClick={shuffleClick}
         >
-          <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-shuffle" />
         </S.PlayerBtnShuffleSvg>
       </S.PlayerBtnShuffle>
     </S.PlayerControls>

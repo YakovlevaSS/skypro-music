@@ -132,7 +132,7 @@ export const tracksApi = createApi({
     // selection by id
     getSelectionById: builder.query({
       query: (id) => ({
-        url: `/catalog/selection/${id}`,
+        url: `/catalog/selection/${id}/`,
       }),
       providesTags: (result = []) => [
         ...(Array.isArray(result)

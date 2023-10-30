@@ -16,7 +16,7 @@ console.log(user)
           <S.SidebarPersonalName>{authUser.username}</S.SidebarPersonalName>
           <S.SidebarIcon onClick={handleLogout}>
             <svg alt="logout">
-              <use xlinkHref="img/icon/sprite.svg#logout" />
+              <use xlinkHref="/img/icon/sprite.svg#logout" />
             </svg>
           </S.SidebarIcon>
         </S.SidebarPersonal>
