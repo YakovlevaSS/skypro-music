@@ -30,7 +30,7 @@ export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
   const auth = JSON.parse(localStorage.getItem('user'))
 
   const isUserLike = Boolean(
-    track.stared_user.find(({ id }) => id === auth.id),
+    track?.stared_user.find(({ id }) => id === auth.id),
   )
 
   const [isLiked, setIsLiked] = useState(isUserLike)
@@ -69,7 +69,7 @@ export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
 
 return (
       <S.PlaylistItem 
-      key={track.id} 
+      key={track?.id} 
       onClick={() => {
         handleCurrentTrack(track)
         // event.stopPropagation()
@@ -123,7 +123,7 @@ return (
                 <S.TrackTimeSvg
                   alt="time"
                   onClick={(event) => {
-                    toggleLikeDislike(track.id)
+                    toggleLikeDislike(track?.id)
                     event.stopPropagation()
                   }}
                 >
