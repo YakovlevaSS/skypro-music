@@ -113,6 +113,7 @@ export const FilterWrap = styled.div `
   export const FilterMenuYear = styled(FilterMenu)`
   width: 248px;
   height: 196px;
+  overflow-y: hidden;
 `
 
 const FilterListMixin = css`
@@ -138,7 +139,7 @@ a:hover {
 }
 `
 export const FilterListMenu = styled.ul`
-  width: 180px;
+  hio
   height: 305px;
   ${FilterListMixin};
 `;
@@ -148,7 +149,5 @@ export const FilterListMenuLink = styled.a``
 
 export const FilterListMenuYear = styled.ul`
   ${FilterListMixin};
-  width: 116px;
-  height: 237px;
   align-items: center;
 `;

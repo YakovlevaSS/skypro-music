@@ -2,7 +2,14 @@ import { useState } from 'react'
 import trackArr from '../../utilits/trackArr'
 import * as S from './styles'
 
-function Filter() {
+function Filter(
+    // isActiveSortYear,
+  // setIsAciveSortYear,
+  // isActiveFilterAuthor,
+  // setIsActiveFilterAuthor,
+  // isActiveFilterGenre,
+  // setIsActiveFilterGenre,
+) {
   // создаем переменные состояния для каждой кнопки
   const [visibleAuthor, setVisibleAuthor] = useState(false)
   const [visibleYear, setVisibleYear] = useState(false)
@@ -31,7 +38,8 @@ function Filter() {
   const authorArr = Array.from(
     new Set(trackArr.map((track) => track.trackAuthorLink)),
   )
-  const yearArr = Array.from(new Set(trackArr.map((track) => track.year)))
+  // const yearArr = Array.from(new Set(trackArr.map((track) => track.year)))
+  const yearArr = ['По умолчанию', 'Сначала новые', 'Сначала старые']
   const genrerArr = Array.from(new Set(trackArr.map((track) => track.genre)))
 
   return (
