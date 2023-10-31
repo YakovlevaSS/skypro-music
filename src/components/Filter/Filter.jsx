@@ -3,8 +3,8 @@ import trackArr from '../../utilits/trackArr'
 import * as S from './styles'
 
 function Filter(
-    // isActiveSortYear,
-  // setIsAciveSortYear,
+    isActiveSortYear,
+    setIsActiveSortYear,
   // isActiveFilterAuthor,
   // setIsActiveFilterAuthor,
   // isActiveFilterGenre,
@@ -41,6 +41,11 @@ function Filter(
   // const yearArr = Array.from(new Set(trackArr.map((track) => track.year)))
   const yearArr = ['По умолчанию', 'Сначала новые', 'Сначала старые']
   const genrerArr = Array.from(new Set(trackArr.map((track) => track.genre)))
+
+  const toggleSort = (filter) => {
+    setIsActiveSortYear(filter)
+  }
+
 
   return (
     <S.CenterblockFilter>
@@ -89,7 +94,7 @@ function Filter(
             <S.FilterListMenu>
               {yearArr.map((item) => (
                 <S.FilterListMenu key={item}>
-                  <S.FilterListMenuLink href="#">{item}</S.FilterListMenuLink>
+                  <S.FilterListMenuLink href="#" onClick={() => toggleSort(item)}>{item}</S.FilterListMenuLink>
                 </S.FilterListMenu>
               ))}
             </S.FilterListMenu>
