@@ -2,13 +2,14 @@ import { useState } from 'react'
 import trackArr from '../../utilits/trackArr'
 import * as S from './styles'
 
-function Filter(
-    isActiveSortYear,
-    setIsActiveSortYear,
-  // isActiveFilterAuthor,
-  // setIsActiveFilterAuthor,
-  // isActiveFilterGenre,
-  // setIsActiveFilterGenre,
+function Filter({
+// isActiveSortYear,
+setIsActiveSortYear,
+// isActiveFilterAuthor,
+// setIsActiveFilterAuthor,
+// isActiveFilterGenre,
+// setIsActiveFilterGenre,
+}
 ) {
   // создаем переменные состояния для каждой кнопки
   const [visibleAuthor, setVisibleAuthor] = useState(false)

@@ -17,8 +17,8 @@ export default function MainPage({ isPlaying }) {
   // const [tracks, setTracks] = useState([])
   // const [originalPlayList, setOriginalPlayList] = useState([])
   const [isActiveSortYear, setIsActiveSortYear] = useState('По умолчанию')
-  const [isActiveFilterAuthor, setIsActiveFilterAuthor] = useState([])
-  const [isActiveFilterGenre, setIsActiveFilterGenre] = useState([])
+  const [activeFilterAuthor, setActiveFilterAuthor] = useState(['author1', "author2"])
+  const [activeFilterGenre, setActiveFilterGenre] = useState([])
   
   dispatch(setCurrentPlaylist(data))
 
@@ -29,14 +29,18 @@ let sortPlaylist = originalPlayList
     
     // Сортировка по дате
     if (isActiveSortYear === 'Сначала новые') {
-      sortPlaylist = sortPlaylist?.sort(compare)
+      sortPlaylist = sortPlaylist?.slice(0).sort(compare)
     } else if (isActiveSortYear === 'Сначала старые') {
-      sortPlaylist = sortPlaylist?.sort(compare).reverse()
+      sortPlaylist = sortPlaylist?.slice(0).sort(compare).reverse()
     }
 
+
+    console.log(sortPlaylist);
+
+// sortPlaylist = sortPlaylist?.filter((track) => (activeFilterAuthor.includes(track.author)) )
     // Set sorted playList
     dispatch(setCurrentPlaylist(sortPlaylist))
-  }, [isActiveSortYear, isActiveFilterAuthor, isActiveFilterGenre])
+  }, [isActiveSortYear, activeFilterAuthor, activeFilterGenre])
   
   return (
     <S.MainCenterblock>
@@ -45,10 +49,10 @@ let sortPlaylist = originalPlayList
       <Filter 
                    isActiveSortYear={isActiveSortYear}
                    setIsActiveSortYear={setIsActiveSortYear}
-                   isActiveFilterAuthor={isActiveFilterAuthor}
-                   setIsActiveFilterAuthor={setIsActiveFilterAuthor}
-                   isActiveFilterGenre={isActiveFilterGenre}
-                   setIsActiveFilterGenre={setIsActiveFilterGenre}/>
+                   isActiveFilterAuthor={activeFilterAuthor}
+                   setIsActiveFilterAuthor={setActiveFilterAuthor}
+                   isActiveFilterGenre={activeFilterGenre}
+                   setIsActiveFilterGenre={setActiveFilterGenre}/>
       <S.CenterblockContent>
         <PlayListTitle />
 
