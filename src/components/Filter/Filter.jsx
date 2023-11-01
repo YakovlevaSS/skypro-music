@@ -77,7 +77,7 @@ function Filter({
           <S.FilterButtonClick type="button" onClick={toggleVisibilityAuthor}>
             исполнителю
           </S.FilterButtonClick>
-          <S.FilterLength>{authorArr.length}</S.FilterLength>
+          <S.FilterLength>{activeFilterAuthor.length}</S.FilterLength>
           <S.FilterMenuAuthor>
             <S.FilterListMenu>
               {authorArr.map((item) => (
@@ -105,7 +105,7 @@ function Filter({
           <S.FilterButtonClick type="button" onClick={toggleVisibilityYear}>
             году выпуска
           </S.FilterButtonClick>
-          <S.FilterLength>{yearArr.length}</S.FilterLength>
+          <S.FilterLength>1</S.FilterLength>
           <S.FilterMenuYear>
             <S.FilterListMenu>
               {yearArr.map((item) => (
@@ -133,7 +133,7 @@ function Filter({
           <S.FilterButtonClick type="button" onClick={toggleVisibilityGenre}>
             жанру
           </S.FilterButtonClick>
-          <S.FilterLength>{genrerArr.length}</S.FilterLength>
+          <S.FilterLength>{activeFilterGenre.length}</S.FilterLength>
           <S.FilterMenu>
             <S.FilterListMenu>
               {genrerArr.map((item) => (
