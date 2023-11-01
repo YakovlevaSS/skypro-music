@@ -78,7 +78,7 @@ function Filter({
             исполнителю
           </S.FilterButtonClick>
           <S.FilterLength>{authorArr.length}</S.FilterLength>
-          <S.FilterMenu>
+          <S.FilterMenuAuthor>
             <S.FilterListMenu>
               {authorArr.map((item) => (
                 <S.FilterListMenu key={item}>
@@ -91,7 +91,7 @@ function Filter({
                 </S.FilterListMenu>
               ))}
             </S.FilterListMenu>
-          </S.FilterMenu>
+          </S.FilterMenuAuthor>
         </S.FilterWrap>
       ) : (
         <S.FilterButton type="button" onClick={toggleVisibilityAuthor}>
