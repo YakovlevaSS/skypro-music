@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import trackArr from '../../utilits/trackArr'
+import { useGetAllTracksQuery } from '../../services/player'
+// import trackArr from '../../utilits/trackArr'
 import * as S from './styles'
 
 function Filter({
@@ -34,11 +35,12 @@ function Filter({
     setVisibleYear(false)
   }
 
+  const { data = []} = useGetAllTracksQuery()
+  const trackArr = data
+
   // создание массивов из годов, авторов и жанров из существующих массивов треков
-  const authorArr = Array.from(
-    new Set(trackArr.map((track) => track.trackAuthorLink)),
-  )
-  // const yearArr = Array.from(new Set(trackArr.map((track) => track.year)))
+  console.log(trackArr)
+  const authorArr = Array.from(new Set(trackArr.map((track) => track.author))).filter((track) => track !== '-') 
   const yearArr = ['По умолчанию', 'Сначала новые', 'Сначала старые']
   const genrerArr = Array.from(new Set(trackArr.map((track) => track.genre)))
 
