@@ -39,7 +39,6 @@ function Filter({
   const trackArr = data
 
   // создание массивов из годов, авторов и жанров из существующих массивов треков
-  console.log(trackArr)
   const authorArr = Array.from(new Set(trackArr.map((track) => track.author))).filter((track) => track !== '-') 
   const yearArr = ['По умолчанию', 'Сначала новые', 'Сначала старые']
   const genrerArr = Array.from(new Set(trackArr.map((track) => track.genre)))

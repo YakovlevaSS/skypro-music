@@ -35,13 +35,17 @@ export default function MainPage({ isPlaying }) {
     console.log('массив фильтров', activeFilterGenre)
     console.log('сортплейлист до сортировки', sortPlaylist)
     // Сортировка по автору
-    sortPlaylist = sortPlaylist?.filter((track) =>
-      activeFilterAuthor.includes(track.author),
-    )
+    if (activeFilterAuthor.length !== 0) {
+      sortPlaylist = sortPlaylist?.filter((track) =>
+        activeFilterAuthor.includes(track.author),
+      )
+    }
     // Сортировка по жанру
-    sortPlaylist = sortPlaylist?.filter((track) =>
-      activeFilterGenre.includes(track.genre),
-    )
+    if (activeFilterGenre.length !== 0) {
+      sortPlaylist = sortPlaylist?.filter((track) =>
+        activeFilterGenre.includes(track.genre),
+      )
+    }
 
     console.log('сортплейлист ПОСЛЕ сортировки', sortPlaylist)
 
