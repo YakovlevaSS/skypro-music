@@ -9,7 +9,7 @@ import PlayList from '../../components/PlayList/PlayList'
 // import { allTracksSelector } from '../../store/selectors/player';
 import { useGetAllTracksQuery } from '../../services/player'
 import { setCurrentPlaylist } from '../../store/slices/player'
-import { compare } from '../../utilits/helpToFilter'  
+import { compare } from '../../utilits/helpToFilter'
 
 export default function MainPage({ isPlaying }) {
   const dispatch = useDispatch()
@@ -17,42 +17,55 @@ export default function MainPage({ isPlaying }) {
   // const [tracks, setTracks] = useState([])
   // const [originalPlayList, setOriginalPlayList] = useState([])
   const [isActiveSortYear, setIsActiveSortYear] = useState('По умолчанию')
-  const [activeFilterAuthor, setActiveFilterAuthor] = useState(['author1', "author2"])
+  const [activeFilterAuthor, setActiveFilterAuthor] = useState([])
   const [activeFilterGenre, setActiveFilterGenre] = useState([])
-  
+
   dispatch(setCurrentPlaylist(data))
 
-const originalPlayList = data
-let sortPlaylist = originalPlayList
+  const originalPlayList = data
+  let sortPlaylist = originalPlayList
 
-  useEffect(()=> {
-    
+
+  useEffect(() => {
     // Сортировка по дате
     if (isActiveSortYear === 'Сначала новые') {
       sortPlaylist = sortPlaylist?.slice(0).sort(compare)
     } else if (isActiveSortYear === 'Сначала старые') {
       sortPlaylist = sortPlaylist?.slice(0).sort(compare).reverse()
     }
+console.log('массив фильтров', activeFilterGenre)
+console.log('сортплейлист до сортировки', sortPlaylist)
+    sortPlaylist = sortPlaylist
+      ?.filter((track) => activeFilterAuthor.includes(track.author))
+      console.log('сортплейлист ПОСЛЕ сортировки', sortPlaylist)
+  
 
+    // sortPlaylist = sortPlaylist
+    //   ?.slice(0)
+    //   .filter((track) => activeFilterGenre.includes(track.genre))
 
-    console.log(sortPlaylist);
+    // const activeFilterAuthorList = activeFilterAuthor.filter((item) => item.isActive)
+    // if (activeFilterAuthorList.length !== 0) {
+    //   sortPlaylist= sortPlaylist.filter((track) =>
+    //     activeFilterAuthorList.find(({ author }) => track.author === author)
+    //   )
+    // }
 
-// sortPlaylist = sortPlaylist?.filter((track) => (activeFilterAuthor.includes(track.author)) )
-    // Set sorted playList
     dispatch(setCurrentPlaylist(sortPlaylist))
   }, [isActiveSortYear, activeFilterAuthor, activeFilterGenre])
-  
+
   return (
     <S.MainCenterblock>
       <Search />
       <S.CenterblockH2>Треки</S.CenterblockH2>
-      <Filter 
-                   isActiveSortYear={isActiveSortYear}
-                   setIsActiveSortYear={setIsActiveSortYear}
-                   isActiveFilterAuthor={activeFilterAuthor}
-                   setIsActiveFilterAuthor={setActiveFilterAuthor}
-                   isActiveFilterGenre={activeFilterGenre}
-                   setIsActiveFilterGenre={setActiveFilterGenre}/>
+      <Filter
+        isActiveSortYear={isActiveSortYear}
+        setIsActiveSortYear={setIsActiveSortYear}
+        activeFilterAuthor={activeFilterAuthor}
+        setActiveFilterAuthor={setActiveFilterAuthor}
+        activeFilterGenre={activeFilterGenre}
+        setActiveFilterGenre={setActiveFilterGenre}
+      />
       <S.CenterblockContent>
         <PlayListTitle />
 

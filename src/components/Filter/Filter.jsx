@@ -3,14 +3,13 @@ import trackArr from '../../utilits/trackArr'
 import * as S from './styles'
 
 function Filter({
-// isActiveSortYear,
-setIsActiveSortYear,
-// isActiveFilterAuthor,
-// setIsActiveFilterAuthor,
-// isActiveFilterGenre,
-// setIsActiveFilterGenre,
-}
-) {
+  // isActiveSortYear,
+  setIsActiveSortYear,
+  activeFilterAuthor,
+  setActiveFilterAuthor,
+  activeFilterGenre,
+  setActiveFilterGenre,
+}) {
   // создаем переменные состояния для каждой кнопки
   const [visibleAuthor, setVisibleAuthor] = useState(false)
   const [visibleYear, setVisibleYear] = useState(false)
@@ -47,7 +46,25 @@ setIsActiveSortYear,
     setIsActiveSortYear(filter)
   }
 
+  const toggleFilterAuthor = (filter) => {
+    if (activeFilterAuthor.includes(filter)) {
+      setActiveFilterAuthor(
+        activeFilterAuthor.filter((item) => item !== filter)
+      )
+    } else {
+      setActiveFilterAuthor([...activeFilterAuthor, filter])
+    }
+  }
 
+  const toggleFilterGenre = (filter) => {
+    if (activeFilterGenre.includes(filter)) {
+      setActiveFilterGenre(
+        activeFilterGenre.filter((item) => item !== filter)
+      )
+    } else {
+      setActiveFilterGenre([...activeFilterGenre, filter])
+    }
+  }
   return (
     <S.CenterblockFilter>
       <S.FilterTitle>Искать по:</S.FilterTitle>
@@ -55,10 +72,7 @@ setIsActiveSortYear,
       {/* условный рндеринг первый фильтр */}
       {visibleAuthor ? (
         <S.FilterWrap>
-          <S.FilterButtonClick
-            type="button"
-            onClick={toggleVisibilityAuthor}
-          >
+          <S.FilterButtonClick type="button" onClick={toggleVisibilityAuthor}>
             исполнителю
           </S.FilterButtonClick>
           <S.FilterLength>{authorArr.length}</S.FilterLength>
@@ -66,17 +80,19 @@ setIsActiveSortYear,
             <S.FilterListMenu>
               {authorArr.map((item) => (
                 <S.FilterListMenu key={item}>
-                  <S.FilterListMenuLink href="#">{item}</S.FilterListMenuLink>
+                  <S.FilterListMenuLink
+                    href="#"
+                    onClick={() => toggleFilterAuthor(item)}
+                  >
+                    {item}
+                  </S.FilterListMenuLink>
                 </S.FilterListMenu>
               ))}
             </S.FilterListMenu>
           </S.FilterMenu>
         </S.FilterWrap>
       ) : (
-        <S.FilterButton
-          type="button"
-          onClick={toggleVisibilityAuthor}
-        >
+        <S.FilterButton type="button" onClick={toggleVisibilityAuthor}>
           исполнителю
         </S.FilterButton>
       )}
@@ -84,10 +100,7 @@ setIsActiveSortYear,
       {/* условный рндеринг первый фильтр */}
       {visibleYear ? (
         <S.FilterWrap>
-          <S.FilterButtonClick
-            type="button"
-            onClick={toggleVisibilityYear}
-          >
+          <S.FilterButtonClick type="button" onClick={toggleVisibilityYear}>
             году выпуска
           </S.FilterButtonClick>
           <S.FilterLength>{yearArr.length}</S.FilterLength>
@@ -95,17 +108,19 @@ setIsActiveSortYear,
             <S.FilterListMenu>
               {yearArr.map((item) => (
                 <S.FilterListMenu key={item}>
-                  <S.FilterListMenuLink href="#" onClick={() => toggleSort(item)}>{item}</S.FilterListMenuLink>
+                  <S.FilterListMenuLink
+                    href="#"
+                    onClick={() => toggleSort(item)}
+                  >
+                    {item}
+                  </S.FilterListMenuLink>
                 </S.FilterListMenu>
               ))}
             </S.FilterListMenu>
           </S.FilterMenuYear>
         </S.FilterWrap>
       ) : (
-        <S.FilterButton
-          type="button"
-          onClick={toggleVisibilityYear}
-        >
+        <S.FilterButton type="button" onClick={toggleVisibilityYear}>
           году выпуска
         </S.FilterButton>
       )}
@@ -113,10 +128,7 @@ setIsActiveSortYear,
       {/* условный рндеринг первый фильтр */}
       {visibleGenre ? (
         <S.FilterWrap>
-          <S.FilterButtonClick
-            type="button"
-            onClick={toggleVisibilityGenre}
-          >
+          <S.FilterButtonClick type="button" onClick={toggleVisibilityGenre}>
             жанру
           </S.FilterButtonClick>
           <S.FilterLength>{genrerArr.length}</S.FilterLength>
@@ -124,17 +136,14 @@ setIsActiveSortYear,
             <S.FilterListMenu>
               {genrerArr.map((item) => (
                 <S.FilterListMenu key={item}>
-                  <S.FilterListMenuLink href="#">{item}</S.FilterListMenuLink>
+                  <S.FilterListMenuLink href="#" onClick={() => toggleFilterGenre(item)}>{item}</S.FilterListMenuLink>
                 </S.FilterListMenu>
               ))}
             </S.FilterListMenu>
           </S.FilterMenu>
         </S.FilterWrap>
       ) : (
-        <S.FilterButton
-          type="button"
-          onClick={toggleVisibilityGenre}
-        >
+        <S.FilterButton type="button" onClick={toggleVisibilityGenre}>
           жанру
         </S.FilterButton>
       )}
