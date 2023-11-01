@@ -1,6 +1,6 @@
 import * as S from './styles'
  
-export default function Search () {
+export default function Search ({setSearchValue,}) {
     return (
               <S.CenterblockSearch>
                 <S.SearchSvg>
@@ -10,6 +10,9 @@ export default function Search () {
                   type="search"
                   placeholder="Поиск"
                   name="search"
+                  onChange={(e) => {
+                    setSearchValue(e.target.value)
+                  }}
                 />
               </S.CenterblockSearch>
     )

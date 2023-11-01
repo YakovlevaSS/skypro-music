@@ -19,6 +19,7 @@ export default function MainPage({ isPlaying }) {
   const [isActiveSortYear, setIsActiveSortYear] = useState('По умолчанию')
   const [activeFilterAuthor, setActiveFilterAuthor] = useState([])
   const [activeFilterGenre, setActiveFilterGenre] = useState([])
+  const [searchValue, setSearchValue] = useState('')
 
   dispatch(setCurrentPlaylist(data))
 
@@ -32,8 +33,7 @@ export default function MainPage({ isPlaying }) {
     } else if (isActiveSortYear === 'Сначала старые') {
       sortPlaylist = sortPlaylist?.slice(0).sort(compare).reverse()
     }
-    console.log('массив фильтров', activeFilterGenre)
-    console.log('сортплейлист до сортировки', sortPlaylist)
+
     // Сортировка по автору
     if (activeFilterAuthor.length !== 0) {
       sortPlaylist = sortPlaylist?.filter((track) =>
@@ -46,15 +46,22 @@ export default function MainPage({ isPlaying }) {
         activeFilterGenre.includes(track.genre),
       )
     }
+    if (searchValue) {
+      sortPlaylist = sortPlaylist?.filter((track) =>
+      track.name.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    }
+    console.log(sortPlaylist);
 
-    console.log('сортплейлист ПОСЛЕ сортировки', sortPlaylist)
+    // dispatch(setCurrentPlaylist(sortPlaylist))
+  }, [isActiveSortYear, activeFilterAuthor, activeFilterGenre, searchValue])
 
-    dispatch(setCurrentPlaylist(sortPlaylist))
-  }, [isActiveSortYear, activeFilterAuthor, activeFilterGenre])
+  console.log(searchValue);
 
   return (
     <S.MainCenterblock>
-      <Search />
+      <Search 
+      setSearchValue={setSearchValue}/>
       <S.CenterblockH2>Треки</S.CenterblockH2>
       <Filter
         isActiveSortYear={isActiveSortYear}
