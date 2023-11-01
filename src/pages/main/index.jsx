@@ -25,7 +25,6 @@ export default function MainPage({ isPlaying }) {
   const originalPlayList = data
   let sortPlaylist = originalPlayList
 
-
   useEffect(() => {
     // Сортировка по дате
     if (isActiveSortYear === 'Сначала новые') {
@@ -33,23 +32,18 @@ export default function MainPage({ isPlaying }) {
     } else if (isActiveSortYear === 'Сначала старые') {
       sortPlaylist = sortPlaylist?.slice(0).sort(compare).reverse()
     }
-console.log('массив фильтров', activeFilterGenre)
-console.log('сортплейлист до сортировки', sortPlaylist)
-    sortPlaylist = sortPlaylist
-      ?.filter((track) => activeFilterAuthor.includes(track.author))
-      console.log('сортплейлист ПОСЛЕ сортировки', sortPlaylist)
-  
+    console.log('массив фильтров', activeFilterGenre)
+    console.log('сортплейлист до сортировки', sortPlaylist)
+    // Сортировка по автору
+    sortPlaylist = sortPlaylist?.filter((track) =>
+      activeFilterAuthor.includes(track.author),
+    )
+    // Сортировка по жанру
+    sortPlaylist = sortPlaylist?.filter((track) =>
+      activeFilterGenre.includes(track.genre),
+    )
 
-    // sortPlaylist = sortPlaylist
-    //   ?.slice(0)
-    //   .filter((track) => activeFilterGenre.includes(track.genre))
-
-    // const activeFilterAuthorList = activeFilterAuthor.filter((item) => item.isActive)
-    // if (activeFilterAuthorList.length !== 0) {
-    //   sortPlaylist= sortPlaylist.filter((track) =>
-    //     activeFilterAuthorList.find(({ author }) => track.author === author)
-    //   )
-    // }
+    console.log('сортплейлист ПОСЛЕ сортировки', sortPlaylist)
 
     dispatch(setCurrentPlaylist(sortPlaylist))
   }, [isActiveSortYear, activeFilterAuthor, activeFilterGenre])
