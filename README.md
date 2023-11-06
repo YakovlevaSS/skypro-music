@@ -15,13 +15,13 @@
 - управление временем воспроизведения в плейере.
 
 ## Стек применяемых технологий:
-JavaScript
-React
-Styled Components  
-React Router
-Redux Toolkit
-RTK Query
-Loading Skeleton
+- JavaScript
+- React
+- Styled Components  
+- React Router
+- Redux Toolkit
+- RTK Query
+- Loading Skeleton
 
 ## Оценка времени реализации этапов:
 
