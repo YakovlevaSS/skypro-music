@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/media-has-caption */
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
 import { setCurrentTrackRedux, toggleShuffled } from '../../store/slices/player'
@@ -25,8 +25,7 @@ export default function PlayerControl({
   volume,
 }) {
   const dispatch = useDispatch()
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [shuffledIndex, setShuffledIndex] = useState(0)
+  // const [shuffledIndex, setShuffledIndex] = useState(0)
   const currentTrack = useSelector(currentTrackSelector)
   // const tracks = useSelector(allTracksSelector)
   const tracks = useSelector(activePlaylistSelector)
@@ -69,7 +68,7 @@ export default function PlayerControl({
 
   const shuffleClick = () => {
     if (!isShufled) {
-      setShuffledIndex(0)
+      // setShuffledIndex(0)
       dispatch(
         toggleShuffled({ shufflePlaylist: [...shuffledMusic], shuffled: true }),
       )
@@ -97,32 +96,15 @@ export default function PlayerControl({
       return
     }
 
-    let prevIndex
-
-    if (isShufled) {
-      if (shuffledIndex === 0) {
-        setIsPlaying(false)
-        playRef.current.pause()
-        return
-      }
-      prevIndex = (shuffledIndex - 1) % shuffledTracks.length
-      setShuffledIndex(prevIndex)
-      playRef.current.play()
-      setIsPlaying(true)
-    } else {
-      if (currentIndex === 0) {
-        setIsPlaying(false)
-        playRef.current.pause()
-        return
-      }
-      prevIndex = (currentIndex - 1) % tracks.length
-      setCurrentIndex(prevIndex)
-      playRef.current.play()
-      setIsPlaying(true)
+    const playList = isShufled ? shuffledTracks : tracks
+    const currentIndexTrack = playList.findIndex(
+      (track) => track.id === currentTrack.id,
+    )
+    const newTrack = tracks[currentIndexTrack - 1]
+    if (!newTrack) {
+      return
     }
-
-    const prevMusic = isShufled ? shuffledTracks[prevIndex] : tracks[prevIndex]
-    dispatch(setCurrentTrackRedux(prevMusic))
+    dispatch(setCurrentTrackRedux(newTrack))
   }
 
   // const playingTrack = () => {
@@ -145,7 +127,7 @@ export default function PlayerControl({
       />
       <S.PlayerBtnPrev>
         <S.PlayerBtnPrevSvg alt="prev" onClick={prevClick}>
-          <use xlinkHref="img/icon/sprite.svg#icon-prev" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-prev" />
         </S.PlayerBtnPrevSvg>
       </S.PlayerBtnPrev>
       <S.PlayerBtnPlay>
@@ -162,7 +144,7 @@ export default function PlayerControl({
       </S.PlayerBtnPlay>
       <S.PlayerBtnNext>
         <S.PlayerBtnNextSvg alt="next" onClick={nextClick}>
-          <use xlinkHref="img/icon/sprite.svg#icon-next" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-next" />
         </S.PlayerBtnNextSvg>
       </S.PlayerBtnNext>
       <S.PlayerBtnRepeat>
@@ -171,7 +153,7 @@ export default function PlayerControl({
           alt="repeat"
           onClick={repeatClick}
         >
-          <use xlinkHref="img/icon/sprite.svg#icon-repeat" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-repeat" />
         </S.PlayerBtnRepeatSvg>
       </S.PlayerBtnRepeat>
       <S.PlayerBtnShuffle>
@@ -180,7 +162,7 @@ export default function PlayerControl({
           alt="shuffle"
           onClick={shuffleClick}
         >
-          <use xlinkHref="img/icon/sprite.svg#icon-shuffle" />
+          <use xlinkHref="/img/icon/sprite.svg#icon-shuffle" />
         </S.PlayerBtnShuffleSvg>
       </S.PlayerBtnShuffle>
     </S.PlayerControls>

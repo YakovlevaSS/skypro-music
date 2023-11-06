@@ -1,10 +1,35 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { useSelector } from 'react-redux';
+import { useSelector} from 'react-redux';
+import { useState } from 'react';
 import { currentTrackSelector } from '../../store/selectors/player'
+import { useLikeTrackMutation, useDislikeTrackMutation } from '../../services/player';
 import * as S from './styles'
 
 export default function PlayerTrackPlay({isLoading}) {
-  const currentTrack = useSelector(currentTrackSelector)  
+
+  const currentTrack = useSelector(currentTrackSelector)
+  const [isLiked, setIsLiked] = useState(false)
+
+  const [like] = useLikeTrackMutation()
+  const [dislike] = useDislikeTrackMutation()
+
+  // useEffect(() => {
+  //   setIsLiked(isUserLike)
+  // }, [isUserLike])
+
+
+  const handleLike = async (id) => {
+    setIsLiked(true)
+    await like({ id }).unwrap()
+  }
+
+  const handleDislike = async (id) => {
+    setIsLiked(false)
+    await dislike({ id }).unwrap()
+  }
+
+  // const toggleLikeDislike = (id) =>
+  //   isLiked ? handleDislike(id) : handleLike(id)
   
   return (
         <S.PlayerTrackPlay>
@@ -13,7 +38,7 @@ export default function PlayerTrackPlay({isLoading}) {
           {!isLoading? (
             <S.TrackPlayerImage>
             <S.TrackPlaySvg alt="music">
-              <use xlinkHref="img/icon/sprite.svg#icon-note" />
+              <use xlinkHref="/img/icon/sprite.svg#icon-note" />
             </S.TrackPlaySvg>
           </S.TrackPlayerImage>
             ) : (
@@ -43,13 +68,20 @@ export default function PlayerTrackPlay({isLoading}) {
           </S.TrackPlayerContain>
           <S.TrackPlayLikeDis>
             <S.TrackPlayLike>
-              <S.TrackPlayLikeSvg alt="like">
-                <use xlinkHref="img/icon/sprite.svg#icon-like" />
+              <S.TrackPlayLikeSvg alt="like" onClick={() => handleLike(currentTrack?.id)}>
+              {isLiked ? (
+                    <use
+                      xlinkHref="/img/icon/sprite.svg#icon-like"
+                      fill="#B672FF"
+                     />
+                  ) : (
+                  <use xlinkHref="/img/icon/sprite.svg#icon-like" />
+                  )}
               </S.TrackPlayLikeSvg>
             </S.TrackPlayLike>
             <S.TrackPlayDisLike>
-              <S.TrackPlayDisLikeSvg alt="dislike">
-                <use xlinkHref="img/icon/sprite.svg#icon-dislike" />
+              <S.TrackPlayDisLikeSvg alt="dislike" onClick={() => handleDislike(currentTrack?.id)}>
+                <use xlinkHref="/img/icon/sprite.svg#icon-dislike" />
               </S.TrackPlayDisLikeSvg>
             </S.TrackPlayDisLike>
           </S.TrackPlayLikeDis>
