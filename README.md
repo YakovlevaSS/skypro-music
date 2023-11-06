@@ -17,7 +17,7 @@
 ## Стек применяемых технологий:
 JavaScript
 React
-Styled Components
+Styled Components  
 React Router
 Redux Toolkit
 RTK Query
