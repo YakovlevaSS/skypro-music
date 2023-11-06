@@ -5,7 +5,7 @@ import VolumeBlock from '../VolumeBlock/VolumeBlock'
 
 // /* eslint-disable import/prefer-default-export */
 function Bar({
-  isLoaded,
+  isLoading,
   isPlaying,
   setIsPlaying,
 }) {
@@ -53,7 +53,7 @@ function Bar({
         <S.BarPlayerProgress />
         <S.BarPlayerBlock>
           <Player
-            isLoaded={isLoaded}
+            isLoadeing={isLoading}
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}
             isRepeat={isRepeat}

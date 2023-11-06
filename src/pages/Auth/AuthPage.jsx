@@ -1,29 +1,65 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { RegApi, LogInApi } from '../../Api/authApi'
+import { useDispatch } from 'react-redux'
+import { RegApi, LogInApi, getToken } from '../../Api/authApi'
+import { setAuth } from '../../store/slices/auth'
 
 import * as S from './styles'
 
-export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode}) {
+export default function AuthPage({
+  isLoginMode = false,
+  setUser,
+  setIsLoginMode,
+}) {
   const [error, setError] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('')
   const [offButton, setOffButton] = useState(false)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  // const setToken = async () => {
+  //   try {
+  //     await getToken({ email, password }).then((token) => {
+  //       console.log(token)
+  //       dispatch(
+  //         setAuth({
+  //           access: token.access,
+  //           refresh: token.refresh,
+  //           user: JSON.parse(sessionStorage.getItem('user')),
+  //         })
+  //       )
+  //     })
+  //   } catch (currentError) {
+  //     console.log(error)
+  //   }
+  // }
 
   const handleLogin = async () => {
     try {
-      const response = await LogInApi(email, password);
-      console.log(response)
-      setUser(response.username);
-      localStorage.setItem('user', response.username);
+      const response = await LogInApi(email, password)
+      setUser(response)
+      localStorage.setItem('user', JSON.stringify(response))
       setOffButton(true)
-      window.location.href = "/";
+      navigate('/')
     } catch (curenterror) {
       setError(curenterror.message)
     } finally {
       setOffButton(false)
+    }
+
+    try {
+      const token = await getToken(email, password)
+      dispatch(
+        setAuth({
+          access: token.access,
+          refresh: token.refresh,
+          user: JSON.parse(localStorage.getItem('user')),
+        }),
+      )
+    } catch (currentError) {
+      console.log(error)
     }
   }
 
@@ -32,22 +68,34 @@ export default function AuthPage({isLoginMode = false, setUser, setIsLoginMode})
       setError('Пароли не совпадают')
     } else {
       try {
-        const response = await RegApi(email, password);
-        console.log(response)
+        const response = await RegApi(email, password)
         setOffButton(true)
-        setUser(response.username);
-        localStorage.setItem('user', response.username);
-        window.location.href = "/";
+        setUser(response)
+        localStorage.setItem('user', JSON.stringify(response))
+        navigate('/')
       } catch (curenterror) {
         setError(curenterror.message)
       } finally {
         setOffButton(false)
       }
     }
+
+    try {
+      const token = await getToken(email, password)
+      dispatch(
+        setAuth({
+          access: token.access,
+          refresh: token.refresh,
+          user: JSON.parse(localStorage.getItem('user')),
+        }),
+      )
+    } catch (currentError) {
+      console.log(error)
+    }
   }
 
-  const handleIsLoginMode = () =>{
-setIsLoginMode(true)
+  const handleIsLoginMode = () => {
+    setIsLoginMode(true)
   }
 
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
@@ -63,8 +111,7 @@ setIsLoginMode(true)
             <S.ModalLogoImage src="/img/logo_modal.png" alt="logo" />
           </S.ModalLogo>
         </Link>
-        {isLoginMode ? 
-        (
+        {isLoginMode ? (
           <>
             <S.Inputs>
               <S.ModalInput
@@ -98,12 +145,11 @@ setIsLoginMode(true)
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
               <S.PrimaryButton onClick={handleRegister} disabled={offButton}>
-                {offButton? 'Загружаем информацию...':'Зарегистрироваться'}
+                {offButton ? 'Загружаем информацию...' : 'Зарегистрироваться'}
               </S.PrimaryButton>
             </S.Buttons>
           </>
-        ) :
-        (
+        ) : (
           <>
             <S.Inputs>
               <S.ModalInput
@@ -128,14 +174,16 @@ setIsLoginMode(true)
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
               <S.PrimaryButton onClick={handleLogin} disabled={offButton}>
-              {offButton? 'Загружаем информацию...':'Войти'}
+                {offButton ? 'Загружаем информацию...' : 'Войти'}
               </S.PrimaryButton>
               <Link to="/Auth">
-                <S.SecondaryButton onClick={handleIsLoginMode}>Зарегистрироваться</S.SecondaryButton>
+                <S.SecondaryButton onClick={handleIsLoginMode}>
+                  Зарегистрироваться
+                </S.SecondaryButton>
               </Link>
             </S.Buttons>
           </>
-        ) }
+        )}
       </S.ModalForm>
     </S.PageContainer>
   )

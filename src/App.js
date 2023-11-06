@@ -31,7 +31,7 @@ function App() {
       <GlobalStyle />
       <UserContext.Provider value={{ user, setUser }}>
       <AppRoutes
-        user={user}
+        // user={user}
         setUser={setUser}
         isLoginMode={isLoginMode}
         setIsLoginMode={setIsLoginMode}

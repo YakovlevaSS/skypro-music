@@ -8,7 +8,7 @@ import PlayerTrackPlay from '../PlayerTrackPlay/PlayerTrackPlay'
 import { currentTrackSelector } from '../../store/selectors/player'
 
 export default function Player({
-  isLoaded,
+  isLoading,
   isPlaying,
   setIsPlaying,
   isRepeat,
@@ -43,7 +43,7 @@ export default function Player({
         playRef={playRef}
         volume={volume}
       />
-      <PlayerTrackPlay isLoaded={isLoaded} currentTrack={currentTrack} />
+      <PlayerTrackPlay isLoading={isLoading} currentTrack={currentTrack} />
     </S.BarPlayer>
   )
 }

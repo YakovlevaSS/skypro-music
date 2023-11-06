@@ -5,15 +5,15 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './styles'
-import {
-  toggleShuffled,
-  setCurrentTrackRedux,
-} from '../../store/action/creator/player'
+import { setCurrentTrackRedux, toggleShuffled } from '../../store/slices/player'
+// } from '../../store/action/creator/player'
 import {
   currentTrackSelector,
-  allTracksSelector,
+  // allTracksSelector,
   shuffledSelector,
   shuffledPlaylistSelector,
+  // currentPlaylistSelector,
+  activePlaylistSelector,
 } from '../../store/selectors/player'
 
 export default function PlayerControl({
@@ -28,10 +28,12 @@ export default function PlayerControl({
   const [currentIndex, setCurrentIndex] = useState(0)
   const [shuffledIndex, setShuffledIndex] = useState(0)
   const currentTrack = useSelector(currentTrackSelector)
-  const tracks = useSelector(allTracksSelector)
+  // const tracks = useSelector(allTracksSelector)
+  const tracks = useSelector(activePlaylistSelector)
+
+
   const shuffledTracks = useSelector(shuffledPlaylistSelector)
   const isShufled = useSelector(shuffledSelector)
-
   const handleClick = () => {
     if (isPlaying) {
       playRef.current.pause()
@@ -60,7 +62,6 @@ export default function PlayerControl({
       playRef.current.volume = volume
     }
   }, [currentTrack, playRef, volume])
-  
 
   const shuffledMusic = [...tracks].sort(function () {
     return Math.round(Math.random()) - 0.5
@@ -69,42 +70,28 @@ export default function PlayerControl({
   const shuffleClick = () => {
     if (!isShufled) {
       setShuffledIndex(0)
-      dispatch(toggleShuffled(shuffledMusic, true))
+      dispatch(
+        toggleShuffled({ shufflePlaylist: [...shuffledMusic], shuffled: true }),
+      )
     } else {
-      dispatch(toggleShuffled([], false))
+      dispatch(toggleShuffled({ shufflePlaylist: [], shuffled: false }))
     }
   }
 
   const nextClick = () => {
-    let nextIndex
-
-    if (isShufled) {
-      if (shuffledIndex === shuffledTracks.length - 1) {
-        setIsPlaying(false)
-        playRef.current.pause()
-        return
-      }
-      nextIndex = (shuffledIndex + 1) % shuffledTracks.length
-      setShuffledIndex(nextIndex)
-      playRef.current.play()
-      setIsPlaying(true)
-    } else {
-      if (currentIndex === tracks.length - 1) {
-        setIsPlaying(false)
-        playRef.current.pause()
-        return
-      }
-      nextIndex = (currentIndex + 1) % tracks.length
-      setCurrentIndex(nextIndex)
-      playRef.current.play()
-      setIsPlaying(true)
+    const playList = isShufled ? shuffledTracks : tracks
+    const currentIndexTrack = playList.findIndex(
+      (track) => track.id === currentTrack.id,
+    )
+    const newTrack = tracks[currentIndexTrack + 1]
+    if (!newTrack) {
+      return
     }
-
-    const nextMusic = isShufled ? shuffledTracks[nextIndex] : tracks[nextIndex]
-    dispatch(setCurrentTrackRedux(nextMusic))
+    dispatch(setCurrentTrackRedux(newTrack))
   }
 
   const prevClick = () => {
+
     if (playRef.current.currentTime > 5) {
       playRef.current.currentTime = 0
       return
@@ -138,13 +125,13 @@ export default function PlayerControl({
     dispatch(setCurrentTrackRedux(prevMusic))
   }
 
-  const playingTrack = () => {
-    const durationtrack = playRef.current.duration
-    const curTime = playRef.current.currentTime
-    if (durationtrack === curTime) {
-      nextClick()
-    }
-  }
+  // const playingTrack = () => {
+  //   const durationtrack = playRef.current.duration
+  //   const curTime = playRef.current.currentTime
+  //   if (durationtrack === curTime) {
+  //     nextClick()
+  //   }
+  // }
 
   return (
     <S.PlayerControls>
@@ -153,7 +140,8 @@ export default function PlayerControl({
         src={currentTrack?.track_file}
         ref={playRef}
         autoPlay
-        onTimeUpdate={playingTrack}
+        // onTimeUpdate={playingTrack}
+        onEnded={() => nextClick()}
       />
       <S.PlayerBtnPrev>
         <S.PlayerBtnPrevSvg alt="prev" onClick={prevClick}>
