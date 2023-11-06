@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './styles'
 import Search from '../../components/Search/Search'
@@ -21,12 +21,14 @@ export default function MainPage({ isPlaying }) {
   const [activeFilterGenre, setActiveFilterGenre] = useState([])
   const [searchValue, setSearchValue] = useState('')
 
-  dispatch(setCurrentPlaylist(data))
+  // dispatch(setCurrentPlaylist(data))
 
-  const originalPlayList = data
-  let sortPlaylist = originalPlayList
+  // const originalPlayList = data
+  
 
-  useEffect(() => {
+  const filterTracks = () => {
+
+    let sortPlaylist = data
     // Сортировка по дате
     if (isActiveSortYear === 'Сначала новые') {
       sortPlaylist = sortPlaylist?.slice(0).sort(compare)
@@ -53,10 +55,13 @@ export default function MainPage({ isPlaying }) {
     }
     console.log(sortPlaylist);
 
-    // dispatch(setCurrentPlaylist(sortPlaylist))
-  }, [isActiveSortYear, activeFilterAuthor, activeFilterGenre, searchValue])
+    return sortPlaylist
 
-  console.log(searchValue);
+    // dispatch(setCurrentPlaylist(sortPlaylist))
+  }
+
+const sortPlaylist = filterTracks()
+dispatch(setCurrentPlaylist(sortPlaylist))
 
   return (
     <S.MainCenterblock>
