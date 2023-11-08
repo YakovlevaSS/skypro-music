@@ -53,7 +53,6 @@ export default function MainPage({ isPlaying }) {
       track.name.toLowerCase().includes(searchValue.toLowerCase())
       )
     }
-    console.log(sortPlaylist);
 
     return sortPlaylist
 

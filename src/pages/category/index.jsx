@@ -7,7 +7,6 @@ import * as S from './styles';
 import { useDispatch} from 'react-redux';
 import { useGetSelectionByIdQuery } from '../../services/player';
 import Search from '../../components/Search/Search'
-import Filter from '../../components/Filter/Filter';
 import PlayListTitle from '../../components/PlayListTitle/PlayListTitle'
 import PlayList from '../../components/PlayList/PlayList'
 // import { authSelector } from '../../store/selectors/player';
@@ -27,7 +26,6 @@ useEffect(() => {
         <S.MainCenterblock>
         <Search />
         <S.CenterblockH2>{data?.name}</S.CenterblockH2>
-        <Filter />
         <S.CenterblockContent>
           <PlayListTitle />
 

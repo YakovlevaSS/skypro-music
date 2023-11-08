@@ -5,7 +5,6 @@ import * as S from './styles';
 import { useSelector, useDispatch} from 'react-redux';
 import { useGetAllMyTracksQuery  } from '../../services/player';
 import Search from '../../components/Search/Search'
-import Filter from '../../components/Filter/Filter';
 import PlayListTitle from '../../components/PlayListTitle/PlayListTitle'
 import PlayList from '../../components/PlayList/PlayList'
 import { authSelector } from '../../store/selectors/player';
@@ -28,7 +27,6 @@ useEffect(() => {
         <S.MainCenterblock>
         <Search />
         <S.CenterblockH2>Мои треки</S.CenterblockH2>
-        <Filter />
         <S.CenterblockContent>
           <PlayListTitle />
 

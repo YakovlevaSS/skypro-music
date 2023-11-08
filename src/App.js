@@ -15,9 +15,7 @@ function App() {
 
   useEffect(() => {
     const currentIsLoginMode = localStorage.getItem('isLoginMode');
-    console.log(currentIsLoginMode);
     setIsLoginMode(currentIsLoginMode  || false);
-    console.log(isLoginMode)
   }, []);
 
   // const handleLogout = () => {
