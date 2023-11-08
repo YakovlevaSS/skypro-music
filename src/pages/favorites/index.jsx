@@ -1,6 +1,9 @@
 /* eslint-disable import/order */
 /* eslint-disable react/jsx-boolean-value */
-import { useEffect } from 'react';
+import { 
+  // useEffect, 
+  useState
+} from 'react';
 import * as S from './styles';
 import { useSelector, useDispatch} from 'react-redux';
 import { useGetAllMyTracksQuery  } from '../../services/player';
@@ -18,14 +21,29 @@ export default function Favorites({ isPlaying}) {
   const dispatch = useDispatch()
 const auth = useSelector(authSelector)
 const {data = [], isLoading, isError} = useGetAllMyTracksQuery({auth})
-const tracks = data
-useEffect(() => {
-  dispatch(setCurrentPlaylist(data))
-}, [data])
+// const tracks = data
+// useEffect(() => {
+//   dispatch(setCurrentPlaylist(data))
+// }, [data])
+
+const [searchValue, setSearchValue] = useState('')
+  const filterTracks = () => {
+    let sortPlaylist = data
+  
+    if (searchValue) {
+      sortPlaylist = sortPlaylist?.filter((track) =>
+      track.name.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    }
+    return sortPlaylist
+  }
+
+const sortPlaylist = filterTracks()
+dispatch(setCurrentPlaylist(sortPlaylist))
 
   return (
         <S.MainCenterblock>
-        <Search />
+        <Search setSearchValue={setSearchValue}/>
         <S.CenterblockH2>Мои треки</S.CenterblockH2>
         <S.CenterblockContent>
           <PlayListTitle />
@@ -41,7 +59,7 @@ useEffect(() => {
           isLoading={ isLoading }
           isPlaying={isPlaying}
           isFavorites={true}
-          tracks={tracks}
+          tracks={sortPlaylist}
           />
         )}
         </S.CenterblockContent>
