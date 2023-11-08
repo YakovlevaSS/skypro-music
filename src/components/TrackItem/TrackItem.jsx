@@ -15,7 +15,7 @@ import {
 } from '../../services/player'
 // } from '../../store/action/creator/player'
 
-export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
+export default function TrackItem({ isLoading, isPlaying, track, tracks, setIsPlaying}) {
     const dispatch = useDispatch()
   const currentTrack = useSelector(currentTrackSelector)
 
@@ -24,6 +24,7 @@ export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
   const handleCurrentTrack = () => {
     dispatch(setCurrentTrackRedux(track))
     dispatch(setActivePlaylist(trackList))
+    setIsPlaying(true)
   }
   const [like] = useLikeTrackMutation()
   const [dislike] = useDislikeTrackMutation()

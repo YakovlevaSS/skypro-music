@@ -11,7 +11,7 @@ import { useGetAllTracksQuery } from '../../services/player'
 import { setCurrentPlaylist } from '../../store/slices/player'
 import { compare } from '../../utilits/helpToFilter'
 
-export default function MainPage({ isPlaying }) {
+export default function MainPage({ isPlaying, setIsPlaying}) {
   const dispatch = useDispatch()
   const { data = [], isError, isLoading } = useGetAllTracksQuery()
   // const [tracks, setTracks] = useState([])
@@ -89,6 +89,7 @@ dispatch(setCurrentPlaylist(sortPlaylist))
             isLoading={isLoading}
             isPlaying={isPlaying}
             tracks={sortPlaylist}
+            setIsPlaying={setIsPlaying}
           />
         )}
       </S.CenterblockContent>

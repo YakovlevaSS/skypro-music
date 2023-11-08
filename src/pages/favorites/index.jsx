@@ -17,7 +17,7 @@ import { setCurrentPlaylist } from '../../store/slices/player';
 
 
 
-export default function Favorites({ isPlaying}) { 
+export default function Favorites({ isPlaying, setIsPlaying}) { 
   const dispatch = useDispatch()
 const auth = useSelector(authSelector)
 const {data = [], isLoading, isError} = useGetAllMyTracksQuery({auth})
@@ -60,6 +60,7 @@ dispatch(setCurrentPlaylist(sortPlaylist))
           isPlaying={isPlaying}
           isFavorites={true}
           tracks={sortPlaylist}
+          setIsPlaying={setIsPlaying}
           />
         )}
         </S.CenterblockContent>

@@ -13,7 +13,7 @@ import PlayList from '../../components/PlayList/PlayList'
 import { setCurrentPlaylist } from '../../store/slices/player';
 
 
-export default function Category({ isPlaying}) { 
+export default function Category({ isPlaying, setIsPlaying}) { 
   const params = useParams();
   const dispatch = useDispatch()
 const {data = [], isLoading, isError} = useGetSelectionByIdQuery(Number(params.id))
@@ -56,6 +56,7 @@ dispatch(setCurrentPlaylist(sortPlaylist))
           isPlaying={isPlaying}
           isFavorites={true}
           tracks={sortPlaylist}
+          setIsPlaying={setIsPlaying}
           />
         )}
         </S.CenterblockContent>

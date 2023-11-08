@@ -47,16 +47,19 @@ function AppRoutes({ isLoginMode, setIsLoginMode, setUser }) {
               <MainPage
               isLoading ={isLoading }
                 isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
               />
             }
           />
-          <Route path="/category/:id" element={<Category />} />
+          <Route path="/category/:id" element={<Category 
+          setIsPlaying={setIsPlaying}/>} />
           <Route
             path="/favorites"
             element={
               <Favorites
               isLoading ={isLoading }
                 isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
               />
             }
           />
