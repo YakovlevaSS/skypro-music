@@ -45,6 +45,7 @@ export default function AuthPage({
       navigate('/')
     } catch (curenterror) {
       setError(curenterror.message)
+      console.log(error)
     } finally {
       setOffButton(false)
     }
