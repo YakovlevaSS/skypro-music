@@ -15,7 +15,7 @@ import {
 } from '../../services/player'
 // } from '../../store/action/creator/player'
 
-export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
+export default function TrackItem({ isLoading, isPlaying, track, tracks, setIsPlaying}) {
     const dispatch = useDispatch()
   const currentTrack = useSelector(currentTrackSelector)
 
@@ -24,6 +24,7 @@ export default function TrackItem({ isLoading, isPlaying, track, tracks}) {
   const handleCurrentTrack = () => {
     dispatch(setCurrentTrackRedux(track))
     dispatch(setActivePlaylist(trackList))
+    setIsPlaying(true)
   }
   const [like] = useLikeTrackMutation()
   const [dislike] = useDislikeTrackMutation()
@@ -87,7 +88,7 @@ return (
                       r="7.5"
                     />
                   ) : (
-                    <use xlinkHref="img/icon/sprite.svg#icon-note" />
+                    <use xlinkHref="/img/icon/sprite.svg#icon-note" />
                   )}
                 </S.TrackTitleSvg>
               </S.TrackTitleImage>
@@ -129,11 +130,11 @@ return (
                 >
                   {isLiked ? (
                     <use
-                      xlinkHref="img/icon/sprite.svg#icon-like"
+                      xlinkHref="/img/icon/sprite.svg#icon-like"
                       fill="#B672FF"
                      />
                   ) : (
-                  <use xlinkHref="img/icon/sprite.svg#icon-like" />
+                  <use xlinkHref="/img/icon/sprite.svg#icon-like" />
                   )}
                 </S.TrackTimeSvg>
                 <S.TrackTimeText>

@@ -85,34 +85,37 @@ export const FilterWrap = styled.div `
     position: absolute;
     top: 50px;
     width: 248px;
-    height: 305px;
-    overflow: scroll;
     box-sizing: border-box;
     background-color: #313131;
     border-radius: 12px;
     padding: 34px;
-    overflow-y: scroll;
+    overflow-y: hidden;
    overflow-x: hidden;
-
-    &::-webkit-scrollbar {
-      width: 4px;
-    }
-    
-    &::-webkit-scrollbar-track {
-      background-color: #4B4949;
-    
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background-color: #FFFFFF;
-      border-radius: 2px;
-      height: 65px;
-    }
   `
 
   export const FilterMenuYear = styled(FilterMenu)`
   width: 248px;
   height: 196px;
+`
+
+export const FilterMenuAuthor = styled(FilterMenu)`
+height: 305px;
+overflow-y: scroll;
+
+&::-webkit-scrollbar {
+  width: 4px;
+}
+
+&::-webkit-scrollbar-track {
+  background-color: #4B4949;
+
+}
+
+&::-webkit-scrollbar-thumb {
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  height: 65px;
+}
 `
 
 const FilterListMixin = css`
@@ -138,7 +141,7 @@ a:hover {
 }
 `
 export const FilterListMenu = styled.ul`
-  width: 180px;
+  hio
   height: 305px;
   ${FilterListMixin};
 `;
@@ -148,7 +151,5 @@ export const FilterListMenuLink = styled.a``
 
 export const FilterListMenuYear = styled.ul`
   ${FilterListMixin};
-  width: 116px;
-  height: 237px;
   align-items: center;
 `;

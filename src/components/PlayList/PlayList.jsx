@@ -3,7 +3,8 @@
 import TrackItem from "../TrackItem/TrackItem"
 import * as S from './styles'
 
-export default function PlayList({ isLoading, isPlaying, tracks }) {
+export default function PlayList({ isLoading, isPlaying, tracks, setIsPlaying  }) {
+  
     return (<S.ContentPlaylist>             
  {isLoading &&
             Array(20)
@@ -16,6 +17,7 @@ export default function PlayList({ isLoading, isPlaying, tracks }) {
                   isPlaying={isPlaying}
                   track={track}
                   tracks={tracks}
+                  setIsPlaying={setIsPlaying}
                 />
               ))
             ) : (
